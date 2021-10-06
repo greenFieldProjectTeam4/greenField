@@ -11,9 +11,34 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/../react-client/dist'));
 
 
-app.get('/api/blogs', function(req, res) {
-  // TODO - your code here!
+app.get('/api/trailers', function(req, res) {
+  // Video.find({})
+  // .then((response)=>{
+  //   res.status(201).send(response)
+  // })
+  // .catch(()=>{
+  //   res.status(403).send("Failed to Get!")
+  // })
 });
+// app.put('/api/trailers/:trailerId', function(req, res) {
+//   Video.findOneAndUpdate({_id:req.params.id},req.body)
+//   .then((response)=>{
+//     res.status(201).send(response)
+//   })
+//   .catch(()=>{
+//     res.status(403).send("Failed to Update!")
+//   })
+// });
+
+// app.delete('/api/trailers/:trailerId', function(req, res) {
+//   Video.findOneAndRemove({_id:req.params.id})
+//   .then((response)=>{
+//     res.status(201).send(response)
+//   })
+//   .catch(()=>{
+//     res.status(403).send("Failed to Delete!")
+//   })
+// });
 
 
 app.post('/Rmdb/signup',(req,res)=>{ 

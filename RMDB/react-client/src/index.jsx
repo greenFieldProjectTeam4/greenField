@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios'
 import SignUp from './components/SignUp.jsx'
-import HomePage from './components/HomePage.jsx'
 
 class App extends React.Component {
   constructor() {
@@ -10,13 +9,19 @@ class App extends React.Component {
     this.state = {
       view: 'homepage',
       username: '',
-      password: ''
+      password: '',
+      currentTrailer: null,
+      samplePosts:samplePosts
     }
 
     this.changeView = this.changeView.bind(this);
     this.handleChange= this.handleChange.bind(this);
     this.submitUp= this.submitUp.bind(this);
+    this.handleTrailerItems= this.handleTrailerItems.bind(this)
+   
   }
+
+  
 
   changeView(option) {
     this.setState({
@@ -38,6 +43,29 @@ class App extends React.Component {
     this.setState({ [e.target.name]:e.target.value})
   }
 
+
+// updateData(trailerId){
+//   axios.put(`/api/trailers/:trailerId/${trailerId}`,{})
+//   .then((response)=>{
+//     console.log(response)
+//   })
+// }
+
+ // updateData(blogId,newTitle){
+  //   var newTitle= prompt()
+  //   axios.put(`http://localhost:3000/api/:trailerId/${trailerId}`,{title: newTitle})
+  //   .then((response)=>{
+  //     console.log(response)
+  //   })
+  // }
+
+// deleteData(trailerId){
+//   axios.delete(`/api/trailers/:trailerId${trailerId}`)
+//   .then((response)=>{
+//     console.log(response)
+//   })
+// }
+
   renderView() {
     const view = this.state.view;
 
@@ -47,7 +75,8 @@ class App extends React.Component {
     else if (view === 'signup') {
       return <SignUp submitUp={this.submitUp} handleChange={this.handleChange} />
     } 
-    else if (view === 'watchList') {
+  
+    else if(view==='watchList') {
       return <WatchList />
     }
     else if(view==='homepage'){
@@ -55,20 +84,34 @@ class App extends React.Component {
     }
 
   }
+  
+
+handleTrailerItems(trailer){
+this.setState({
+  currentTrailer: trailer,
+})
+}
 
 
   render() {
     return (
       <div>
         <div className="nav">
-          <span className="logo"
-            onClick={() => this.changeView('homepage')}>
-            RMDB
-          </span>
+
           <span className={this.state.view === 'homepage'
             ? 'nav-selected'
             : 'nav-unselected'}
-            >
+            
+            onClick={() => this.changeView('homepage')} >
+              ЯMDb
+          </span>
+
+
+
+          <span className={this.state.view === 'rmdb'
+            ? 'nav-selected'
+            : 'nav-unselected'}
+            onClick={() => this.changeView('towatch')}>
             WatchList
           </span>
           <span className="nav-unselected" onClick={() => this.changeView('signin')}>
@@ -78,7 +121,8 @@ class App extends React.Component {
             Sign Up
           </span>
         </div>
-
+       
+       
         <div className="main">
           {this.renderView()}
         </div>
@@ -87,4 +131,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('blogmodo'));
+ReactDOM.render(<App />, document.getElementById('RMDb'));

@@ -6,15 +6,14 @@ mongoose.Promise = global.Promise;
 
 const videoSchema = new mongoose.Schema({
 
-  "countries": { type: Object },
+  "countries": [String],
   "description": String,
-  "directors": { type: Object },
-  "genres": { type: Object },
-  "imdb_id": String,
+  "directors": [String],
+  "genres": [String],
   "imdb_rating": Number,
-  "language": [],
+  "language": [String],
   "release_date": String,
-  "stars": [],
+  "stars": [String],
   "title": String,
   "year": Number,
   "youtube_trailer_key": String,
