@@ -4,10 +4,21 @@ body {
   font-family: 'PT Serif', sans-serif;
   margin: 0px;
   color: #2C3E50;
-  background-color: #ECF0F1;
+  /* background-color: #000000; */
+  background-image: url("https://www.ppt-backgrounds.net/thumbs/black-wood-cinema-hd-graphic-ppt.jpeg");
+  background-position: center;
   font-size: 1.1em;
 }
-
+/* #home{
+  background-color: rgb(3, 148, 3);
+  height: 40px;
+  width: 80px;
+  margin-top: -30px;
+  font-size: 22px;
+  font-weight:bold;
+  color: #000000;
+  font-family: cambria;
+} */
 h2 {
   color: #2C3E50;
 }
@@ -203,10 +214,10 @@ button {
 
 .logo {
   font-weight: bold;
-  font-size: 1.9em;
+  font-size: 1.3em;
   margin-right: auto;
   margin-left: 10px;
-  font-family: 'Francois One';
+  font-family: cambria;
   color: #ffffff;
 }
 
@@ -216,7 +227,7 @@ button {
 }
 
 .nav {
-  background-color: #3498DB;
+  background-color: #24282b;
   margin: 0px;
   padding: 10px;
   display: flex;
@@ -237,6 +248,7 @@ button {
   padding: 5px;
   margin-right: 5px;
   font-size: 1.1em;
+  color:#b6d6c0
 }
 
 .feed {
