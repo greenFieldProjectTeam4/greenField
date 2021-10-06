@@ -7,17 +7,12 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-<<<<<<< HEAD
-      view: 'feed'
-    };
-=======
       view: 'homepage',
       username: '',
       password: '',
       currentTrailer: null,
       samplePosts:samplePosts
     }
->>>>>>> 2da37bd45f6d6f04d4a157ca7c52883e90099f1c
 
     this.changeView = this.changeView.bind(this);
     this.handleChange= this.handleChange.bind(this);
@@ -74,14 +69,7 @@ class App extends React.Component {
   renderView() {
     const view = this.state.view;
 
-    if (view === 'singin') {
-<<<<<<< HEAD
-      return <SingIn handleClick={() => this.changeView('login')}/>;
-    } else if (view === 'signup') {
-      return <SignUp />;
-    } else if (view === 'watchList') {
-      return <WatchList />;
-=======
+    if (view === 'signin') {
       return <SingIn handleClick={() => this.changeView('login')} />
     }
     else if (view === 'signup') {
@@ -90,7 +78,6 @@ class App extends React.Component {
   
     else if(view==='watchList') {
       return <WatchList />
->>>>>>> 2da37bd45f6d6f04d4a157ca7c52883e90099f1c
     }
     else if(view==='homepage'){
       return <HomePage />
@@ -124,19 +111,11 @@ this.setState({
           <span className={this.state.view === 'rmdb'
             ? 'nav-selected'
             : 'nav-unselected'}
-<<<<<<< HEAD
-          onClick={() => this.changeView('kjhg')}>
-            WatchList
-          </span>
-          <span className="nav-unselected" onClick={() => this.changeView('signin')}>
-           Sign In
-=======
             onClick={() => this.changeView('towatch')}>
             WatchList
           </span>
           <span className="nav-unselected" onClick={() => this.changeView('signin')}>
             Sign In
->>>>>>> 2da37bd45f6d6f04d4a157ca7c52883e90099f1c
           </span>
           <span className="nav-unselected" onClick={() => this.changeView('signup')}>
             Sign Up

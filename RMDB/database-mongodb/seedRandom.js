@@ -40,8 +40,7 @@ const random = [
     directors: [
       'Deon Taylor'
     ],
-    countries: ['United States of America'
-    ],
+    countries: ['United States of America'],
     language: [
       'English',
       'en',
