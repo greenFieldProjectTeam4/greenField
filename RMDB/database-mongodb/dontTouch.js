@@ -18,4 +18,5 @@ const insertSampleBlogs = function() {
     });
 };
 
+
 insertSampleBlogs();

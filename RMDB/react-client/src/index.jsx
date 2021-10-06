@@ -1,21 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios'
-import HomePage from './components/HomePage.jsx';
-import samplePosts from "./data/data"
+import SignUp from './components/SignUp.jsx'
+
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      view: 'login',
-      // trailers:[],
+      view: 'homepage',
+      username: '',
+      password: '',
       currentTrailer: null,
       samplePosts:samplePosts
     }
 
     this.changeView = this.changeView.bind(this);
+    this.handleChange= this.handleChange.bind(this);
+    this.submitUp= this.submitUp.bind(this);
     this.handleTrailerItems= this.handleTrailerItems.bind(this)
+   
   }
+
+  
 
   changeView(option) {
     this.setState({
@@ -23,11 +29,20 @@ class App extends React.Component {
     });
   }
 
-getData(){
-  this.setState({
-    samplePosts: this.state.samplePosts
-  })
-}  
+  submitUp() {
+    axios.post('/Rmdb/signup', { username: this.state.username, password: this.state.password }).then(response => {console.log(response)}).catch(err => res.status(403).send('user not added'))
+    this.changeView('homepage')
+  }
+
+  submitIn() {
+    axios.post('/Rmdb/signin', { username: this.state.username, password: this.state.password }).then(response => console.log(response)).catch(err => res.status(403).send('user not checked'))
+  
+  }
+
+  handleChange(e){
+    this.setState({ [e.target.name]:e.target.value})
+  }
+
 
 // updateData(trailerId){
 //   axios.put(`/api/trailers/:trailerId/${trailerId}`,{})
@@ -55,17 +70,19 @@ getData(){
     const view = this.state.view;
 
     if (view === 'singin') {
-      return <SingIn handleClick={() => this.changeView('login')}/>
+      return <SingIn handleClick={() => this.changeView('login')} />
+    }
+    else if (view === 'signup') {
+      return <SignUp submitUp={this.submitUp} handleChange={this.handleChange} />
     } 
-    else if(view==='signup') {
-      return <SignUp />
-    }
-    else if(view==='homepage') {
-      return <HomePage />
-    }
+  
     else if(view==='watchList') {
       return <WatchList />
     }
+    else if(view==='homepage'){
+      return <HomePage />
+    }
+
   }
   
 
@@ -75,24 +92,32 @@ this.setState({
 })
 }
 
+
   render() {
     return (
       <div>
         <div className="nav">
-          <span className="logo"
-            onClick={() => this.changeView('rmdb')}>
+
+          <span className={this.state.view === 'homepage'
+            ? 'nav-selected'
+            : 'nav-unselected'}
+            
+            onClick={() => this.changeView('homepage')} >
               ЯMDb
           </span>
+
+
+
           <span className={this.state.view === 'rmdb'
             ? 'nav-selected'
             : 'nav-unselected'}
             onClick={() => this.changeView('towatch')}>
             WatchList
           </span>
-          <span className="nav-unselected"  onClick={() => this.changeView('signin')}>
-           Sign In
+          <span className="nav-unselected" onClick={() => this.changeView('signin')}>
+            Sign In
           </span>
-          <span className="nav-unselected">
+          <span className="nav-unselected" onClick={() => this.changeView('signup')}>
             Sign Up
           </span>
         </div>
