@@ -7,8 +7,12 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      view: 'feed'
-    };
+      view: 'homepage',
+      username: '',
+      password: '',
+      currentTrailer: null,
+      samplePosts:samplePosts
+
 
     this.changeView = this.changeView.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -98,14 +102,14 @@ class App extends React.Component {
               ЯMDb
           </span>
 
-
-
           <span className={this.state.view === 'rmdb'
             ? 'nav-selected'
             : 'nav-unselected'}
-          onClick={() => this.changeView('kjhg')}>
+            onClick={() => this.changeView('towatch')}>
             WatchList
           </span>
+
+
           <span className="nav-unselected" onClick={() => this.changeView('signin')}>
            Sign In
           </span>
