@@ -1,7 +1,7 @@
 {
   "name": "problem-starter",
   "version": "1.0.0",
-  "description": "",
+  "description": "&copy; 2018 Hack Reactor. This material is copyrighted by Hack Reactor and may not be distributed to the public",
   "main": "index.js",
   "scripts": {
     "start": "nodemon server/index.js",
