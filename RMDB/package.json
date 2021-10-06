@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon server/index.js",
     "dev:react": "webpack -d --watch",
-    "db:setup": "node database-mongodb/seed.js"
+    "db:setup": "node database-mongodb/seedRandom.js"
   },
   "author": "Hack Reactor Curriculum Team <curriculum.team@hackreactor.com>",
   "license": "ISC",
