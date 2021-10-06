@@ -16,9 +16,9 @@ class App extends React.Component {
     }
 
     this.changeView = this.changeView.bind(this);
-    this.handleChange= this.handleChange.bind(this);
-    this.submitUp= this.submitUp.bind(this);
-    this.handleTrailerItems= this.handleTrailerItems.bind(this)
+    this.handleChange = this.handleChange.bind(this);
+    this.submitUp = this.submitUp.bind(this);
+    this.handleTrailerItems = this.handleTrailerItems.bind(this);
    
   }
 
@@ -31,17 +31,17 @@ class App extends React.Component {
   }
 
   submitUp() {
-    axios.post('/Rmdb/signup', { username: this.state.username, password: this.state.password }).then(response => {console.log(response)}).catch(err => res.status(403).send('user not added'))
-    this.changeView('homepage')
+    axios.post('/Rmdb/signup', { username: this.state.username, password: this.state.password }).then(response => { console.log(response); }).catch(err => res.status(403).send('user not added'));
+    this.changeView('homepage');
   }
 
   submitIn() {
-    axios.post('/Rmdb/signin', { username: this.state.username, password: this.state.password }).then(response => console.log(response)).catch(err => res.status(403).send('user not checked'))
+    axios.post('/Rmdb/signin', { username: this.state.username, password: this.state.password }).then(response => console.log(response)).catch(err => res.status(403).send('user not checked'));
   
   }
 
-  handleChange(e){
-    this.setState({ [e.target.name]:e.target.value})
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value});
   }
 
 getData(){
@@ -80,11 +80,11 @@ componentDidMount(){
   }
   
 
-handleTrailerItems(trailer){
-this.setState({
-  currentTrailer: trailer,
-})
-}
+  handleTrailerItems(trailer) {
+    this.setState({
+      currentTrailer: trailer,
+    });
+  }
 
 
   render() {
@@ -96,7 +96,7 @@ this.setState({
             ? 'nav-selected'
             : 'nav-unselected'}
             
-            onClick={() => this.changeView('homepage')} >
+          onClick={() => this.changeView('homepage')} >
               ЯMDb
           </span>
 

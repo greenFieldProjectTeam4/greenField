@@ -1,7 +1,7 @@
 import React from 'react';
 import TrailerListItems from './TrailerListItems.jsx';
 
-const TrailerList = ({trailers,handleTrailerItems}) => (
+const TrailerList = ({trailers, handleTrailerItems}) => (
   <div className="trailer">  
    
       {trailers.map((trailer)=>{
