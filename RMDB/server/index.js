@@ -2,6 +2,7 @@ const express = require('express');
 
 const  {Video,User}=require('../database-mongodb/User')
 const cors=require('cors');
+
 const app = express();
 const PORT = 3000;
 app.use(cors());
@@ -19,5 +20,6 @@ user.save()
 })
 
 
-app.listen(PORT, () => {
+
+app.listen(PORT, () => {console.log('yemshy'
 });
