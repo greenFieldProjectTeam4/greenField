@@ -7,7 +7,7 @@ class App extends React.Component {
     super();
     this.state = {
       view: 'feed'
-    }
+    };
 
     this.changeView = this.changeView.bind(this);
   }
@@ -22,13 +22,11 @@ class App extends React.Component {
     const view = this.state.view;
 
     if (view === 'singin') {
-      return <SingIn handleClick={() => this.changeView('login')}/>
-    } 
-    else if(view==='signup') {
-      return <SignUp />
-    }
-    else if(view==='watchList') {
-      return <WatchList />
+      return <SingIn handleClick={() => this.changeView('login')}/>;
+    } else if (view === 'signup') {
+      return <SignUp />;
+    } else if (view === 'watchList') {
+      return <WatchList />;
     }
   }
 
@@ -44,10 +42,10 @@ class App extends React.Component {
           <span className={this.state.view === 'feed'
             ? 'nav-selected'
             : 'nav-unselected'}
-            onClick={() => this.changeView('kjhg')}>
+          onClick={() => this.changeView('kjhg')}>
             WatchList
           </span>
-          <span className="nav-unselected"  onClick={() => this.changeView('signin')}>
+          <span className="nav-unselected" onClick={() => this.changeView('signin')}>
            Sign In
           </span>
           <span className="nav-unselected">

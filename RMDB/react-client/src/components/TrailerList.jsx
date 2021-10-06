@@ -6,7 +6,7 @@ const List = (props) => (
       {/* map here */}
       <li className="trailer-list-item">
 
-     </li>
+      </li>
     </ul>
   </div>
 
