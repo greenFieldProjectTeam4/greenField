@@ -1,25 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import axios from 'axios'
-import SignUp from './components/SignUp.jsx'
-
+import axios from 'axios';
+import HomePage from './components/HomePage.jsx';
+import SignUp from './components/SignUp.jsx';
+import SignIn from './components/SignIn.jsx';
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      view: 'homepage',
+      view: 'rmdb',
       username: '',
       password: '',
       currentTrailer: null,
-      samplePosts:samplePosts
+      user:false
     }
 
     this.changeView = this.changeView.bind(this);
-    this.handleChange= this.handleChange.bind(this);
-    this.submitUp= this.submitUp.bind(this);
-    this.handleTrailerItems= this.handleTrailerItems.bind(this)
-   
+    this.handleChange = this.handleChange.bind(this);
+    this.handleTrailerItems = this.handleTrailerItems.bind(this);
+   this.signinHandle= this.signinHandle.bind(this);
+   this.signupHandle= this.signupHandle.bind(this);
   }
+
 
   
 
@@ -29,71 +31,114 @@ class App extends React.Component {
     });
   }
 
-  submitUp() {
-    axios.post('/Rmdb/signup', { username: this.state.username, password: this.state.password }).then(response => {console.log(response)}).catch(err => res.status(403).send('user not added'))
-    this.changeView('homepage')
+  signupHandle() {
+    axios.post('/signup', { username: this.state.username, password: this.state.password }).then(response => { console.log(response); }).catch(err => res.status(403).send('user not added'));
+    this.changeView('homepage');
+    this.setState({user:true
+    
+    })
   }
 
-  submitIn() {
-    axios.post('/Rmdb/signin', { username: this.state.username, password: this.state.password }).then(response => console.log(response)).catch(err => res.status(403).send('user not checked'))
-  
-  }
+ 
 
-  handleChange(e){
-    this.setState({ [e.target.name]:e.target.value})
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value});
   }
 
 
-// updateData(trailerId){
-//   axios.put(`/api/trailers/:trailerId/${trailerId}`,{})
-//   .then((response)=>{
-//     console.log(response)
-//   })
-// }
+signinHandle(){
+  axios.post('/signin', user)
+  .then((data) => {
+    if (data.data === true) {
+      this.setState({
+        user: true,
+      })
+    }
+  })
+  .catch((err) => { alert('Verify username or Password') })
 
- // updateData(blogId,newTitle){
-  //   var newTitle= prompt()
-  //   axios.put(`http://localhost:3000/api/:trailerId/${trailerId}`,{title: newTitle})
-  //   .then((response)=>{
-  //     console.log(response)
-  //   })
-  // }
+}
 
-// deleteData(trailerId){
-//   axios.delete(`/api/trailers/:trailerId${trailerId}`)
-//   .then((response)=>{
-//     console.log(response)
-//   })
-// }
-
+ 
   renderView() {
     const view = this.state.view;
-
+  const user=this.state.user;
     if (view === 'signin') {
-      return <SingIn handleClick={() => this.changeView('login')} />
+      return <SignIn signin={this.signinHandle}   handleClick={() => this.changeView('login')} />
     }
     else if (view === 'signup') {
-      return <SignUp submitUp={this.submitUp} handleChange={this.handleChange} />
+      return <SignUp signup={this.signupHandle}  />
     } 
   
     else if(view==='watchList') {
       return <WatchList />
     }
-    else if(view==='homepage'){
+    else if(view==='homepage' && user===true){
       return <HomePage />
     }
 
   }
   
 
-handleTrailerItems(trailer){
-this.setState({
-  currentTrailer: trailer,
-})
-}
+  handleTrailerItems(trailer) {
+    this.setState({
+      currentTrailer: trailer,
+    });
+  }
 
 
   render() {
+
+    if(this.state.user===true){
+      return (
+        <div>
+        <div className="nav">
+
+          <span className={this.state.view === 'homepage'
+            ? 'nav-selected'
+            : 'nav-unselected'}
+            
+          onClick={() => this.changeView('rmdb')} >
+              ЯMDb
+          </span>
+          <span 
+        className={this.state.view === 'homepage'
+          ? 'nav-selected'
+          : 'nav-unselected'}
+          
+        // onClick={() => this.changeView('rmdb')}
+         >
+           TEST
+        </span>
+
+
+          <span className={this.state.view === 'rmdb'
+            ? 'nav-selected'
+            : 'nav-unselected'}
+            onClick={() => this.changeView('towatch')}>
+            WatchList
+          </span>
+          <span className="nav-unselected" onClick={() => this.changeView('signin')}>
+            Sign In
+          </span>
+          <span className="nav-unselected" onClick={() => this.changeView('signup')}>
+            Sign Up
+          </span>
+        </div>
+       
+       
+        <div className="main">
+          {this.renderView()}
+        </div>
+      </div>
+      )
+    }
+
+
+
+
+
+
     return (
       <div>
         <div className="nav">
@@ -102,7 +147,7 @@ this.setState({
             ? 'nav-selected'
             : 'nav-unselected'}
             
-            onClick={() => this.changeView('homepage')} >
+          onClick={() => this.changeView('rmdb')} >
               ЯMDb
           </span>
 

@@ -11,6 +11,7 @@ const videoSchema = new mongoose.Schema({
   'imdb_rating': String,
   'language': [],
   'release_date': String,
+  'poster': String,
   'stars': [],
   'title': String,
   'year': String,
