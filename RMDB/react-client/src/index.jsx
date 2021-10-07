@@ -27,14 +27,28 @@ class App extends React.Component {
         title: "",
         year: "",
         youtube_trailer_key: "",
+      },
+      trailer:{
+        countries: null,
+        description: "",
+        directors: null,
+        genres: null,
+        imdb_rating: "",
+        language: [],
+        release_date: "",
+        poster: "",
+        stars: [],
+        title: "",
+        year: "",
+        youtube_trailer_key: "",
       }
     }
 
     this.changeView = this.changeView.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.submitUp = this.submitUp.bind(this);
-    this.handleTrailerItems = this.handleTrailerItems.bind(this);
     this.getOne= this.getOne.bind(this)
+    this.getTrailer= this.getTrailer.bind(this)
    
   }
 
@@ -82,6 +96,18 @@ getOne(videoId){
     })
   })
 }
+
+getTrailer(videoId){
+  axios.get(`http://localhost:3000/api/videos/${videoId}`)
+  .then((response)=>{ 
+    
+    this.setState({
+      trailer: response.data
+    })
+    // console.log(this.state.trailer)
+  })
+}
+
   renderView() {
     const view = this.state.view;
 
@@ -97,9 +123,9 @@ getOne(videoId){
     }
     
     else if(view==='homepage'){
-      return <HomePage trailers={this.state.trailers} trailer={this.state.currentTrailer}
+      return <HomePage trailers={this.state.trailers} trailer={this.state.trailer}
       handleTrailerItems={this.handleTrailerItems} handleClick={() => this.changeView('fff')}
-      getOne={this.getOne}/>
+      getOne={this.getOne}  getTrailer={this.getTrailer} />
     }
     else  {
       return <Details video={this.state.video}  />
@@ -107,11 +133,11 @@ getOne(videoId){
 
   }
   
-  handleTrailerItems(trailer) {
-    this.setState({
-      currentTrailer: trailer,
-    });
-  }
+  // handleTrailerItems(trailer) {
+  //   this.setState({
+  //     currentTrailer: trailer,
+  //   });
+  // }
 
 
   render() {

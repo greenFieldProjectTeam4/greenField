@@ -285,7 +285,7 @@ h4{
 }
 
 .trailer{
-  margin-top: 150px;
+  margin-top: -450px;
   height: 500px;
   border: 2px, solid #ddd;
   overflow-y: auto;
@@ -301,6 +301,7 @@ h4{
   height: 150px;
   line-height: 110px;
   margin-right: 2px;
+  margin-top: 4px;
   }
 
   .details{
@@ -318,13 +319,6 @@ h4{
   display: flex;
   color: white;
   }
-  /* .actors::-webkit-scrollbar{
-    width: 0;
-  }
-  .actors .item2{
-    width: 60;
-    height: 250px;
-    line-height: 110px;
-    margin-right: 5px;
-    color: honeydew;
-    } */
+ .player{
+   margin-left: -100px;
+ }

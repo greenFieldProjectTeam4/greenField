@@ -6,7 +6,7 @@ const TrailerList = (props) => (
    
       {props.trailers.map((e,key)=>{
         return(
-          <div key={key} className="item1"> <img id="poster" onClick={()=>{handleClick();getOne(e._id)}}   src={e.poster} /> </div>
+          <div key={key} className="item1">  <img id="poster" onClick={()=>{props.getTrailer(e._id)}}   src={e.poster} /> </div>
         )
       })}
   </div>
