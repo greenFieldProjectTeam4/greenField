@@ -7,12 +7,18 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
+<<<<<<< HEAD
+      view: 'feed',
+      data: []
+    };
+=======
       view: 'homepage',
       username: '',
       password: '',
       currentTrailer: null,
       samplePosts:samplePosts
 
+>>>>>>> ae04d9206641b1f7a7f8e1e97a7df10868710d85
 
     this.changeView = this.changeView.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -21,7 +27,16 @@ class App extends React.Component {
    
   }
 
-  
+  handleSearch(event) {
+    let datafiltred = this.state.data.filter((element)=>{
+      return element.title === event || event.slice(0, 2);
+    });
+    this.setState({
+      view: event,
+      data: datafiltred 
+    });
+
+  }
 
   changeView(option) {
     this.setState({
