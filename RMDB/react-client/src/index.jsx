@@ -7,7 +7,8 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      view: 'feed'
+      view: 'feed',
+      data: []
     };
 
     this.changeView = this.changeView.bind(this);
@@ -17,7 +18,16 @@ class App extends React.Component {
    
   }
 
-  
+  handleSearch(event) {
+    let datafiltred = this.state.data.filter((element)=>{
+      return element.title === event || event.slice(0, 2);
+    });
+    this.setState({
+      view: event,
+      data: datafiltred 
+    });
+
+  }
 
   changeView(option) {
     this.setState({
