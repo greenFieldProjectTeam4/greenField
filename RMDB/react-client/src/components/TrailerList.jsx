@@ -1,12 +1,12 @@
 import React from 'react';
-import TrailerListItems from './TrailerListItems.jsx';
 
-const TrailerList = ({trailers, handleTrailerItems}) => (
+
+const TrailerList = (props) => (
   <div className="trailer">  
    
-      {trailers.map((trailer)=>{
+      {props.trailers.map((e,key)=>{
         return(
-          <TrailerListItems className="trailer-list-item" trailer={trailer} handleTrailerItems={handleTrailerItems}/>
+          <div key={key} className="item1"> <img id="poster"  src={e.poster} /> </div>
         )
       })}
   </div>
@@ -14,3 +14,5 @@ const TrailerList = ({trailers, handleTrailerItems}) => (
 );
 
 export default TrailerList;
+
+

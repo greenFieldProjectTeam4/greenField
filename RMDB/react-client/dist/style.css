@@ -9,16 +9,7 @@ body {
   background-position: center;
   font-size: 1.1em;
 }
-/* #home{
-  background-color: rgb(3, 148, 3);
-  height: 40px;
-  width: 80px;
-  margin-top: -30px;
-  font-size: 22px;
-  font-weight:bold;
-  color: #000000;
-  font-family: cambria;
-} */
+
 h2 {
   color: #2C3E50;
 }
@@ -63,14 +54,7 @@ h2 {
   font-weight: bolder;
 }
 
-button {
-  cursor: pointer;
-  border: none;
-  border-radius: 3px;
-  font-family: 'PT Serif', sans-serif;
-  color: #ECF0F1;
-  background-color: #E74C3C;
-}
+
 
 .post {
   width: 80%;
@@ -236,6 +220,8 @@ button {
   font-family: 'Francois One';
 }
 
+
+
 .nav-selected {
   padding: 5px;
   color: white;
@@ -254,3 +240,65 @@ button {
 .feed {
   padding: 0px 10% 0px 10%;
 }
+.wrapper{
+  max-width: 1000px;
+  margin-top: 160px;
+  height: 280px;
+  border: 2px, solid #ddd;
+  display: flex;
+  overflow-x: auto;
+  margin-left: 0px;
+  border: solid gold 2px;
+}
+
+.wrapper::-webkit-scrollbar{
+  width: 0;
+}
+
+.wrapper .item{
+width: 160;
+height: 250px;
+line-height: 110px;
+margin-right: 30px;
+}
+
+#poster{
+  width: 150px;
+  height: 150px;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 3px;
+  font-family: 'PT Serif', sans-serif;
+  color: #ECF0F1;
+  background-color: #E74C3C;
+}
+
+#star{
+  width: 20px;
+  height: 20px;
+}
+h4{
+  color: #ffffff;
+}
+
+.trailer{
+  margin-top: 150px;
+  height: 500px;
+  border: 2px, solid #ddd;
+  overflow-y: auto;
+  width: 150px;
+  margin-left: 1000px;
+  border: solid gold 2px;
+}
+.trailer::-webkit-scrollbar{
+  width: 0;
+}
+.trailer .item1{
+  width: 400px;
+  height: 150px;
+  line-height: 110px;
+  margin-right: 2px;
+  }

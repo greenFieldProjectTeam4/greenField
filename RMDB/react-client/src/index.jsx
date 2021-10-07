@@ -4,6 +4,7 @@ import axios from 'axios'
 import SignUp from './components/SignUp.jsx'
 import HomePage from './components/HomePage.jsx';
 import WatchList from "./components/WatchList.jsx"
+import Details from './components/Details.jsx';
 class App extends React.Component {
   constructor() {
     super();
@@ -45,21 +46,23 @@ class App extends React.Component {
   }
 
 getData(){
-  axios.get("/api/videos")
-  .then((response)=>{
-    this.setState({
+  axios.get("http://localhost:3000/api/videos")
+  .then((response)=>{ 
+    this.setState({   
       trailers: response.data
     })
-  })
-  .catch(()=>{
-    console.Log("Failed to retrieve!")
   })
 }
 
 componentDidMount(){
   this.getData()
 }
-
+getOne(videoId){
+  axios.get(`http://localhost:3000/api/videos${videoId}`)
+  .then((response)=>{ 
+    console.log(response)
+  })
+}
   renderView() {
     const view = this.state.view;
 
@@ -73,8 +76,12 @@ componentDidMount(){
     else if(view==='watchList') {
       return <WatchList />
     }
+    else if(view==='details') {
+      return <Details />
+    }
     else if(view==='homepage'){
-      return <HomePage trailers={this.state.trailers} />
+      return <HomePage trailers={this.state.trailers} trailer={this.state.currentTrailer}
+      handleTrailerItems={this.handleTrailerItems} />
     }
 
   }
@@ -88,19 +95,16 @@ componentDidMount(){
 
 
   render() {
+  //  console.log(this.state.trailers)
     return (
       <div>
         <div className="nav">
 
-          <span className={this.state.view === 'homepage'
-            ? 'nav-selected'
-            : 'nav-unselected'}
+          <span className={this.state.view === 'homepage' ,'logo'}
             
           onClick={() => this.changeView('homepage')} >
               ЯMDb
           </span>
-
-
 
           <span className={this.state.view === 'rmdb'
             ? 'nav-selected'
@@ -108,6 +112,8 @@ componentDidMount(){
             onClick={() => this.changeView('towatch')}>
             WatchList
           </span>
+
+
           <span className="nav-unselected" onClick={() => this.changeView('signin')}>
             Sign In
           </span>

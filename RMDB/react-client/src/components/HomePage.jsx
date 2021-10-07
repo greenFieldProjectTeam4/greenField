@@ -11,7 +11,10 @@ export default function HomePage(props) {
         <div> <TrailerList trailers={props.trailers} handleTrailerItems={props.handleTrailerItems}/> </div>
       </div>
       
-      <div> <TrailerRandom /> </div>
+      <div> 
+        
+        <TrailerRandom trailers={props.trailers}/> 
+        </div>
 
     </div>
   );
