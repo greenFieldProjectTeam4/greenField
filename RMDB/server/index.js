@@ -21,9 +21,8 @@ app.use(express.static(__dirname + '/../react-client/dist'));
 // })
 
 app.post('/signup', (req, res) => {
-    var salt = crypt.createRandom32String()
-    var hased = crypt.createHash(req.body.password, salt)
-    var user = new User({ username: req.body.username, password: hased, salt: salt })
+    var hashed = crypt.Hash(req.body.password)
+    var user = new User({ username: req.body.username, password: hashed})
     user.save()
         .then(() => { res.status(201).send(true) })
         .catch((err) => { res.status(500).send(err) })
@@ -35,7 +34,8 @@ app.post('/signin', (req, res) => {
     console.log(req.body)
     User.find({ username: req.body.username })
         .then((data) => {
-            if (crypt.compareHash(req.body.password, data[0].password, data[0].salt)) {
+          console.log(data)
+            if (crypt.compareHash(req.body.password, data[0].password)) {
                 res.status(201).send(true)
             }
             else {

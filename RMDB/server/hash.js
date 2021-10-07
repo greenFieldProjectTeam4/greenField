@@ -1,16 +1,10 @@
-const crypto = require('crypto');
+const bcrypt = require('bcrypt')
 
-
-exports.createHash = (data, salt = '') => {
-    let shasum = crypto.createHash('sha256');
-    shasum.update(data + salt);
-    return shasum.digest('hex');
+exports.Hash = (fromClient, salt = 10) => {
+    
+    return bcrypt.hash(fromClient,salt)
 };
 
-exports.compareHash = (attempted, stored, salt) => {
-    return stored === this.createHash(attempted, salt);
+exports.compareHash = (fromClient,hashed) => {
+    return bcrypt.compare(fromClient,hashed)
 };
-
-exports.createRandom32String = () => {
-    return crypto.randomBytes(32).toString('hex');
-  };
