@@ -13,13 +13,28 @@ class App extends React.Component {
       username: '',
       password: '',
       currentTrailer: null,
-      trailers:[]
+      trailers:[],
+      video:{
+        countries: null,
+        description: "",
+        directors: null,
+        genres: null,
+        imdb_rating: "",
+        language: [],
+        release_date: "",
+        poster: "",
+        stars: [],
+        title: "",
+        year: "",
+        youtube_trailer_key: "",
+      }
     }
 
     this.changeView = this.changeView.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.submitUp = this.submitUp.bind(this);
     this.handleTrailerItems = this.handleTrailerItems.bind(this);
+    this.getOne= this.getOne.bind(this)
    
   }
 
@@ -31,6 +46,8 @@ class App extends React.Component {
     });
   }
 
+
+  
   submitUp() {
     axios.post('/Rmdb/signup', { username: this.state.username, password: this.state.password }).then(response => { console.log(response); }).catch(err => res.status(403).send('user not added'));
     this.changeView('homepage');
@@ -58,9 +75,11 @@ componentDidMount(){
   this.getData()
 }
 getOne(videoId){
-  axios.get(`http://localhost:3000/api/videos${videoId}`)
+  axios.get(`http://localhost:3000/api/videos/${videoId}`)
   .then((response)=>{ 
-    console.log(response)
+    this.setState({
+      video: response.data
+    })
   })
 }
   renderView() {
@@ -76,17 +95,18 @@ getOne(videoId){
     else if(view==='watchList') {
       return <WatchList />
     }
-    else if(view==='details') {
-      return <Details />
-    }
+    
     else if(view==='homepage'){
       return <HomePage trailers={this.state.trailers} trailer={this.state.currentTrailer}
-      handleTrailerItems={this.handleTrailerItems} />
+      handleTrailerItems={this.handleTrailerItems} handleClick={() => this.changeView('fff')}
+      getOne={this.getOne}/>
+    }
+    else  {
+      return <Details video={this.state.video}  />
     }
 
   }
   
-
   handleTrailerItems(trailer) {
     this.setState({
       currentTrailer: trailer,

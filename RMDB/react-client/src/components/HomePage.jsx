@@ -8,12 +8,11 @@ export default function HomePage(props) {
     <div>
       <div>
         <div> <TrailerPlayer trailer={props.currentTrailer} /> </div>
-        <div> <TrailerList trailers={props.trailers} handleTrailerItems={props.handleTrailerItems}/> </div>
+        <div> <TrailerList trailers={props.trailers}   /> </div>
       </div>
       
       <div> 
-        
-        <TrailerRandom trailers={props.trailers}/> 
+        <TrailerRandom trailers={props.trailers} handleClick={props.handleClick} getOne={props.getOne}/> 
         </div>
 
     </div>
