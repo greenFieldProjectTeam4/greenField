@@ -1,13 +1,12 @@
-import React from 'react';
+import React from 'react'
 
-const SignUp = (props) => (
-  <div className="signup">
+export default function SignUp() {
+  return (
+    <div>
+      <input value={props.username} name="username" type="text" placeholder="username" onChange={props.handleChange} />
+      <input value={props.password} name="password" type="password" placeholder="password" onChange={props.handleChange} />
+      <button onClick={props.submit} > Sign-Up </button>
 
-    <input name="username" type="text" placeholder="username" onChange={props.handleChange} />
-    <input name="password" type="password" placeholder="password" onChange={props.handleChange} />
-    <button onClick={props.submitUp} > Sign-in </button>
-
-  </div>
-);
-
-export default SignUp;
+    </div>
+  )
+}
