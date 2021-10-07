@@ -15,6 +15,7 @@ class App extends React.Component {
       user: false
     }
 
+
     this.changeView = this.changeView.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleTrailerItems = this.handleTrailerItems.bind(this);
@@ -22,8 +23,17 @@ class App extends React.Component {
     this.signUpsubmit = this.signUpsubmit.bind(this)
   }
 
+  //// from dhafer 
+  handleSearch(event) {
+    let datafiltred = this.state.data.filter((element)=>{
+      return element.title === event || event.slice(0, 2);
+    });
+    this.setState({
+      view: event,
+      data: datafiltred 
+    });
 
-
+  }
 
   changeView(option) {
     this.setState({
@@ -163,14 +173,14 @@ class App extends React.Component {
             ЯMDb
           </span>
 
-
-
           <span className={this.state.view === 'rmdb'
             ? 'nav-selected'
             : 'nav-unselected'}
             onClick={() => this.changeView('towatch')}>
             WatchList
           </span>
+
+
           <span className="nav-unselected" onClick={() => this.changeView('signin')}>
             Sign In
           </span>
