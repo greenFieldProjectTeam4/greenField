@@ -20,6 +20,24 @@ app.get('/api/videos', function(req, res) {
     res.status(403).send("failed")
   })
 });
+// app.post('/api/videos', function(req, res) {
+//   Video.create(req.body)
+//   .then((result)=>{
+//     res.status(201).send(result)
+//   })
+//   .catch(()=>{
+//     res.status(403).send("failed")
+//   })
+// });
+app.put('/api/videos/:videoId', function(req, res) {
+  Video.findByIdAndUpdate({_id:req.params.videoId},req.body)
+  .then((result)=>{
+    res.status(201).send(result)
+  })
+  .catch(()=>{
+    res.status(403).send("failed")
+  })
+});
 app.get('/api/videos/:videoId', function(req, res) {
   Video.findOne({_id:req.params.videoId})
   .then((result)=>{

@@ -24,7 +24,9 @@ class App extends React.Component {
         title: "",
         year: "",
         youtube_trailer_key: "",
+        comments: [""]
       },
+      comment:'',
       trailer:{
         countries: null,
         description: "",
@@ -46,6 +48,8 @@ class App extends React.Component {
     this.getOne= this.getOne.bind(this)
     this.getTrailer= this.getTrailer.bind(this)
     this.getPop=this.getPop.bind(this)
+    // this.postComment= this.postComment.bind(this)
+    this.putComments= this.putComments.bind(this)
    
   }
 
@@ -102,6 +106,26 @@ getTrailer(videoId){
   })
 }
 
+// postComment(){
+//   axios.post("http://localhost:3000/api/videos",{comments:this.state.video.comments})
+//   .then((response)=>{
+//       console.log(response)
+//   })
+//   .then (()=>{
+//     alert("posted!")
+//   })
+//   .catch ((err)=>{
+//     console.log(err)
+//   })
+// }
+
+putComments(videoId,newComment){
+  axios.put(`http://localhost:3000/api/videos/${videoId}`,{comment:newComment})
+  .then((response)=>{
+    console.log(response)
+  })
+}
+
   renderView() {
     const view = this.state.view;
 
@@ -117,7 +141,7 @@ getTrailer(videoId){
       getOne={this.getOne} getPop={this.getPop}  getTrailer={this.getTrailer} populars={this.state.populars}/>
     }
     else  {
-      return <Details video={this.state.video}  />
+      return <Details video={this.state.video} handleChange={this.handleChange} putComments={this.putComments}  />
     }
 
   }
