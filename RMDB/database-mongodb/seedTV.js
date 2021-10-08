@@ -4,20 +4,81 @@ const Video = require('./video.js');
 
 const worst = [
   {
-    title: 'Intruder',
+    title: 'Aladdin',
+    year: '2019',
+    release_date: '2023-07-14',
+    imdb_id: 'tt11779248',
+    imdb_rating: '0',
+    poster: 'https://m.media-amazon.com/images/M/MV5BY2Q2NDI1MjUtM2Q5ZS00MTFlLWJiYWEtNTZmNjQ3OGJkZDgxXkEyXkFqcGdeQXVyNTI4MjkwNjA@._V1_SX300.jpg',
+    vote_count: '0',
+    popularity: '3.429',
+    youtube_trailer_key: 'aKXex7b1Ew',
+    rated: 'PG-13',
+    genres: [ 
+      'Fantasy',
+      'Family',
+      'Adventure',
+      
+    ],
+    stars: [
+      'Dennis Quaid',
+      'Meagan Good',
+      'Michael Ealy'
+    ],
+    directors: [
+      'Guy Ritchie'
+    ],
+    countries: ['United States of America'
+    ],
+    language: [
+      'English',
+    ]
+  },
+  {
+    title: 'Bad Blood',
+    year: '2017',
+    release_date: '07 Dec 2018',
+    poster: 'https://m.media-amazon.com/images/M/MV5BMzRmNzZkMmMtMzU5YS00ZThhLWE2YzItZTNhNGMwMmI1MjQyXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg',
+    imdb_id: 'tt5795144',
+    imdb_rating: '6.8',
+    vote_count: '90',
+    popularity: '7.913',
+    youtube_trailer_key: '',
+    genres: [
+      'Drama',
+      'Crime'
+    ],
+    stars: [
+      'Jennifer Lawrence',
+      'Mike Gassaway'  
+    ],
+    directors: [
+      'Adam McKay'
+    ],
+    countries: [
+      'Germany',
+      'Italy',
+    ],
+    language: [
+      'English'
+    ]
+  },
+  {
+    title: 'The Intruder',
     year: '2019',
     release_date: '2019-05-03',
     imdb_id: 'tt6722030',
-    imdb_rating: '6.20',
+    imdb_rating: '6.2',
+    poster: 'https://m.media-amazon.com/images/M/MV5BNTczMzc4NDY0MF5BMl5BanBnXkFtZTgwMjI3Njg3NjM@._V1_SX300.jpg',
     vote_count: '297',
     popularity: '19.372',
-    youtube_trailer_key: 'aKXex7b1Ew',
+    youtube_trailer_key: 'aKXvex7b1Ew',
     rated: 'PG-13',
     genres: [ 
       'Thriller',
       'Drama',
       'Horror',
-      
+      'Mystery',
     ],
     stars: [
       'Dennis Quaid',
@@ -48,11 +109,12 @@ const worst = [
     ]
   },
   {
-    title: ' Quiet ',
+    title: 'A Quiet Life',
     year: '2010',
     release_date: '2010-11-05',
     imdb_id: 'tt1521090',
-    imdb_rating: '6.8',
+    imdb_rating: '6.5',
+    poster: 'https://upload.wikimedia.org/wikipedia/en/e/e2/A_Quiet_Life.jpg',
     vote_count: '90',
     popularity: '7.913',
     youtube_trailer_key: '',
@@ -94,47 +156,54 @@ const worst = [
     'countries': [
       'Germany',
       'Italy',
+      'France',
+      'Italy, France, Germany'
     ],
     'language': [
       'Deutsch',
       'English',
-      ' German, Neapolitan, English'
+      'Italiano',
+      'Italian, German, Neapolitan, English'
     ]
   },
   {
-    title: 'In Your Arms',
-    year: '2009',
-    release_date: '2009-07-01',
-    imdb_id: 'tt1320372',
-    imdb_rating: '5.8',
-    vote_count: '43',
-    popularity: '0.6',
+    title: 'Jurassic World: Dominion',
+    year: '2022',
+    release_date: '2022-06-09',
+    imdb_id: 'tt8041270',
+    imdb_rating: '7.29167',
+    vote_count: '48',
+    poster: 'https://m.media-amazon.com/images/M/MV5BMDhkODhmZjEtMmE5My00MTE1LTllZGItMDkwOTZlMjY1ZWUyXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_SX300.jpg',
+    popularity: '32.399',
     youtube_trailer_key: '',
+    rated: 'Action, Adventure, Sci-Fi ',
+    runtime: 90,
     genres: [
-      'Drama'
+      'Adventure',
+      'Action',
+      'Sci-Fi',
+      'Thriller'
     ],
     stars: [
-      'Michèle Laroque',
-      'Martin Loizillon',
-      'Lola Naymark',
-      'Catherine Mouchet',
-      'Marc Bertolini',
-      'Marie-Bénédicte Roy',
-      'Mélanie Leray',
-      'Mariana Ramos',
-      'Antonio Ramos',
-      'Salvador Douezy',
-      'Bonnafet Tarbouriech',
-      'Julien De Almeida'
+      'Chris Pratt',
+      'Bryce Dallas Howard',
+      'Laura Dern',
+      'Jeff Goldblum',
+      'Mamoudou Athie',
+      'Scott Haze',
+      'Dichen Lachman',
+      'Sam Neill',
+      'Daniella Pineda',
+      'Campbell Scott'
     ],
-    'directors': [
-      'Hubert Gillet'
+    directors: [
+      'Colin Trevorrow'
     ],
-    'countries': ['France'
+    countries: [
+      'United States of America'
     ],
-    language: [
-      'Français',
-      'French'
+    'language': [
+      'English'
     ]
   },
   {
@@ -143,6 +212,7 @@ const worst = [
     release_date: '2020-11-27',
     imdb_id: 'tt13319946',
     imdb_rating: '7.5',
+    poster: 'https://m.media-amazon.com/images/M/MV5BYzk3NjZmZWMtN2YyYS00ZThhLTk4YjEtYmFkNDk3ZTA1NDA4XkEyXkFqcGdeQXVyODMyNDE3MTI@._V1_SX300.jpg',
     vote_count: '2',
     popularity: '2.168',
     youtube_trailer_key: 'dyJJv-n4xoE',
@@ -166,12 +236,50 @@ const worst = [
       'English',
       'en'
     ]
-  }, {
+  },
+  {
+    title: 'The Bad Guys',
+    year: '2022',
+    release_date: '2022-04-08',
+    imdb_id: 'tt8115900',
+    imdb_rating: '0',
+    vote_count: '0',
+    poster: 'https://m.media-amazon.com/images/M/MV5BMTExNTEzMzM3OTNeQTJeQWpwZ15BbWU4MDY2OTI1OTYx._V1_SX300.jpg',
+    popularity: '4.193',
+    youtube_trailer_key: '',
+    rated: 'Animation, Action, Comedy ',
+    runtime: 90,
+    genres: [
+      'Animation',
+      'Action',
+      'Comedy'
+    ],
+    stars: [
+      'Sam Rockwell',
+      'Craig Robinson',
+      'Awkwafina',
+      'Marc Maron'
+    ],
+    directors: [
+      'Pierre Pierfel',
+      'Roger Allers',
+      'Pierre Perifel',
+      '2 more credits'
+    ],
+    countries: [
+      'United States of America'
+    ],
+    language: [
+      'English'
+    ]
+  }, 
+  {
     title: 'People You May Know',
     year: '2016',
     release_date: '2016-07-07',
     imdb_id: 'tt4696310',
     imdb_rating: '5.7',
+    poster: 'https://m.media-amazon.com/images/M/MV5BMjZkZTU0ODktYjhjNi00YWNlLTljYjgtOTBjNzZjZGMxMDVlXkEyXkFqcGdeQXVyMjQ3NzUxOTM@._V1_SX300.jpg',
     vote_count: '19',
     popularity: '3.72',
     youtube_trailer_key: 'wOVZb_jJ0_g',
@@ -223,6 +331,7 @@ const worst = [
     release_date: '2017-04-22',
     imdb_id: 'tt5925370',
     imdb_rating: '2',
+    poster: 'https://m.media-amazon.com/images/M/MV5BMTc1NDg4YWMtZDdlMS00NTdlLTljZDQtNGRkZTIxZTZlNTI4XkEyXkFqcGdeQXVyMTU5MjIyMTI@._V1_SX300.jpg',
     vote_count: '1',
     youtube_trailer_key: 'St3J3GHEDNA',
     genres: [
@@ -259,94 +368,13 @@ const worst = [
       'English',
       'en'
     ]
-  },
-  {
-    title: 'Submission',
-    year: '2019',
-    release_date: '2019-09-19',
-    imdb_id: 'tt4824256',
-    imdb_rating: '7.1',
-    youtube_trailer_key: 'CN0UhOIctBU',
-    genres: [
-      'Drama',
-      'Sport',
-    ],
-    stars: [
-      'Scott Pryor',
-      'Darrin Henson',
-      'Eric Roberts',
-      'Lorynn York',
-      'Kevin Sizemore',
-      'Sara McMann',
-      'Lunden De\'Leon',
-      'Ovince Saint Preux',
-      'John Gray',
-      'Adam Minarovich',
-      'Lauren York',
-      'Darrin Dewitt Henson',
-      'Dixie Light',
-      'Lawrence Gilligan',
-      'Micah Pryor',
-      'Danny Williams-Lopez',
-      'J Randall'
-    ],
-    directors: [
-      'J.M. Berrios'
-    ],
-    countries: [
-      'United States of America',
-      'USA'
-    ],
-    language: [
-      'English',
-      'en'
-    ],
-  },
-  {
-    title: 'Soldier of Fortune',
-    year: '1955',
-    release_date: '1955-01-01',
-    imdb_id: 'tt0048640',
-    imdb_rating: '5.6',
-    youtube_trailer_key: 'Ye_XCOoAdxU',
-    'genres': [
-      'Adventure',
-      'Drama',
-      'Action',
-      'Romance',
-      'Crime',
-      'Thriller'
-    ],
-    stars: [
-      'Clark Gable',
-      'Susan Hayward',
-      'Michael Rennie',
-      'Gene Barry',
-      'Tom Tully',
-      'Alexander D\'Arcy',
-      'Anna Sten',
-      'Leo Gordon',
-      'Jack Kruschen',
-      'James Hong',
-    ],
-    directors: [
-      'Edward Dmytryk'
-    ],
-    countries: [
-      'United States of America',
-      'USA'
-    ],
-    language: [
-      'English',
-      'en'
-    ]
-  },
-  {
+  },{
     title: 'Red Sun',
     year: '1971',
     release_date: '1971-09-15',
     imdb_id: 'tt0067770',
     imdb_rating: '6.8',
+    poster: 'https://m.media-amazon.com/images/M/MV5BNTMwNDgyNDItOTYzZi00MjhmLTgyYzItYjNiY2Y5NGY2YWY4XkEyXkFqcGdeQXVyMjQwMjk0NjI@._V1_SX300.jpg',
     youtube_trailer_key: 'r1iC4ids4v8',
     'genres': [
       'Western',
@@ -386,42 +414,6 @@ const worst = [
       'English, Spanish, Japanese',
     ]
   },
-  {
-    title: 'A Mother\'s Crime',
-    year: '2017',
-    release_date: '2017-08-21',
-    imdb_id: 'tt7444708',
-    imdb_rating: '6.8',
-    youtube_trailer_key: '2TxoDMfZudM',
-    genres: [
-      'Thriller',
-      'TV Movie'
-    ],
-    stars: [
-      'Jenny Gabrielle',
-      'April Bowlby',
-      'Amber Lynn Ashley',
-      'Ryan Jason Cook',
-      'J.D. Garfield',
-      'Allyson Harbert',
-      'Matt Page',
-      'Brytnee Ratledge',
-      'Matthew Van Wettering',
-      'Arina Gancicova'
-    ],
-    directors: [
-      'Farhad Mann',
-      'Lora Martinez-Cunningham',
-      'Amber LeRae Earls',
-    ],
-    countries: [
-      'United States of America',
-      'USA'
-    ],
-    language: [
-      'English'
-    ]
-  }
 ];
 
 const insertWorst = function() {

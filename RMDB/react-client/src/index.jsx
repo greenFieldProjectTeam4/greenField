@@ -60,7 +60,7 @@ class App extends React.Component {
   }
 
   handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value});
+    this.setState({ [e.target.name]: e.target.value });
   }
 
 getData(){
@@ -126,12 +126,12 @@ putComments(videoId,newComment){
 
   renderView() {
     const view = this.state.view;
-
-    if (view === 'singin') {
-      return <SingIn handleClick={() => this.changeView('login')} />
+    const user = this.state.user;
+    if (view === 'signin') {
+      return <SignIn signin={this.signinHandle} handleClick={() => this.changeView('login')} />
     }
     else if (view === 'signup') {
-      return <SignUp submitUp={this.submitUp} handleChange={this.handleChange} />
+      return <SignUp username={this.state.username} password={this.state.password} submit={this.signUpsubmit} handleChange={this.handleChange} />
     }
     else if(view==='homepage'){
       return <HomePage trailers={this.state.trailers} trailer={this.state.trailer}
