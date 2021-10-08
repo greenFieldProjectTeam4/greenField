@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import HomePage from './components/HomePage.jsx';
 import SignUp from './components/SignUp.jsx';
 import SignIn from './components/SignIn.jsx';
 class App extends React.Component {
@@ -12,25 +11,28 @@ class App extends React.Component {
       username: '',
       password: '',
       currentTrailer: null,
-      user: false
+      user: false,
+      data: []
     }
 
 
     this.changeView = this.changeView.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleTrailerItems = this.handleTrailerItems.bind(this);
-    this.signinHandle = this.signinHandle.bind(this);
-    this.signUpsubmit = this.signUpsubmit.bind(this)
+
+    this.signUpsubmit = this.signUpsubmit.bind(this);
+    this.signInsubmit = this.signInsubmit.bind(this);
+
   }
+
 
   //// from dhafer 
   handleSearch(event) {
-    let datafiltred = this.state.data.filter((element)=>{
+    let datafiltred = this.state.data.filter((element) => {
       return element.title === event || event.slice(0, 2);
     });
     this.setState({
       view: event,
-      data: datafiltred 
+      data: datafiltred
     });
 
   }
@@ -40,15 +42,44 @@ class App extends React.Component {
       view: option
     });
   }
+  signUpsubmit() {
+    if (this.state.password !== '' && this.state.username !== '') {
+      axios.post('/signup', { username: this.state.username, password: this.state.password })
+        .then(() => {
+          this.setState({
+            username: '',
+            password: '',
+            user: true
+          })
+        })
 
-  signupHandle() {
-    axios.post('/signup', { username: this.state.username, password: this.state.password }).then(response => { console.log(response); }).catch(err => res.status(403).send('user not added'));
-    this.changeView('homepage');
-    this.setState({
-      user: true
+        .catch(() => { alert('username already existed') })
 
-    })
+    }
+    else { alert('fill all the fields ') }
   }
+
+
+
+
+
+
+  signInsubmit() {
+    if (this.state.password !== '' && this.state.username !== '') {
+      axios.post('/signin', { username: this.state.username, password: this.state.password })
+        .then((data) => {console.log('here',data)
+          if (data.data===true) {
+            this.setState({
+              user: true,
+              username: '',
+              password: ''
+            })
+          }
+        })
+        .catch((err) => { alert('Verify username or Password') })
+    }
+  }
+
 
 
 
@@ -56,58 +87,16 @@ class App extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-
-  signinHandle() {
-    axios.post('/signin', user)
-      .then((data) => {
-        if (data.data === true) {
-          this.setState({
-            user: true,
-          })
-        }
-      })
-      .catch((err) => { alert('Verify username or Password') })
-
-  }
-
-  signUpsubmit() {
-    console.log(this.state.username)
-    if (this.state.password !== '' && this.state.username !== '') {
-      this.signupHandle(this.state)
-
-      this.setState({
-        username: '',
-        password: ''
-      })
-    }
-    else {alert('Enter both username and password')}}
-
   renderView() {
     const view = this.state.view;
     const user = this.state.user;
     if (view === 'signin') {
-      return <SignIn signin={this.signinHandle} handleClick={() => this.changeView('login')} />
+      return <SignIn username={this.state.username} password={this.state.password} submit={this.signInsubmit} handleChange={this.handleChange} handleClick={() => this.changeView('login')} />
     }
     else if (view === 'signup') {
       return <SignUp username={this.state.username} password={this.state.password} submit={this.signUpsubmit} handleChange={this.handleChange} />
     }
-
-    else if (view === 'watchList') {
-      return <WatchList />
-    }
-    else if (view === 'homepage' && user === true) {
-      return <HomePage />
-    }
-
   }
-
-
-  handleTrailerItems(trailer) {
-    this.setState({
-      currentTrailer: trailer,
-    });
-  }
-
 
   render() {
 
@@ -155,12 +144,6 @@ class App extends React.Component {
         </div>
       )
     }
-
-
-
-
-
-
     return (
       <div>
         <div className="nav">
@@ -171,13 +154,6 @@ class App extends React.Component {
 
             onClick={() => this.changeView('rmdb')} >
             ЯMDb
-          </span>
-
-          <span className={this.state.view === 'rmdb'
-            ? 'nav-selected'
-            : 'nav-unselected'}
-            onClick={() => this.changeView('towatch')}>
-            WatchList
           </span>
 
 

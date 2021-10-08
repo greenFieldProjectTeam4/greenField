@@ -1,7 +1,6 @@
 const bcrypt = require('bcrypt')
 
-exports.Hash = (fromClient, salt = 10) => {
-    
+exports.Hash = (fromClient, salt = 10) => {  
     return bcrypt.hash(fromClient,salt)
 };
 
