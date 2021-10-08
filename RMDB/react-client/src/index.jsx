@@ -46,7 +46,13 @@ class App extends React.Component {
         title: "",
         year: "",
         youtube_trailer_key: "",
-      }
+      },
+      userLogged:[{
+        _id:'',
+        password:'',
+        toWatchList:[],
+        username:''
+      }]
     }
 
     this.changeView = this.changeView.bind(this);
@@ -58,7 +64,8 @@ class App extends React.Component {
     this.getTrailer= this.getTrailer.bind(this)
     this.getPop=this.getPop.bind(this)
     // this.postComment= this.postComment.bind(this)
-    this.putComments= this.putComments.bind(this)
+    this.putComments= this.putComments.bind(this);
+    this.addToWatch= this.addToWatch.bind(this)
   }
 
 
@@ -98,6 +105,30 @@ class App extends React.Component {
     else { alert('fill all the fields ') }
   }
 
+  
+  signInsubmit() {
+    if (this.state.password !== '' && this.state.username !== '') {
+      axios.post('/signin', { username: this.state.username, password: this.state.password })
+        .then((data) => {console.log(data.data)
+          if (data) {
+            this.setState({
+              user: true,
+              username: '',
+              password: '',
+              view:'homepage',
+              userLogged:data.data
+            })
+          } 
+          else {alert('sallah')}
+        }
+        )
+        .catch(() => { alert('Verify username or Password') })
+    }
+    else {
+      alert ('fill the fields')
+    }
+  }
+  
 getData(){
   axios.get("http://localhost:3000/api/videos")
   .then((response)=>{ 
@@ -108,26 +139,6 @@ getData(){
 }
 
 
-  signInsubmit() {
-    if (this.state.password !== '' && this.state.username !== '') {
-      axios.post('/signin', { username: this.state.username, password: this.state.password })
-        .then((data) => {console.log('here',data)
-          if (data.data===true) {
-            this.setState({
-              user: true,
-              username: '',
-              password: '',
-              view:'homepage'
-            })
-          }
-          else {alert('sallah')}
-        })
-        .catch((err) => { alert('Verify username or Password') })
-    }
-    else {
-      alert ('fill the fields')
-    }
-  }
 
 
 
@@ -141,20 +152,20 @@ getPop(){
     this.setState({   
       populars: response.data
     })
-    console.log("ghof" , this.state.populars)
   })
 }
 componentDidMount(){
   this.getData()
   this.getPop()
+  this.getTrailer('616064950d5d1421601abdb9')
 }
+
 getOne(videoId){
   axios.get(`http://localhost:3000/api/videos/${videoId}`)
   .then((response)=>{ 
     this.setState({
       video: response.data
     })
-    // console.log(this.state.video.directors)
   })
 }
 
@@ -187,6 +198,12 @@ putComments(videoId,newComment){
   })
 }
 
+addToWatch(userId,newList){
+  
+ axios.put(`/user/${userId}`,{toWatchList: this.state.userLogged[0].toWatchList.concat(newList)})
+
+}
+
   renderView() {
     const view = this.state.view;
     const user = this.state.user;
@@ -197,7 +214,7 @@ putComments(videoId,newComment){
       return <SignUp username={this.state.username} password={this.state.password} submit={this.signUpsubmit} handleChange={this.handleChange} />
     }
     else if(view==='homepage'){
-      return <HomePage trailers={this.state.trailers} trailer={this.state.trailer}
+      return <HomePage  user={this.state.userLogged[0]} update={this.addToWatch}  trailers={this.state.trailers} trailer={this.state.trailer}
       handleTrailerItems={this.handleTrailerItems} handleClick={() => this.changeView('fff')}
       getOne={this.getOne} getPop={this.getPop}  getTrailer={this.getTrailer} populars={this.state.populars}/>
     }
@@ -227,12 +244,10 @@ putComments(videoId,newComment){
             WatchList
           </span>
 
-          <span className="nav-unselected" onClick={() => this.changeView('signin')}>
-            Sign In
+          <span className="nav-unselected" onClick={() =>{this.setState({user:false}),this.changeView('homepage')} }>
+            LogOut
           </span>
-          <span className="nav-unselected" onClick={() => this.changeView('signup')}>
-            Sign Up
-          </span>
+         
         </div>
 
         <div className="main">

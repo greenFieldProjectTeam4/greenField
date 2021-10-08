@@ -91,19 +91,31 @@ app.get('/api/pop/:videoId', function(req, res) {
 });
 
 
+app.put('/user/:userId',(req,res)=>{console.log('here',req.body);
+ User.findOneAndUpdate({_id:req.params.userId},req.body)
+ .then((result)=>{
+    res.status(201).send(result)
+  })
+  .catch(()=>{
+    res.status(403).send("failed")
+  })
+})
 
 
 app.post('/signin', (req, res) => {
     User.find({ username: req.body.username })
-        .then((err) => {console.log(err)
+        .then((err) => {
 
             if(err.length){
                 crypt.compareHash(req.body.password, err[0].password)
-              
-                .then((response)=>{res.status(201).send(response) })
+                .then((response)=>{
+                    if(response===true){
+                        res.status(201).send(err)
+                    }
+                })
             } 
             else {
-                res.status(403).send(err)
+                res.status(403).send('wrong')
             }          
         })
         .catch((err)=>res.status(403).send(err))
