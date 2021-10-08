@@ -4,8 +4,7 @@ body {
   font-family: 'PT Serif', sans-serif;
   margin: 0px;
   color: #2C3E50;
-  /* background-color: #000000; */
-  background-image: url("https://www.ppt-backgrounds.net/thumbs/black-wood-cinema-hd-graphic-ppt.jpeg");
+  background-color: #000000;
   background-position: center;
   font-size: 1.1em;
 }
@@ -241,14 +240,14 @@ h2 {
   padding: 0px 10% 0px 10%;
 }
 .wrapper{
-  max-width: 1000px;
-  margin-top: 160px;
-  height: 280px;
+  max-width: 1400px;
+  margin-top: 100px;
+  height: 430px;
   border: 2px, solid #ddd;
   display: flex;
   overflow-x: auto;
-  margin-left: 0px;
-  border: solid gold 2px;
+  margin-left: -50px;
+  border: solid rgb(105, 104, 102) 2px;
 }
 
 .wrapper::-webkit-scrollbar{
@@ -285,28 +284,32 @@ h4{
 }
 
 .trailer{
-  margin-top: -450px;
-  height: 500px;
+  margin-top: -600px;
+  height: 600px;
   border: 2px, solid #ddd;
   overflow-y: auto;
-  width: 150px;
+  width: 250px;
   margin-left: 1000px;
-  border: solid gold 2px;
+  border: solid rgb(105, 104, 102) 2px;
 }
 .trailer::-webkit-scrollbar{
   width: 0;
 }
 .trailer .item1{
-  width: 400px;
-  height: 150px;
+  width: 100px;
+  height: 250px;
   line-height: 110px;
   margin-right: 2px;
-  margin-top: 4px;
+  margin-top: 25px;
+  }
+  #poster{
+    width: 250px;
+    height: 300px;
   }
 
   .details{
-    width: 700px;
-    height: 400px;
+    width: 800px;
+    height: 500px;
     margin-left: 100px;
     margin-top: 100px;
   }
@@ -321,4 +324,18 @@ h4{
   }
  .player{
    margin-left: -100px;
+   margin-top: -40px;
  }
+
+ .video-player-details {
+  background: rgb(10, 10, 10);
+  padding: 8px;
+  border: 0;
+  box-shadow: 0 1px 2px rgba(0,0,0,.1);
+  margin-top: 10px;
+  margin-left: 90px;
+  height: 30px;
+  width: 400px;
+  color: #fdfdfd;
+}
+ 

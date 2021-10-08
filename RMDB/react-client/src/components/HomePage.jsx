@@ -4,12 +4,12 @@ import TrailerPlayer from './TrailerPlayer.jsx';
 import TrailerRandom from './TrailerRandom.jsx';
 
 export default function HomePage(props) {
-  console.log("home"+props.trailer)
+  // console.log("home"+props.trailer)
   return (
     <div>
       <div>
         <div> <TrailerPlayer   trailer={props.trailer}/> </div>
-        <div> <TrailerList trailers={props.trailers}  getTrailer={props.getTrailer}  
+        <div> <TrailerList populars={props.populars}  getTrailer={props.getTrailer}  
        /> </div>
       </div>
       

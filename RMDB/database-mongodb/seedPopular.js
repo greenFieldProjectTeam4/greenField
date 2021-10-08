@@ -1,272 +1,217 @@
-/* eslint-disable camelcase */
 const db = require('./index.js');
-const Video = require('./video.js');
-
+const Popular = require('./popular.js');
 const best = [
   {
-    title: 'Intruder',
+    title: 'Aladdin',
     year: '2019',
-    release_date: '2019-05-03',
-    imdb_id: 'tt6722030',
-    imdb_rating: '6.20',
-    vote_count: '297',
-    popularity: '19.372',
-    youtube_trailer_key: 'aKXex7b1Ew',
+    release_date: '2023-07-14',
+    imdb_id: 'tt11779248',
+    imdb_rating: '5.6',
+    poster: 'https://m.media-amazon.com/images/M/MV5BY2Q2NDI1MjUtM2Q5ZS00MTFlLWJiYWEtNTZmNjQ3OGJkZDgxXkEyXkFqcGdeQXVyNTI4MjkwNjA@._V1_SX300.jpg',
+    vote_count: '0',
+    popularity: '3.429',
+    youtube_trailer_key: 'foyufD52aog',
     rated: 'PG-13',
-    genres: [ 
-      'Thriller',
-      'Drama',
-      'Horror',
-      
+    genres: [
+      'Fantasy',
+      'Family',
+      'Adventure',
     ],
     stars: [
       'Dennis Quaid',
       'Meagan Good',
-      'Michael Ealy',
-      'Joseph Sikora',
-      'Alvina August',
-      'Lili Sepe',
-      'Kurt Evans',
-      'Debs Howard',
-      'Lee Shorten',
-      'Carolyn Anderson',
-      'Erica Cerra',
-      'Raylene Harewood',
-      'Caroline Muthoni Muita',
-      'Connor Mackay',
-      'John Torrance',
-      'Mary Elise Torrance',
+      'Michael Ealy'
     ],
     directors: [
-      'Deon Taylor'
+      'Guy Ritchie'
     ],
     countries: ['United States of America'
     ],
     language: [
       'English',
-      'en',
     ]
   },
   {
-    title: ' Quiet ',
-    year: '2010',
-    release_date: '2010-11-05',
-    imdb_id: 'tt1521090',
+    title: 'Bad Blood',
+    year: '2017',
+    release_date: '07 Dec 2018',
+    poster: 'https://m.media-amazon.com/images/M/MV5BMzRmNzZkMmMtMzU5YS00ZThhLWE2YzItZTNhNGMwMmI1MjQyXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg',
+    imdb_id: 'tt5795144',
     imdb_rating: '6.8',
     vote_count: '90',
     popularity: '7.913',
-    youtube_trailer_key: '',
+    youtube_trailer_key: '8JbZKsfgXq0',
     genres: [
       'Drama',
       'Crime'
     ],
     stars: [
-      'Toni Servillo',
-      'Marco D\'Amore',
-      'Francesco Di Leva',
-      'Juliane Köhler',
-      'Leonardo Sprengler',
-      'Alice Dwyer',
-      'Maurizio Donadoni',
-      'Micki Bertling',
-      'Ulrich Cyran',
-      'Nick Dong-Sik',
-      'Joachim Kretzer',
-      'Giovanni Ludeno',
-      'Edoardo Melone',
-      'Franco Melone',
-      'Daniel Roesner',
-      'Enzo Salomone',
-      'Lucia Schlör',
-      'Hildburg Schmidt',
-      'Andreas Wellano',
-      'Hans-Joachim Heist',
-      'Irmtraud Hetz',
-      'Peter Sablic',
-      'Yalcin Bögürkü',
-      'Tina Klein',
-      'Frank M. Ahearn',
-      'Eilean Roland',
+      'Jennifer Lawrence',
+      'Mike Gassaway'  
     ],
-    'directors': [
-      'Claudio Cupellini'
+    directors: [
+      'Adam McKay'
     ],
-    'countries': [
+    countries: [
       'Germany',
       'Italy',
-    ],
-    'language': [
-      'Deutsch',
-      'English',
-      ' German, Neapolitan, English'
-    ]
-  },
-  {
-    title: 'In Your Arms',
-    year: '2009',
-    release_date: '2009-07-01',
-    imdb_id: 'tt1320372',
-    imdb_rating: '5.8',
-    vote_count: '43',
-    popularity: '0.6',
-    youtube_trailer_key: '',
-    genres: [
-      'Drama'
-    ],
-    stars: [
-      'Michèle Laroque',
-      'Martin Loizillon',
-      'Lola Naymark',
-      'Catherine Mouchet',
-      'Marc Bertolini',
-      'Marie-Bénédicte Roy',
-      'Mélanie Leray',
-      'Mariana Ramos',
-      'Antonio Ramos',
-      'Salvador Douezy',
-      'Bonnafet Tarbouriech',
-      'Julien De Almeida'
-    ],
-    'directors': [
-      'Hubert Gillet'
-    ],
-    'countries': ['France'
-    ],
-    language: [
-      'Français',
-      'French'
-    ]
-  },
-  {
-    title: 'The Three Wise Men',
-    year: '2020',
-    release_date: '2020-11-27',
-    imdb_id: 'tt13319946',
-    imdb_rating: '7.5',
-    vote_count: '2',
-    popularity: '2.168',
-    youtube_trailer_key: 'dyJJv-n4xoE',
-    genres: [
-      'Family',
-      'History',
-      'Action',
-      'Short',
-    ],
-    stars: [
-      'Andy Griffith'
-    ],
-    directors: [
-      'Yarrow Cheney',
-      'Carrie Cheney'
-    ],
-    countries: [
-      'United States of America'
-    ],
-    language: [
-      'English',
-      'en'
-    ]
-  }, {
-    title: 'People You May Know',
-    year: '2016',
-    release_date: '2016-07-07',
-    imdb_id: 'tt4696310',
-    imdb_rating: '5.7',
-    vote_count: '19',
-    popularity: '3.72',
-    youtube_trailer_key: 'wOVZb_jJ0_g',
-    genres: [
-      'Comedy',
-      'Drama',
-    ],
-    stars: [
-      'Sean Maher',
-      'Andrea Grano',
-      'Mark Cirillo',
-      'Lauren C. Mayhew',
-      'Nacho San José',
-      'Curt Hansen',
-      'Trey McCurley',
-      'Jimmy Shaw',
-      'Nelly Castillo',
-      'Deborah Domínguez',
-      'Tara Karsian',
-      'Frederick Keeve',
-      'David Krohnert',
-      'Connor Linnerooth',
-      'Louis Macarthur',
-      'Sergio Macian',
-      'Carmen Maura',
-      'Rafael I. Molina',
-      'Raymond Rivera III',
-      'Amor Sanchez',
-      'Karl Schott',
-      'Isabel Serrano',
-      'Nikos Siozos',
-      'David Vega',
-      'Cynthia Webster',
-      'Jessica B. Wellington',
-    ],
-    directors: [
-      'J.C. Falcón'
-    ],
-    countries: [
-      'USA, Spain'
     ],
     language: [
       'English'
     ]
   },
   {
-    title: 'Blood Moon River',
-    year: '2017',
-    release_date: '2017-04-22',
-    imdb_id: 'tt5925370',
-    imdb_rating: '2',
-    vote_count: '1',
-    youtube_trailer_key: 'St3J3GHEDNA',
+    title: 'Jurassic World: Dominion',
+    year: '2022',
+    release_date: '2022-06-09',
+    imdb_id: 'tt8041270',
+    imdb_rating: '7.29167',
+    vote_count: '48',
+    poster: 'https://m.media-amazon.com/images/M/MV5BMDhkODhmZjEtMmE5My00MTE1LTllZGItMDkwOTZlMjY1ZWUyXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_SX300.jpg',
+    popularity: '32.399',
+    youtube_trailer_key: 'LLFSNWU8yx8',
+    rated: 'Action, Adventure, Sci-Fi ',
+    runtime: 90,
     genres: [
-      'Horror'
+      'Adventure',
+      'Action',
+      'Sci-Fi',
+      'Thriller'
     ],
     stars: [
-      'Daniel Murphy',
-      'Tom Komisar',
-      'Jack Norman',
-      'R.J. Cecott',
-      'Rebekah Erb',
-      'Sydney Dean',
-      'Tony Walters',
-      'Cameron Scott',
-      'Lindsey McIntire',
-      'Edward Diersen',
-      'Stan Traylor',
-      'James Michael',
-      'Naphatia St Pierre',
-      'Sara Ingram',
-      'Eric Reaume',
-      'Cara McConnell',
-      'Linda Schrader',
+      'Chris Pratt',
+      'Bryce Dallas Howard',
+      'Laura Dern',
+      'Jeff Goldblum',
+      'Mamoudou Athie',
+      'Scott Haze',
+      'Dichen Lachman',
+      'Sam Neill',
+      'Daniella Pineda',
+      'Campbell Scott'
     ],
     directors: [
-      'R.J. Cecott',
-      'Tom Komisar',
-      'Daniel Murphy',
+      'Colin Trevorrow'
+    ],
+    countries: [
+      'United States of America'
+    ],
+    'language': [
+      'English'
+    ]
+  },
+  {
+    title: 'The Bad Guys',
+    year: '2022',
+    release_date: '2022-04-08',
+    imdb_id: 'tt8115900',
+    imdb_rating: '0',
+    vote_count: '0',
+    poster: 'https://m.media-amazon.com/images/M/MV5BOTlhNmVjOWMtNzNjNC00OTY0LWEyODUtY2Q4NDhiNTgzZDE2XkEyXkFqcGdeQXVyODk1MjAxNzQ@._V1_.jpg',
+    popularity: '4.193',
+    youtube_trailer_key: 'chlHZJlTQ7E',
+    rated: 'Animation, Action, Comedy ',
+    runtime: 90,
+    genres: [
+      'Animation',
+      'Action',
+      'Comedy'
+    ],
+    stars: [
+      'Sam Rockwell',
+      'Craig Robinson',
+      'Awkwafina',
+      'Marc Maron'
+    ],
+    directors: [
+      'Pierre Pierfel',
+      'Roger Allers',
+      'Pierre Perifel',
+      '2 more credits'
     ],
     countries: [
       'United States of America'
     ],
     language: [
-      'English',
-      'en'
+      'English'
+    ]
+  }, {
+    title: 'Last Looks',
+    year: '2020',
+    release_date: '2021-12-31',
+    imdb_id: 'tt9244554',
+    poster: 'https://m.media-amazon.com/images/M/MV5BNWZkNGYzZDItMDg0Yy00NzBmLTg0MzEtMGJmNTQzYTllMDExXkEyXkFqcGdeQXVyMTA0Njg1ODU2._V1_SX300.jpg',
+    imdb_rating: '5',
+    vote_count: '0',
+    youtube_trailer_key: '18YolVgfasM',
+    genres: [
+      'Action',
+      'Crime',
+      'Thriller'
+    ],
+    stars: [
+      'Charlie Hunnam',
+      'Mel Gibson',
+      'Eiza González',
+      'Clancy Brown',
+      'Rupert Friend',
+      'Lucy Fry',
+      'Dominic Monaghan',
+      'Jacob Scipio',
+      'Paul Ben-Victor',
+      'Method Man',
+      'Morena Baccarin'
+    ],
+    directors: [
+      'Tim Kirkby'
+    ],
+    countries: [
+      'United States of America'
+    ],
+    language: [
+      'English'
+    ]
+  },
+  {
+    title: 'Sherlock Holmes 3',
+    year: '2021',
+    release_date: '2021-12-24',
+    imdb_id: 'tt2094116',
+    imdb_rating: '8.25843',
+    poster: 'https://comic.systems/images/actu/cinema-actu-150518-114105',
+    youtube_trailer_key: 's1s-XbvncNg',
+    rated: '5.5',
+    genres: [
+      'Mystery',
+      'Action',
+      'Crime',
+      'Adventure'
+    ],
+    stars: [
+      'Robert Downey Jr.',
+      'Jude Law',
+      'Jared Harris',
+      'Eddie Marsan',
+      'Rachel McAdams',
+    ],
+    directors: [
+      'Dexter Fletcher'
+    ],
+    countries: [
+      'United States of America'
+    ],
+    language: [
+      'English'
     ]
   },
   {
     title: 'Submission',
     year: '2019',
     release_date: '2019-09-19',
+    poster: 'https://m.media-amazon.com/images/M/MV5BN2M4NzAyOTgtZTUxYi00MjRjLTk1ZjgtNTI5YThkYWE2OWViXkEyXkFqcGdeQXVyMjg5OTIyMDk@._V1_.jpg',
     imdb_id: 'tt4824256',
     imdb_rating: '7.1',
-    youtube_trailer_key: 'CN0UhOIctBU',
+    youtube_trailer_key: 'P11MroggtPo',
     genres: [
       'Drama',
       'Sport',
@@ -303,34 +248,25 @@ const best = [
     ],
   },
   {
-    title: 'Soldier of Fortune',
-    year: '1955',
-    release_date: '1955-01-01',
-    imdb_id: 'tt0048640',
-    imdb_rating: '5.6',
-    youtube_trailer_key: 'Ye_XCOoAdxU',
-    'genres': [
-      'Adventure',
+    title: 'The Nightingale',
+    year: '2022',
+    release_date: '2022-12-23',
+    'imdb_rating': '6.79167',
+    poster: 'https://m.media-amazon.com/images/M/MV5BNjVmZmY1NmQtMWNhZS00ZDUwLTk5ZTQtZGE4NWIyM2YwMDRiXkEyXkFqcGdeQXVyODY3Nzc0OTk@._V1_SX300.jpg',
+    youtube_trailer_key: 'YuP8g_GQIgI',
+    rated: '6.6',
+    genres: [
       'Drama',
-      'Action',
-      'Romance',
-      'Crime',
-      'Thriller'
+      'History',
+      'War'
     ],
     stars: [
-      'Clark Gable',
-      'Susan Hayward',
-      'Michael Rennie',
-      'Gene Barry',
-      'Tom Tully',
-      'Alexander D\'Arcy',
-      'Anna Sten',
-      'Leo Gordon',
-      'Jack Kruschen',
-      'James Hong',
+      'Elle Fanning',
+      'Dakota Fanning'
     ],
     directors: [
-      'Edward Dmytryk'
+      'Mélanie Laurent',
+      'Michelle MacLaren'
     ],
     countries: [
       'United States of America',
@@ -338,52 +274,50 @@ const best = [
     ],
     language: [
       'English',
-      'en'
+      'N/A'
     ]
   },
   {
-    title: 'Red Sun',
-    year: '1971',
-    release_date: '1971-09-15',
-    imdb_id: 'tt0067770',
-    imdb_rating: '6.8',
-    youtube_trailer_key: 'r1iC4ids4v8',
-    'genres': [
-      'Western',
-      'Action'
+    title: 'Kung Fury',
+    year: '2020',
+    imdb_rating: '8.875',
+    vote_count: '8',
+    poster: 'https://m.media-amazon.com/images/M/MV5BMjQwMjU2ODU5NF5BMl5BanBnXkFtZTgwNTU1NjM4NTE@._V1_SX300.jpg',
+    popularity: '2.435',
+    youtube_trailer_key: 'nO_DIwuGBnA',
+    rated: 'Action, Comedy, Crime',
+    genres: [
+      'Action',
+      'Comedy',
+      'Sci-Fi',
+      'Fantasy',
+      'Crime',
+      'Science Fiction'
     ],
-    'stars': [
-      'Charles Bronson',
-      'Ursula Andress',
-      'Toshirō Mifune',
-      'Alain Delon',
-      'Capucine',
-      'Barta Barri',
-      'Guido Lollobrigida',
-      'Anthony Dawson',
-      'Gianni Medici',
-      'Georges Lycan',
-      'Luc Merenda',
-      'Tetsu Nakamura'
+    stars: [
+      'David Sandberg',
+      'Michael Fassbender',
+      'Arnold Schwarzenegger',
+      'David Hasselhoff',
+      'Leopold Nilsson',
+      'Eleni Young',
+      'Alexandra Shipp',
+      'Anton Kottas',
+      'Jorma Taccone',
+      'Max Kraus'
     ],
     directors: [
-      'Terence Young',
-      'Joan Davis',
-      'Ricardo Huertas Frutos',
-      'Christian Raoux',
-      'Ricardo Huertas',
+      'David Sandberg'
     ],
     countries: [
-      'France',
-      'Italy',
-      'Spain',
-      'France, Italy, Spain',
+      'Sweden',
+      'United States of America'
     ],
     language: [
-      'Español',
       'English',
-      '日本語',
-      'English, Spanish, Japanese',
+      'Deutsch',
+      'svenska',
+      'English, German, Swedish'
     ]
   },
   {
@@ -392,6 +326,7 @@ const best = [
     release_date: '2017-08-21',
     imdb_id: 'tt7444708',
     imdb_rating: '6.8',
+    poster: 'https://m.media-amazon.com/images/M/MV5BM2FkZmI4ZWYtNTZlYy00YjBlLWE1OWItNjNlOTQ3ZGQ0NTMxXkEyXkFqcGdeQXVyNzY4ODc3OTA@._V1_SX300.jpg',
     youtube_trailer_key: '2TxoDMfZudM',
     genres: [
       'Thriller',
@@ -423,9 +358,8 @@ const best = [
     ]
   }
 ];
-
 const insertBest = function() {
-  Video.create(best)
+  Popular.create(best)
     .then(() => {
       console.log('Database seeded successfully');
     })
@@ -436,5 +370,4 @@ const insertBest = function() {
       db.close();
     });
 };
-
 insertBest();

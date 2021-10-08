@@ -1,23 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios'
-import SignUp from './components/SignUp.jsx'
 import HomePage from './components/HomePage.jsx';
-import WatchList from "./components/WatchList.jsx"
 import Details from './components/Details.jsx';
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       view: 'homepage',
-      username: '',
-      password: '',
       currentTrailer: null,
       trailers:[],
+      populars:[],
       video:{
         countries: null,
         description: "",
-        directors: null,
+        directors: [""],
         genres: null,
         imdb_rating: "",
         language: [],
@@ -31,7 +28,7 @@ class App extends React.Component {
       trailer:{
         countries: null,
         description: "",
-        directors: null,
+        directors:[""],
         genres: null,
         imdb_rating: "",
         language: [],
@@ -46,9 +43,9 @@ class App extends React.Component {
 
     this.changeView = this.changeView.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.submitUp = this.submitUp.bind(this);
     this.getOne= this.getOne.bind(this)
     this.getTrailer= this.getTrailer.bind(this)
+    this.getPop=this.getPop.bind(this)
    
   }
 
@@ -58,18 +55,6 @@ class App extends React.Component {
     this.setState({
       view: option
     });
-  }
-
-
-  
-  submitUp() {
-    axios.post('/Rmdb/signup', { username: this.state.username, password: this.state.password }).then(response => { console.log(response); }).catch(err => res.status(403).send('user not added'));
-    this.changeView('homepage');
-  }
-
-  submitIn() {
-    axios.post('/Rmdb/signin', { username: this.state.username, password: this.state.password }).then(response => console.log(response)).catch(err => res.status(403).send('user not checked'));
-  
   }
 
   handleChange(e) {
@@ -85,8 +70,18 @@ getData(){
   })
 }
 
+getPop(){
+  axios.get("/api/pop")
+  .then((response)=>{ 
+    this.setState({   
+      populars: response.data
+    })
+    console.log("ghof" , this.state.populars)
+  })
+}
 componentDidMount(){
   this.getData()
+  this.getPop()
 }
 getOne(videoId){
   axios.get(`http://localhost:3000/api/videos/${videoId}`)
@@ -94,17 +89,16 @@ getOne(videoId){
     this.setState({
       video: response.data
     })
+    // console.log(this.state.video.directors)
   })
 }
 
 getTrailer(videoId){
-  axios.get(`http://localhost:3000/api/videos/${videoId}`)
-  .then((response)=>{ 
-    
+  axios.get(`http://localhost:3000/api/pop/${videoId}`)
+  .then((response)=>{  
     this.setState({
       trailer: response.data
     })
-    // console.log(this.state.trailer)
   })
 }
 
@@ -116,32 +110,19 @@ getTrailer(videoId){
     }
     else if (view === 'signup') {
       return <SignUp submitUp={this.submitUp} handleChange={this.handleChange} />
-    } 
-  
-    else if(view==='watchList') {
-      return <WatchList />
     }
-    
     else if(view==='homepage'){
       return <HomePage trailers={this.state.trailers} trailer={this.state.trailer}
       handleTrailerItems={this.handleTrailerItems} handleClick={() => this.changeView('fff')}
-      getOne={this.getOne}  getTrailer={this.getTrailer} />
+      getOne={this.getOne} getPop={this.getPop}  getTrailer={this.getTrailer} populars={this.state.populars}/>
     }
     else  {
       return <Details video={this.state.video}  />
     }
 
   }
-  
-  // handleTrailerItems(trailer) {
-  //   this.setState({
-  //     currentTrailer: trailer,
-  //   });
-  // }
-
-
   render() {
-  //  console.log(this.state.trailers)
+    
     return (
       <div>
         <div className="nav">
@@ -159,7 +140,6 @@ getTrailer(videoId){
             WatchList
           </span>
 
-
           <span className="nav-unselected" onClick={() => this.changeView('signin')}>
             Sign In
           </span>
@@ -167,8 +147,7 @@ getTrailer(videoId){
             Sign Up
           </span>
         </div>
-       
-       
+
         <div className="main">
           {this.renderView()}
         </div>
