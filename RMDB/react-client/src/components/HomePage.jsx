@@ -6,7 +6,7 @@ import TrailerRandom from './TrailerRandom.jsx';
 export default function HomePage(props) {
   // console.log("home"+props.trailer)
   return (
-    <div>
+    <div >
       <div>
         <div> <TrailerPlayer   trailer={props.trailer}/> </div>
         <div> <TrailerList populars={props.populars}  getTrailer={props.getTrailer}  
@@ -27,7 +27,6 @@ export default function HomePage(props) {
     <h4>Get the ЯMDb App ||  Help  ||   Site Index  ||   ЯMDbPro  ||   Box Office Mojo  ||   ЯMDb Developer</h4>
     <h4>Press Room ||  Advertising  ||   Jobs  ||   Conditions of Use  ||  Privacy Policy  ||   Interest-Based Ads</h4>
     <h5 id="amazon">© 1990-2021 by ЯMDb.com, Inc.</h5>
-    <h5></h5>
     </div>
     </div>
   );

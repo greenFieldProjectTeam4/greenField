@@ -6,8 +6,8 @@ import SignIn from './components/SignIn.jsx';
 import HomePage from './components/HomePage.jsx';
 import Details from './components/Details.jsx';
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       view: 'homepage',
       currentTrailer: null,
@@ -68,7 +68,6 @@ class App extends React.Component {
     this.addToWatch= this.addToWatch.bind(this)
   }
 
-
   //// from dhafer 
   handleSearch(event) {
     let datafiltred = this.state.data.filter((element) => {
@@ -98,9 +97,7 @@ class App extends React.Component {
 
           })
         })
-
         .catch(() => { alert('username already existed') })
-
     }
     else { alert('fill all the fields ') }
   }
@@ -137,9 +134,6 @@ getData(){
     })
   })
 }
-
-
-
 
 
 
