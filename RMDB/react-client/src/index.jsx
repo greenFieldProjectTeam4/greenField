@@ -53,8 +53,6 @@ class App extends React.Component {
    
   }
 
-  
-
   changeView(option) {
     this.setState({
       view: option
