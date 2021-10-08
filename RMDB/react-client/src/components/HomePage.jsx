@@ -14,7 +14,7 @@ export default function HomePage(props) {
       </div>
       
       <div> 
-        <TrailerRandom trailers={props.trailers} handleClick={props.handleClick} getOne={props.getOne}
+        <TrailerRandom user={props.user} update={props.update} trailers={props.trailers} handleClick={props.handleClick} getOne={props.getOne}
         /> 
       </div>
     <div className="reference">
