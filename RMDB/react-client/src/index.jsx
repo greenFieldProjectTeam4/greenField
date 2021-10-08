@@ -13,6 +13,8 @@ class App extends React.Component {
       currentTrailer: null,
       user: false,
       data: [],
+      username:'',
+      password:'',
       trailers:[],
       populars:[],
       video:{
@@ -84,7 +86,9 @@ class App extends React.Component {
           this.setState({
             username: '',
             password: '',
-            user: true
+            user: true,
+            view:'homepage'
+
           })
         })
 
@@ -112,11 +116,16 @@ getData(){
             this.setState({
               user: true,
               username: '',
-              password: ''
+              password: '',
+              view:'homepage'
             })
           }
+          else {alert('sallah')}
         })
         .catch((err) => { alert('Verify username or Password') })
+    }
+    else {
+      alert ('fill the fields')
     }
   }
 
@@ -192,15 +201,17 @@ putComments(videoId,newComment){
       handleTrailerItems={this.handleTrailerItems} handleClick={() => this.changeView('fff')}
       getOne={this.getOne} getPop={this.getPop}  getTrailer={this.getTrailer} populars={this.state.populars}/>
     }
+   
     else  {
       return <Details video={this.state.video} handleChange={this.handleChange} putComments={this.putComments}  />
     }
 
   }
   render() {
-    
-    return (
-      <div>
+    if (this.state.user === true){
+
+      return ( 
+        <div>
         <div className="nav">
 
           <span className={this.state.view === 'homepage' ,'logo'}
@@ -215,6 +226,35 @@ putComments(videoId,newComment){
             onClick={() => this.changeView('towatch')}>
             WatchList
           </span>
+
+          <span className="nav-unselected" onClick={() => this.changeView('signin')}>
+            Sign In
+          </span>
+          <span className="nav-unselected" onClick={() => this.changeView('signup')}>
+            Sign Up
+          </span>
+        </div>
+
+        <div className="main">
+          {this.renderView()}
+        </div>
+      </div>
+    
+      )
+    }
+
+
+    return (
+      <div>
+        <div className="nav">
+
+          <span className={this.state.view === 'homepage' ,'logo'}
+            
+          onClick={() => this.changeView('homepage')} >
+              ЯMDb
+          </span>
+
+        
 
           <span className="nav-unselected" onClick={() => this.changeView('signin')}>
             Sign In

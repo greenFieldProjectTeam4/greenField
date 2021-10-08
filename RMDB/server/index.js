@@ -99,12 +99,14 @@ app.post('/signin', (req, res) => {
 
             if(err.length){
                 crypt.compareHash(req.body.password, err[0].password)
+              
                 .then((response)=>{res.status(201).send(response) })
             } 
-            else { console.log('err',);
+            else {
                 res.status(403).send(err)
             }          
         })
+        .catch((err)=>res.status(403).send(err))
 })
 
 app.listen(PORT, () => { console.log('yemshy 3al 3000') });
