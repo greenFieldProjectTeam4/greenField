@@ -6,13 +6,15 @@ import SignIn from './components/SignIn.jsx';
 import HomePage from './components/HomePage.jsx';
 import Details from './components/Details.jsx';
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       view: 'homepage',
       currentTrailer: null,
       user: false,
       data: [],
+      username:'',
+      password:'',
       trailers:[],
       populars:[],
       video:{
@@ -59,7 +61,6 @@ class App extends React.Component {
     this.putComments= this.putComments.bind(this)
   }
 
-
   //// from dhafer 
   handleSearch(event) {
     let datafiltred = this.state.data.filter((element) => {
@@ -84,12 +85,12 @@ class App extends React.Component {
           this.setState({
             username: '',
             password: '',
-            user: true
+            user: true,
+            view:'homepage'
+
           })
         })
-
         .catch(() => { alert('username already existed') })
-
     }
     else { alert('fill all the fields ') }
   }
@@ -103,7 +104,6 @@ getData(){
   })
 }
 
-
   signInsubmit() {
     if (this.state.password !== '' && this.state.username !== '') {
       axios.post('/signin', { username: this.state.username, password: this.state.password })
@@ -112,16 +112,18 @@ getData(){
             this.setState({
               user: true,
               username: '',
-              password: ''
+              password: '',
+              view:'homepage'
             })
           }
+          else {alert('sallah')}
         })
         .catch((err) => { alert('Verify username or Password') })
     }
+    else {
+      alert ('fill the fields')
+    }
   }
-
-
-
 
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -192,15 +194,17 @@ putComments(videoId,newComment){
       handleTrailerItems={this.handleTrailerItems} handleClick={() => this.changeView('fff')}
       getOne={this.getOne} getPop={this.getPop}  getTrailer={this.getTrailer} populars={this.state.populars}/>
     }
+   
     else  {
       return <Details video={this.state.video} handleChange={this.handleChange} putComments={this.putComments}  />
     }
 
   }
   render() {
-    
-    return (
-      <div>
+    if (this.state.user === true){
+
+      return ( 
+        <div>
         <div className="nav">
 
           <span className={this.state.view === 'homepage' ,'logo'}
@@ -215,6 +219,35 @@ putComments(videoId,newComment){
             onClick={() => this.changeView('towatch')}>
             WatchList
           </span>
+
+          <span className="nav-unselected" onClick={() => this.changeView('signin')}>
+            Sign In
+          </span>
+          <span className="nav-unselected" onClick={() => this.changeView('signup')}>
+            Sign Up
+          </span>
+        </div>
+
+        <div className="main">
+          {this.renderView()}
+        </div>
+      </div>
+    
+      )
+    }
+
+
+    return (
+      <div>
+        <div className="nav">
+
+          <span className={this.state.view === 'homepage' ,'logo'}
+            
+          onClick={() => this.changeView('homepage')} >
+              ЯMDb
+          </span>
+
+        
 
           <span className="nav-unselected" onClick={() => this.changeView('signin')}>
             Sign In

@@ -13,106 +13,6 @@ body {
 h2 {
   color: #2C3E50;
 }
-
-.feed-list-item {
-  min-height: 350px;
-  margin: 40px;
-  list-style: none;
-  border: 1px solid #77777769;
-  background-color: #fdfdfd;
-  border-radius: 4px;
-  padding: 30px 50px 0px 50px;
-  box-shadow: 0 0 1em #80808066;
-}
-
-.feed-list-item-image {
-  float: left;
-  width: 100%;
-  max-width: 350px;
-  margin-right: 20px;
-  margin-bottom: 5%;
-}
-
-.feed-list-item-title {
-  font-size: 1.8em;   
-  font-family: 'Francois One';
-  margin-bottom: 10px;
-}
-
-.feed-list-item-lede {
-  display: block;
-  margin-bottom: 50px;
-}
-
-.feed-list-item-byline {
-  font-size: .8em;
-  margin-bottom: 15px;
-  color: #777777;
-}
-
-.feed-list-item-byline-author {
-  font-weight: bolder;
-}
-
-
-
-.post {
-  width: 80%;
-  margin: 0 auto;
-  max-width: 800px;
-  font-size: 1.3em;
-  line-height: 1.5em;
-  background-color: white;
-  padding: 5px 20px 5px 20px;
-}
-
-.post-title {
-  font-family: 'Francois One';
-  line-height: 1.5em;
-}
-
-.post-image {
-  max-width: 100%;
-}
-
-.post-byline {
-  color: #777777;
-  font-size: .8em;
-  margin-bottom: 5%;
-}
-
-.post-byline-author {
-  font-weight: bolder;
-}
-
-.create h2 {
-  border-bottom: 1px solid #777777;
-  width: 90%;
-  font-family: 'Francois One';
-}
-
-.create-editor {
-  width: 40%;
-  float: left;
-}
-
-.create-preview {
-  width: 60%;
-  float: right;
-  margin: 0 auto;
-}
-
-
-.create-input {
-  width: 80%;
-  display: block;
-  font-size: .9em;
-  height: 30px;
-  margin-bottom: 15px;
-  border: none;
-  padding: 5px;
-}
-
 .create-body-textarea {
   width: 80%;
   font-size: .9em;
@@ -158,42 +58,8 @@ h2 {
   background-color: rgba(52, 152, 219, 0.17);
 }
 
-.post-list-entry {
-  list-style: none;
-  border: 1px solid #3498DB;
-  margin-bottom: 20px;
-  padding: 10px;
-  width: 75%;
-}
-
-.post-list-entry:hover {
-  cursor: pointer;
-  background-color: rgba(52, 152, 219, 0.17);
-}
-
-.post-list-entry-title {
-  font-weight: bold;
-  font-size: 1.2em;
-  font-family: 'Francois One';
-}
-
-.post-list-entry-stats {
-  font-size: .8em;
-}
-
 .stats-list-item-views {
   font-weight: bold;
-}
-
-.post-stats {
-  font-size: .8em;
-  cursor: pointer;
-  width: 75px;
-  display: inline;
-}
-
-.post-stats-comments {
-  margin-left: 20px;
 }
 
 .logo {
@@ -224,8 +90,6 @@ h2 {
   font-family: 'Francois One';
 }
 
-
-
 .nav-selected {
   padding: 5px;
   color: white;
@@ -240,25 +104,6 @@ h2 {
   font-size: 1.1em;
   color:rgb(238, 241, 226)
 }
-
-.feed {
-  padding: 0px 10% 0px 10%;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 body,
 html {
@@ -553,14 +398,17 @@ h4{
     margin-top: 100px;
     border: solid rgb(105, 104, 102) 2px;
   }
- 
-  .actors{
+ .detailsRandom{
+  margin-left: 10px;
+ }
+  .directors{
   max-width: 1000px;
   margin-top: 60px;
   height: 80px;
   border: 2px, solid #ddd;
   display: flex;
   color: white;
+  margin-left: 930px;
   }
  .player{
    margin-left: -100px;
@@ -581,13 +429,12 @@ h4{
 }
  
 #watchDetails{
-  margin-left: 1000px;
   width: 150px;
   height: 40px;
   font-size: 20px;
   background-color:gold;
   font-weight: bold;
-  color: #000000;
+  color: #000000; 
 }
 #watch{
   width: 150px;
@@ -621,3 +468,22 @@ h4{
   margin-left: 250px; 
 }
 
+.create-body-textarea{
+  height: 70px;
+  width: 895px;
+}
+
+.title{
+  color: white;
+}
+
+.infos{
+  margin-left: 110px;
+  margin-top: -680px;
+  background-color: rgb(56, 53, 53);
+  width: 905px;
+}
+form{
+  margin-top: 630px;
+  margin-left: 110px;
+}
