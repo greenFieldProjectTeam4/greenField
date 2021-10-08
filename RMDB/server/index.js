@@ -5,6 +5,7 @@ const cors = require('cors');
 const app = express();
 const PORT = 3000;
 const crypt = require('./hash')
+const  Popular=require('../database-mongodb/popular')
 
 const morgan = require('morgan');
 app.use(morgan('dev'))
@@ -14,6 +15,42 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/../react-client/dist'));
 
+app.get('/api/videos', function(req, res) {
+  Video.find({})
+  .then((result)=>{
+    res.status(201).send(result)
+  })
+  .catch(()=>{
+    res.status(403).send("failed")
+  })
+});
+// app.post('/api/videos', function(req, res) {
+//   Video.create(req.body)
+//   .then((result)=>{
+//     res.status(201).send(result)
+//   })
+//   .catch(()=>{
+//     res.status(403).send("failed")
+//   })
+// });
+app.put('/api/videos/:videoId', function(req, res) {
+  Video.findByIdAndUpdate({_id:req.params.videoId},req.body)
+  .then((result)=>{
+    res.status(201).send(result)
+  })
+  .catch(()=>{
+    res.status(403).send("failed")
+  })
+});
+app.get('/api/videos/:videoId', function(req, res) {
+  Video.findOne({_id:req.params.videoId})
+  .then((result)=>{
+    res.status(201).send(result)
+  })
+  .catch(()=>{
+    res.status(403).send("failed")
+  })
+});
 
 app.post('/signup', (req, res) => {
     User.find({ username: req.body.username })
@@ -32,6 +69,26 @@ app.post('/signup', (req, res) => {
 
        })
   })
+
+
+app.get('/api/pop', function(req, res) {
+  Popular.find({})
+  .then((result)=>{
+    res.status(201).send(result)
+  })
+  .catch(()=>{
+    res.status(403).send("failed")
+  })
+});
+app.get('/api/pop/:videoId', function(req, res) {
+  Popular.findOne({_id:req.params.videoId})
+  .then((result)=>{
+    res.status(201).send(result)
+  })
+  .catch(()=>{
+    res.status(403).send("failed")
+  })
+});
 
 
 
