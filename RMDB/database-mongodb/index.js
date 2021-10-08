@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const mongoUri = 'mongodb://localhost/Rmdb';
 
-mongoose.connect(mongoUri, { useMongoClient: true }, () => {
-  console.log('db connected');
+mongoose.connect(mongoUri, { useNewUrlParser: true 
+, useUnifiedTopology: true ,useCreateIndex: true }, () => {
+  console.log("db connected");
 });
 const db = mongoose.connection;
 

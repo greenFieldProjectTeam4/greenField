@@ -1,16 +1,18 @@
 import React from 'react';
-import TrailerListItems from './TrailerListItems.jsx';
 
-const TrailerList = ({trailers, handleTrailerItems}) => (
+
+const TrailerList = (props) => (
   <div className="trailer">  
-    <ul>
-      {/* map here */}
-      <li className="trailer-list-item">
-
-      </li>
-    </ul>
+   
+      {props.populars.map((e,key)=>{
+        return(
+          <div key={key} className="item1">  <img id="poster" onClick={()=>{props.getTrailer(e._id)}}   src={e.poster} /> </div>
+        )
+      })}
   </div>
 
 );
 
 export default TrailerList;
+
+

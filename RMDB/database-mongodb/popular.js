@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const db = require('./index.js');
 mongoose.Promise = global.Promise;
 
-const videoSchema = new mongoose.Schema({
+const popularSchema = new mongoose.Schema({
   
   countries: [String],
   description: String,
@@ -16,10 +16,9 @@ const videoSchema = new mongoose.Schema({
   title: String,
   year: String,
   youtube_trailer_key: String,
-  comments: [String]  
+    
 
 });
-const Video = mongoose.model('Video', videoSchema);
 
-module.exports = Video;
-
+const Popular= mongoose.model('Popular', popularSchema);
+module.exports = Popular;

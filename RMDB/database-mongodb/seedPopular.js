@@ -1,24 +1,21 @@
-/* eslint-disable camelcase */
 const db = require('./index.js');
-const Video = require('./video.js');
-
+const Popular = require('./popular.js');
 const best = [
   {
     title: 'Aladdin',
     year: '2019',
     release_date: '2023-07-14',
     imdb_id: 'tt11779248',
-    imdb_rating: '0',
+    imdb_rating: '5.6',
     poster: 'https://m.media-amazon.com/images/M/MV5BY2Q2NDI1MjUtM2Q5ZS00MTFlLWJiYWEtNTZmNjQ3OGJkZDgxXkEyXkFqcGdeQXVyNTI4MjkwNjA@._V1_SX300.jpg',
     vote_count: '0',
     popularity: '3.429',
-    youtube_trailer_key: 'aKXex7b1Ew',
+    youtube_trailer_key: 'foyufD52aog',
     rated: 'PG-13',
-    genres: [ 
+    genres: [
       'Fantasy',
       'Family',
       'Adventure',
-      
     ],
     stars: [
       'Dennis Quaid',
@@ -43,7 +40,7 @@ const best = [
     imdb_rating: '6.8',
     vote_count: '90',
     popularity: '7.913',
-    youtube_trailer_key: '',
+    youtube_trailer_key: '8JbZKsfgXq0',
     genres: [
       'Drama',
       'Crime'
@@ -72,7 +69,7 @@ const best = [
     vote_count: '48',
     poster: 'https://m.media-amazon.com/images/M/MV5BMDhkODhmZjEtMmE5My00MTE1LTllZGItMDkwOTZlMjY1ZWUyXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_SX300.jpg',
     popularity: '32.399',
-    youtube_trailer_key: '',
+    youtube_trailer_key: 'LLFSNWU8yx8',
     rated: 'Action, Adventure, Sci-Fi ',
     runtime: 90,
     genres: [
@@ -110,9 +107,9 @@ const best = [
     imdb_id: 'tt8115900',
     imdb_rating: '0',
     vote_count: '0',
-    poster: 'https://m.media-amazon.com/images/M/MV5BMTExNTEzMzM3OTNeQTJeQWpwZ15BbWU4MDY2OTI1OTYx._V1_SX300.jpg',
+    poster: 'https://m.media-amazon.com/images/M/MV5BOTlhNmVjOWMtNzNjNC00OTY0LWEyODUtY2Q4NDhiNTgzZDE2XkEyXkFqcGdeQXVyODk1MjAxNzQ@._V1_.jpg',
     popularity: '4.193',
-    youtube_trailer_key: '',
+    youtube_trailer_key: 'chlHZJlTQ7E',
     rated: 'Animation, Action, Comedy ',
     runtime: 90,
     genres: [
@@ -144,9 +141,9 @@ const best = [
     release_date: '2021-12-31',
     imdb_id: 'tt9244554',
     poster: 'https://m.media-amazon.com/images/M/MV5BNWZkNGYzZDItMDg0Yy00NzBmLTg0MzEtMGJmNTQzYTllMDExXkEyXkFqcGdeQXVyMTA0Njg1ODU2._V1_SX300.jpg',
-    imdb_rating: '0',
+    imdb_rating: '5',
     vote_count: '0',
-    youtube_trailer_key: '',
+    youtube_trailer_key: '18YolVgfasM',
     genres: [
       'Action',
       'Crime',
@@ -181,8 +178,8 @@ const best = [
     release_date: '2021-12-24',
     imdb_id: 'tt2094116',
     imdb_rating: '8.25843',
-    poster: 'https://www.imdb.com/title/tt2094116/mediaviewer/rm1397276673/', 
-    youtube_trailer_key: '',
+    poster: 'https://comic.systems/images/actu/cinema-actu-150518-114105',
+    youtube_trailer_key: 's1s-XbvncNg',
     rated: '5.5',
     genres: [
       'Mystery',
@@ -211,10 +208,10 @@ const best = [
     title: 'Submission',
     year: '2019',
     release_date: '2019-09-19',
-    poster: 'https://m.media-amazon.com/images/M/MV5BMjE3MDA2MTM1MF5BMl5BanBnXkFtZTgwMjc0NTE5ODE@._V1_SX300.jpg',
+    poster: 'https://m.media-amazon.com/images/M/MV5BN2M4NzAyOTgtZTUxYi00MjRjLTk1ZjgtNTI5YThkYWE2OWViXkEyXkFqcGdeQXVyMjg5OTIyMDk@._V1_.jpg',
     imdb_id: 'tt4824256',
     imdb_rating: '7.1',
-    youtube_trailer_key: 'CN0UhOIctBU',
+    youtube_trailer_key: 'P11MroggtPo',
     genres: [
       'Drama',
       'Sport',
@@ -256,7 +253,7 @@ const best = [
     release_date: '2022-12-23',
     'imdb_rating': '6.79167',
     poster: 'https://m.media-amazon.com/images/M/MV5BNjVmZmY1NmQtMWNhZS00ZDUwLTk5ZTQtZGE4NWIyM2YwMDRiXkEyXkFqcGdeQXVyODY3Nzc0OTk@._V1_SX300.jpg',
-    youtube_trailer_key: '',
+    youtube_trailer_key: 'YuP8g_GQIgI',
     rated: '6.6',
     genres: [
       'Drama',
@@ -287,7 +284,7 @@ const best = [
     vote_count: '8',
     poster: 'https://m.media-amazon.com/images/M/MV5BMjQwMjU2ODU5NF5BMl5BanBnXkFtZTgwNTU1NjM4NTE@._V1_SX300.jpg',
     popularity: '2.435',
-    youtube_trailer_key: '',
+    youtube_trailer_key: 'nO_DIwuGBnA',
     rated: 'Action, Comedy, Crime',
     genres: [
       'Action',
@@ -361,9 +358,8 @@ const best = [
     ]
   }
 ];
-
 const insertBest = function() {
-  Video.create(best)
+  Popular.create(best)
     .then(() => {
       console.log('Database seeded successfully');
     })
@@ -374,5 +370,4 @@ const insertBest = function() {
       db.close();
     });
 };
-
 insertBest();

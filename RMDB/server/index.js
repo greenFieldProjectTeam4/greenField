@@ -1,33 +1,73 @@
 const express = require('express');
-
-const { Video, User } = require('../database-mongodb/User')
-const cors = require('cors');
+const  Video=require('../database-mongodb/video')
+const  Popular=require('../database-mongodb/popular')
+const morgan= require ("morgan")
+const cors=require('cors');
 const app = express();
 const PORT = 3000;
-const crypt = require('./hash')
-
+app.use(morgan("dev"))
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/../react-client/dist'));
 
+app.get('/api/videos', function(req, res) {
+  Video.find({})
+  .then((result)=>{
+    res.status(201).send(result)
+  })
+  .catch(()=>{
+    res.status(403).send("failed")
+  })
+});
+// app.post('/api/videos', function(req, res) {
+//   Video.create(req.body)
+//   .then((result)=>{
+//     res.status(201).send(result)
+//   })
+//   .catch(()=>{
+//     res.status(403).send("failed")
+//   })
+// });
+app.put('/api/videos/:videoId', function(req, res) {
+  Video.findByIdAndUpdate({_id:req.params.videoId},req.body)
+  .then((result)=>{
+    res.status(201).send(result)
+  })
+  .catch(()=>{
+    res.status(403).send("failed")
+  })
+});
+app.get('/api/videos/:videoId', function(req, res) {
+  Video.findOne({_id:req.params.videoId})
+  .then((result)=>{
+    res.status(201).send(result)
+  })
+  .catch(()=>{
+    res.status(403).send("failed")
+  })
+});
+
+app.get('/api/pop', function(req, res) {
+  Popular.find({})
+  .then((result)=>{
+    res.status(201).send(result)
+  })
+  .catch(()=>{
+    res.status(403).send("failed")
+  })
+});
+app.get('/api/pop/:videoId', function(req, res) {
+  Popular.findOne({_id:req.params.videoId})
+  .then((result)=>{
+    res.status(201).send(result)
+  })
+  .catch(()=>{
+    res.status(403).send("failed")
+  })
+});
 
 
-// app.post('/Rmdb/signup',(req,res)=>{ 
-// const user= new User ({username:req.body.username,password:req.body.password})
-// user.save()
-// .then((response)=>res.status(201).send(response))
-// .catch(()=>res.status(403).send('new user not saved '))
-// })
-
-app.post('/signup', (req, res) => {
-    var hashed = crypt.Hash(req.body.password)
-    var user = new User({ username: req.body.username, password: hashed})
-    user.save()
-        .then(() => { res.status(201).send(true) })
-        .catch((err) => { res.status(500).send(err) })
-
-})
 
 
 app.post('/signin', (req, res) => {
