@@ -6,7 +6,7 @@ import TrailerRandom from './TrailerRandom.jsx';
 export default function HomePage(props) {
   // console.log("home"+props.trailer)
   return (
-    <div>
+    <div >
       <div>
         <div> <TrailerPlayer   trailer={props.trailer}/> </div>
         <div> <TrailerList populars={props.populars}  getTrailer={props.getTrailer}  

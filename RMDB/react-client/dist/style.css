@@ -76,7 +76,6 @@ h2 {
 }
 
 .main {
-  margin-left: 10%;
   margin-right: 10%;
 }
 
@@ -329,7 +328,7 @@ button:focus {
   border: 2px, solid #ddd;
   display: flex;
   overflow-x: auto;
-  margin-left: 0px;
+  margin-left: 100px;
   border: solid rgb(105, 104, 102) 2px;
 }
 
@@ -373,7 +372,7 @@ h4{
   border: 2px, solid #ddd;
   overflow-y: auto;
   width: 250px;
-  margin-left: 1000px;
+  margin-left: 1100px;
   border: solid rgb(105, 104, 102) 2px;
 }
 .trailer::-webkit-scrollbar{
@@ -399,7 +398,7 @@ h4{
     border: solid rgb(105, 104, 102) 2px;
   }
  .detailsRandom{
-  margin-left: 10px;
+  margin-left: 170px;
  }
   .directors{
   max-width: 1000px;
@@ -411,7 +410,7 @@ h4{
   margin-left: 930px;
   }
  .player{
-   margin-left: -100px;
+   margin-left: 0px;
    margin-top: -40px;
    
  }
@@ -446,8 +445,8 @@ h4{
 }
 
 .reference{
-  margin-top: 300px;
-  margin-left: 420px;
+  margin-top: 280px;
+  margin-left: 500px;
 }
 
 .reference #img{
@@ -459,7 +458,7 @@ h4{
 .reference2{
   color: white;
   width: 1200px;
-  margin-left: 250px;  
+  margin-left: 280px;  
 }
 
 #amazon{
@@ -478,12 +477,13 @@ h4{
 }
 
 .infos{
-  margin-left: 110px;
+  margin-left: 270px;
   margin-top: -680px;
   background-color: rgb(56, 53, 53);
   width: 905px;
 }
 form{
   margin-top: 630px;
-  margin-left: 110px;
+  margin-left: 270px;
 }
+
