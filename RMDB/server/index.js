@@ -1,11 +1,15 @@
 const express = require('express');
-const  Video=require('../database-mongodb/video')
-const  Popular=require('../database-mongodb/popular')
-const morgan= require ("morgan")
-const cors=require('cors');
+const User = require('../database-mongodb/User');
+const Video = require('../database-mongodb/Video');
+const cors = require('cors');
 const app = express();
 const PORT = 3000;
-app.use(morgan("dev"))
+const crypt = require('./hash')
+const  Popular=require('../database-mongodb/popular')
+
+const morgan = require('morgan');
+app.use(morgan('dev'))
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -48,6 +52,25 @@ app.get('/api/videos/:videoId', function(req, res) {
   })
 });
 
+app.post('/signup', (req, res) => {
+    User.find({ username: req.body.username })
+    .then((err)=>{
+        if (!err.length) {
+            crypt.Hash(req.body.password)
+            .then((passwordHashed) => {
+                User.create({ username: req.body.username, password: passwordHashed })
+                    .then(() => { res.status(201).send() })
+                    .catch((err) => { res.send(err) })
+            })
+        } 
+        else  {
+            res.status(403).send(err)
+       }
+
+       })
+  })
+
+
 app.get('/api/pop', function(req, res) {
   Popular.find({})
   .then((result)=>{
@@ -71,19 +94,17 @@ app.get('/api/pop/:videoId', function(req, res) {
 
 
 app.post('/signin', (req, res) => {
-    console.log(req.body)
     User.find({ username: req.body.username })
-        .then((data) => {
-          console.log(data)
-            if (crypt.compareHash(req.body.password, data[0].password)) {
-                res.status(201).send(true)
-            }
-            else {
-                res.status(500).send('wrong password')
-            }
+        .then((err) => {console.log(err)
+
+            if(err.length){
+                crypt.compareHash(req.body.password, err[0].password)
+                .then((response)=>{res.status(201).send(response) })
+            } 
+            else { console.log('err',);
+                res.status(403).send(err)
+            }          
         })
-
-
 })
 
 app.listen(PORT, () => { console.log('yemshy 3al 3000') });

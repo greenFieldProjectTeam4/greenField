@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import axios from 'axios'
+import axios from 'axios';
+import SignUp from './components/SignUp.jsx';
+import SignIn from './components/SignIn.jsx';
 import HomePage from './components/HomePage.jsx';
 import Details from './components/Details.jsx';
 class App extends React.Component {
@@ -9,6 +11,8 @@ class App extends React.Component {
     this.state = {
       view: 'homepage',
       currentTrailer: null,
+      user: false,
+      data: [],
       trailers:[],
       populars:[],
       video:{
@@ -45,12 +49,27 @@ class App extends React.Component {
 
     this.changeView = this.changeView.bind(this);
     this.handleChange = this.handleChange.bind(this);
+
+    this.signUpsubmit = this.signUpsubmit.bind(this);
+    this.signInsubmit = this.signInsubmit.bind(this);
     this.getOne= this.getOne.bind(this)
     this.getTrailer= this.getTrailer.bind(this)
     this.getPop=this.getPop.bind(this)
     // this.postComment= this.postComment.bind(this)
     this.putComments= this.putComments.bind(this)
-   
+  }
+
+
+  //// from dhafer 
+  handleSearch(event) {
+    let datafiltred = this.state.data.filter((element) => {
+      return element.title === event || event.slice(0, 2);
+    });
+    this.setState({
+      view: event,
+      data: datafiltred
+    });
+
   }
 
   changeView(option) {
@@ -58,9 +77,21 @@ class App extends React.Component {
       view: option
     });
   }
+  signUpsubmit() {
+    if (this.state.password !== '' && this.state.username !== '') {
+      axios.post('/signup', { username: this.state.username, password: this.state.password })
+        .then(() => {
+          this.setState({
+            username: '',
+            password: '',
+            user: true
+          })
+        })
 
-  handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
+        .catch(() => { alert('username already existed') })
+
+    }
+    else { alert('fill all the fields ') }
   }
 
 getData(){
@@ -72,6 +103,29 @@ getData(){
   })
 }
 
+
+  signInsubmit() {
+    if (this.state.password !== '' && this.state.username !== '') {
+      axios.post('/signin', { username: this.state.username, password: this.state.password })
+        .then((data) => {console.log('here',data)
+          if (data.data===true) {
+            this.setState({
+              user: true,
+              username: '',
+              password: ''
+            })
+          }
+        })
+        .catch((err) => { alert('Verify username or Password') })
+    }
+  }
+
+
+
+
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
 getPop(){
   axios.get("/api/pop")
   .then((response)=>{ 
@@ -128,7 +182,7 @@ putComments(videoId,newComment){
     const view = this.state.view;
     const user = this.state.user;
     if (view === 'signin') {
-      return <SignIn signin={this.signinHandle} handleClick={() => this.changeView('login')} />
+      return <SignIn username={this.state.username} password={this.state.password} submit={this.signInsubmit} handleChange={this.handleChange} handleClick={() => this.changeView('login')} />
     }
     else if (view === 'signup') {
       return <SignUp username={this.state.username} password={this.state.password} submit={this.signUpsubmit} handleChange={this.handleChange} />
