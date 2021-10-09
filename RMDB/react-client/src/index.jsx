@@ -151,7 +151,7 @@ getPop(){
 componentDidMount(){
   this.getData()
   this.getPop()
-  this.getTrailer('616172e2b3ee763f2093bcc2')
+  this.getTrailer('616172d9d443694e8c559e83')
 }
 
 getOne(videoId){
@@ -273,7 +273,7 @@ addToWatch(userId,newList){
           </span>
         </div>
 
-        <div className="main">
+        <div className="container">
           {this.renderView()}
         </div>
       </div>

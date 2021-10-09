@@ -64,20 +64,17 @@ h2 {
 
 .logo {
   font-weight: bold;
-  font-size: 1.3em;
+  font-size: 1.5em;
   margin-right: auto;
   margin-left: 10px;
   font-family: cambria;
-  color: black;
-  background-color: gold;
+  color: gold;
   width: 70px;
   height: 30px;
   border-radius: 3%;
 }
 
-.main {
-  margin-right: 10%;
-}
+
 
 .nav {
   background-color: #24282b;
@@ -102,6 +99,9 @@ h2 {
   margin-right: 5px;
   font-size: 1.1em;
   color:rgb(238, 241, 226)
+}
+.nav-unselected:hover {
+  color: gold;
 }
 
 body,
@@ -284,7 +284,7 @@ button:focus {
 
 .overlay {
   background: -webkit-linear-gradient(#8CA6DB, #B993D6);
-  background: linear-gradient(#dee05a, #2d2e2c);
+  background: linear-gradient(gold, #2d2e2c);
   opacity: 0.85;
   filter: alpha(opacity=85);
   height: 560px;
@@ -329,7 +329,7 @@ button:focus {
   display: flex;
   overflow-x: auto;
   margin-left: 100px;
-  border: solid rgb(105, 104, 102) 2px;
+  /* border: solid rgb(105, 104, 102) 2px; */
 }
 
 .wrapper::-webkit-scrollbar{
@@ -373,7 +373,7 @@ h4{
   overflow-y: auto;
   width: 250px;
   margin-left: 1100px;
-  border: solid rgb(105, 104, 102) 2px;
+  /* border: solid rgb(105, 104, 102) 2px; */
 }
 .trailer::-webkit-scrollbar{
   width: 0;
@@ -395,7 +395,7 @@ h4{
     height: 600px;
     margin-left: 100px;
     margin-top: 100px;
-    border: solid rgb(105, 104, 102) 2px;
+    border: solid rgb(7, 7, 7) 2px;
   }
  .detailsRandom{
   margin-left: 170px;
@@ -418,7 +418,7 @@ h4{
  .video-player-details {
   background: rgb(10, 10, 10);
   padding: 8px;
-  border: 0;
+  /* border: 0; */
   box-shadow: 0 1px 2px rgba(0,0,0,.1);
   margin-top: 10px;
   margin-left: 90px;
@@ -434,11 +434,12 @@ h4{
   background-color:gold;
   font-weight: bold;
   color: #000000; 
-  margin-left: 755px;
+  margin-left: 1023px;
 }
 .description{
   color: white;
   background-color: rgb(75, 72, 75);
+  width: 905px;
 }
 #watch{
   width: 150px;
@@ -479,13 +480,15 @@ h4{
 
 .title{
   color: white;
+  margin-top: 60px;
 }
 
 .infos{
   margin-left: 270px;
-  margin-top: -680px;
+  margin-top: -740px;
   background-color: rgb(56, 53, 53);
   width: 905px;
+  height: 50px;
 }
 form{
   margin-top: 630px;
