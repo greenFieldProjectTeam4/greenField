@@ -112,7 +112,6 @@ class App extends React.Component {
     })
   }
 
-// get on
   getOne(videoId){
     axios.get(`http://localhost:3000/api/videos/${videoId}`)
     .then((response)=>{ 
@@ -122,7 +121,6 @@ class App extends React.Component {
     })
   }
 
-  // get one trailer to display in the trailer player 
  
 
   handleChange(e) {
@@ -149,6 +147,7 @@ class App extends React.Component {
     }
     else { alert('fill all the fields ') }
   }
+
 
   // handle the sign in click
   signInsubmit() {
@@ -181,10 +180,12 @@ class App extends React.Component {
     const list= [...this.state.userLogged[0].toWatchList];
     console.log('here',list)
 
-    // list.push(newList) 
-    axios.put(`/user/${userId}`,{toWatchList:list.concat(newList)})
+    list.push(newList) 
+    axios.put(`/user/${userId}`,{toWatchList:list})
+    
   }
 
+    // get one trailer to display in the trailer player;
   getTrailer(videoId) {
     axios.get(`http://localhost:3000/api/pop/${videoId}`)
       .then((response)=>{  
@@ -205,21 +206,7 @@ class App extends React.Component {
       });
   }
 
-
  
-
-
-
-
-
-  getTrailer(videoId) {
-    axios.get(`http://localhost:3000/api/pop/${videoId}`)
-      .then((response)=>{  
-        this.setState({
-          trailer: response.data
-        });
-      });
-  }
 
   // postComment(){
   //   axios.post("http://localhost:3000/api/videos",{comments:this.state.video.comments})
@@ -260,7 +247,6 @@ changeView(option) {
 
   renderView() {
     const view = this.state.view;
-    const user = this.state.user;
     if (view === 'signin') {
       return <SignIn username={this.state.username} password={this.state.password} submit={this.signInsubmit} handleChange={this.handleChange} handleClick={() => this.changeView('login')} />;
     } else if (view === 'signup') {
@@ -270,14 +256,14 @@ changeView(option) {
         handleTrailerItems={this.handleTrailerItems} handleClick={() => this.changeView('fff')}
         getOne={this.getOne} getPop={this.getPop} getTrailer={this.getTrailer} populars={this.state.populars} 
         getTv = {this.getTv} tvs={this.state.tvs} getOneTv = {this.getOneTv}/>;
-    } else {
+    }
+    else {
       return <Details video={this.state.video} handleChange={this.handleChange} putComments={this.putComments}/>;
     }
 
   }
   
   render() {
-    console.log(this.state.data);
     if (this.state.user === true) {
 
       return ( 
