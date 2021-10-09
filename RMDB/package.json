@@ -8,7 +8,8 @@
     "dev:react": "webpack -d --watch",
     "db:setup": "node database-mongodb/seedRandom.js",
     "db:set": "node database-mongodb/seedPopular.js",
-    "user":"node database-mongodb/User.js"
+    "user":"node database-mongodb/User.js",
+    "db:settv": "node database-mongodb/seedTV.js"
   },
   "author": "Hack Reactor Curriculum Team <curriculum.team@hackreactor.com>",
   "license": "ISC",

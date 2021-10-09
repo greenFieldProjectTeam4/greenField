@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const db = require('./index.js');
 mongoose.Promise = global.Promise;
 
-const videoSchema = new mongoose.Schema({
+const tvSchema = new mongoose.Schema({
   
   countries: [String],
   description: String,
@@ -20,7 +20,6 @@ const videoSchema = new mongoose.Schema({
   comments: [String]  
 
 });
-const Video = mongoose.model('Video', videoSchema);
+const Tv = mongoose.model('Tv', tvSchema);
 
-module.exports = Video;
-
+module.exports = Tv;
