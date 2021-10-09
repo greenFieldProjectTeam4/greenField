@@ -76,19 +76,23 @@ class App extends React.Component {
 
   //// from dhafer 
 
+ 
+
   componentDidMount(){
     this.getData()
     this.getPop()
-    // console.log('hne',this.state.trailers[0])
-    // // this.getTrailer(this.state.trailers[0]._id)
-    // axios.get(`http://localhost:3000/api/video/${"Submission"}`)
-    // .then((response)=>{ 
-    //   this.setState({
-    //     trailer: response.data
-    //   })
-    // })
+    this.getTv()
+   
   }
-
+  getTv() {
+    axios.get('/api/tv')
+      .then((response)=>{ 
+        console.log(response);
+        this.setState({
+          tvs: response.data
+        });
+      });
+  }
   getData(){
     axios.get("http://localhost:3000/api/videos")
     .then((response)=>{ 
@@ -119,15 +123,7 @@ class App extends React.Component {
   }
 
   // get one trailer to display in the trailer player 
-  getTrailer(videoId){
-    axios.get(`http://localhost:3000/api/pop/${videoId}`)
-    .then((response)=>{  
-      this.setState({
-        trailer: response.data
-      })
-    })
-  }
-
+ 
 
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -145,6 +141,7 @@ class App extends React.Component {
             password: '',
             user: true,
             view: 'homepage'
+            
 
           });
         })
@@ -188,7 +185,25 @@ class App extends React.Component {
     axios.put(`/user/${userId}`,{toWatchList:list.concat(newList)})
   }
 
+  getTrailer(videoId) {
+    axios.get(`http://localhost:3000/api/pop/${videoId}`)
+      .then((response)=>{  
+        this.setState({
+          trailer: response.data
+        });
+      });
+  }
 
+  
+  getOneTv(tvId) {
+    axios.get(`http://localhost:3000/api/tv/${tvId}`)
+      .then((response)=>{ 
+        this.setState({
+          video: response.data
+        });
+        // console.log(this.state.video.directors)
+      });
+  }
 
 
  
@@ -251,7 +266,7 @@ changeView(option) {
     } else if (view === 'signup') {
       return <SignUp username={this.state.username} password={this.state.password} submit={this.signUpsubmit} handleChange={this.handleChange} />;
     } else if (view === 'homepage') {
-      return <HomePage trailers={this.state.trailers} trailer={this.state.trailer}
+      return <HomePage  user={this.state.userLogged[0]} update={this.addToWatch} trailers={this.state.trailers} trailer={this.state.trailer}
         handleTrailerItems={this.handleTrailerItems} handleClick={() => this.changeView('fff')}
         getOne={this.getOne} getPop={this.getPop} getTrailer={this.getTrailer} populars={this.state.populars} 
         getTv = {this.getTv} tvs={this.state.tvs} getOneTv = {this.getOneTv}/>;
@@ -260,6 +275,7 @@ changeView(option) {
     }
 
   }
+  
   render() {
     console.log(this.state.data);
     if (this.state.user === true) {

@@ -3,7 +3,6 @@ const db = require('./index.js');
 mongoose.Promise = global.Promise;
 
 const tvSchema = new mongoose.Schema({
-  
   countries: [String],
   description: String,
   directors: [String],

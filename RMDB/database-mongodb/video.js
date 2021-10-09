@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const db = require('./index.js');
 mongoose.Promise = global.Promise;
-
 const videoSchema = new mongoose.Schema({
   
   countries: [String],
@@ -23,4 +22,3 @@ const videoSchema = new mongoose.Schema({
 const Video = mongoose.model('Video', videoSchema);
 
 module.exports = Video;
-

@@ -4,12 +4,12 @@ const Video = require('../database-mongodb/Video');
 const cors = require('cors');
 const app = express();
 const PORT = 3000;
-const crypt = require('./hash');
-const Popular = require('../database-mongodb/popular');
+const crypt = require('./hash')
+const  Popular=require('../database-mongodb/popular')
 const Tv = require('../database-mongodb/Tv');
 const morgan = require('morgan');
-app.use(morgan('dev'));
 
+app.use(morgan('dev'))
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -150,5 +150,23 @@ app.post('/signin', (req, res) => {
         })
         .catch((err)=>res.status(403).send(err))
 })
+app.get('/api/tv', function(req, res) {
+  Tv.find({})
+    .then((result)=>{
+      res.status(201).send(result);
+    })
+    .catch(()=>{
+      res.status(403).send('failed');
+    });
+});
 
-app.listen(PORT, () => { console.log('yemshy 3al 3000'); });
+app.get('/api/tv/:tvId', function(req, res) {
+  Tv.findOne({_id: req.params.tvId})
+    .then((result)=>{
+      res.status(201).send(result);
+    })
+    .catch(()=>{
+      res.status(403).send('failed');
+    });
+});
+app.listen(PORT, () => { console.log('yemshy 3al 3000') });
