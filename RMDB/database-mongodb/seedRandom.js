@@ -42,6 +42,7 @@ const random = [
       'Deon Taylor'
     ],
     countries: ['United States of America'],
+    description: "When a young married couple (Michael Ealy and Meagan Good) buys their dream house in the Napa Valley, they think they have found the perfect home to take their next steps as a family. But when the strangely attached seller (Dennis Quaid) continues to infiltrate their lives, they begin to suspect that he has hidden motivations beyond a quick sale.",
     language: [
       'English',
       'en',
@@ -98,6 +99,7 @@ const random = [
       'France',
       'Italy, France, Germany'
     ],
+    description:"An alternative perspective on migration depicted through a gallery of portraits of a not so quiet daily life in Kavala, a small town in Northern Greece. An ageing local community juxtaposed with a young refugee family residing in the town because of a distant war. While silently contemplating on the past and patiently waiting for the future to come, they are all living a normal, seemingly quiet life.",
     'language': [
       'Deutsch',
       'English',
@@ -138,6 +140,7 @@ const random = [
     ],
     'countries': ['France'
     ],
+    description:" After We Collided is a 2020 American romantic drama film directed by Roger Kumble and written by Anna Todd and Mario Celaya. It is based on the 2014 new adult fiction novel of the same name by Todd, and is the sequel to After (2019). The film stars Josephine Langford and Hero Fiennes Tiffin as Tessa Young and Hardin Scott, respectively, with Dylan Sprouse, Shane Paul McGhie, Candice King, Khadijha Red Thunder, Inanna Sarkis, Samuel Larsen, and Selma Blair in supporting roles.",
     language: [
       'Français',
       'French'
@@ -169,6 +172,7 @@ const random = [
     countries: [
       'United States of America'
     ],
+    description:"Narrated by the legendary Andy Griffith (THE ANDY GRIFFITH SHOW, MATLOCK), this heartwarming animated special is a charming re-imagination of the classic Christmas story following the three wise men on a wondrous quest to meet the newborn king. Their journey is told through rhymed narration alongside a soundtrack of holiday carols performed by The Brothers Cazimero from Hawaii and the new original song Noel by the Grammy Award-winning songwriter Jonas Myrin.",
     language: [
       'English',
       'en'
@@ -221,6 +225,7 @@ const random = [
     countries: [
       'USA, Spain'
     ],
+    description:"Joe, Delia, Rodrigo, and Herbert are very close friends in their mid 30’s. Delia and Rodrigo are married, while Joe is Delia’s ex-boyfriend who turned out to be gay. After a night of drinking, Joe and Delia sleep together and she gets pregnant. Meanwhile, Joe is in a secret online relationship with Tom. They have not met in person yet... and they never will.",
     language: [
       'English'
     ]
@@ -264,6 +269,7 @@ const random = [
     countries: [
       'United States of America'
     ],
+    description:"A group of friends try to debunk a local legend, but have they bitten off more than they can chew?",
     language: [
       'English',
       'en'
@@ -307,6 +313,7 @@ const random = [
       'United States of America',
       'USA'
     ],
+    description:"A cynical college professor takes a keen interest in a talented young writing student.",
     language: [
       'English',
       'en'
@@ -347,6 +354,7 @@ const random = [
       'United States of America',
       'USA'
     ],
+    description:"IN THEATERS & ON DEMAND AUGUST 3rd! A former US special forces soldier is reluctantly appointed to protect a group of millionaires who want to experience the thrills of war first-hand. But when their excursion goes horribly awry, the unlikely team must band together in order to get out alive. Starring Christian Slater, Ving Rhames, Dominic Monaghan, Sean Bean and James Cromwell.",
     language: [
       'English',
       'en'
@@ -391,6 +399,7 @@ const random = [
       'Spain',
       'France, Italy, Spain',
     ],
+    description:"The story takes place in Arizona, around 1870. Link and Gotch are two ruthless robbers that attack along with their men at the train which carries the ambassador of Japan over to Washington. During the robbery, Gotch takes a very valuable gold sword, which is a gift from the emperor to the president of the U.S. and tries to kill Link, so that he can take all the money for himself.",
     language: [
       'Español',
       'English',
@@ -431,6 +440,7 @@ const random = [
       'United States of America',
       'USA'
     ],
+    description:"Encouraged by her lover, Danielle kills her husband and goes on the lam with her infant daughter Cali. But the cops catch her and, en route to prison, she agrees to give custody of Cali to her arch rival, her sister Nikki. But on release from prison, Danielle will stop at nothing to get Cali back from Nikki's safe and healthy home.",
     language: [
       'English'
     ]

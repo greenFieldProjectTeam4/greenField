@@ -12,7 +12,9 @@ export default function Details(props) {
         <div className="title">Title: {props.video.title}</div>
         <button id="watchDetails">+ WatchList</button> 
         </div>
+        
         <form>
+        <div className="description">Description: {props.video.description}</div><br/>
         <textarea className="create-body-textarea"  placeholder="Post Body" name="body" onChange={props.handleChange}></textarea>
         <button className="create-submit-button" type="submit" onClick={props.putComments}>Submit</button>
         </form>

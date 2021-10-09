@@ -151,7 +151,7 @@ getPop(){
 componentDidMount(){
   this.getData()
   this.getPop()
-  this.getTrailer('61603b6b4680cc71d0300d64')
+  this.getTrailer('616172e2b3ee763f2093bcc2')
 }
 
 getOne(videoId){
