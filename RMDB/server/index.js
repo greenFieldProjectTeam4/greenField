@@ -52,6 +52,17 @@ app.get('/api/videos/:videoId', function(req, res) {
   })
 });
 
+app.get('/api/video/:videoTitle', function(req, res) {
+    Video.findOne({title:req.params.videoTitle})
+    .then((result)=>{
+      res.status(201).send(result)
+    })
+    .catch(()=>{
+      res.status(403).send("failed")
+    })
+  });
+
+
 app.post('/signup', (req, res) => {
     User.find({ username: req.body.username })
     .then((err)=>{

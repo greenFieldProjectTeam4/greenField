@@ -80,11 +80,66 @@ class App extends React.Component {
 
   }
 
-  changeView(option) {
-    this.setState({
-      view: option
-    });
+  componentDidMount(){
+    this.getData()
+    this.getPop()
+    // console.log('hne',this.state.trailers[0])
+    // // this.getTrailer(this.state.trailers[0]._id)
+    // axios.get(`http://localhost:3000/api/video/${"Submission"}`)
+    // .then((response)=>{ 
+    //   this.setState({
+    //     trailer: response.data
+    //   })
+    // })
   }
+
+  getData(){
+    axios.get("http://localhost:3000/api/videos")
+    .then((response)=>{ 
+      this.setState({   
+        trailers: response.data
+      })
+    })
+  }
+  
+  getPop(){
+    axios.get("/api/pop")
+    .then((response)=>{ 
+      this.setState({   
+        populars: response.data,
+        trailer: response.data[Math.floor(Math.random()*response.data.length)]
+      })
+    })
+  }
+
+// get on
+  getOne(videoId){
+    axios.get(`http://localhost:3000/api/videos/${videoId}`)
+    .then((response)=>{ 
+      this.setState({
+        video: response.data
+      })
+    })
+  }
+
+  // get one trailer to display in the trailer player 
+  getTrailer(videoId){
+    axios.get(`http://localhost:3000/api/pop/${videoId}`)
+    .then((response)=>{  
+      this.setState({
+        trailer: response.data
+      })
+    })
+  }
+
+
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
+
+ 
+  // handle the sign Up click
   signUpsubmit() {
     if (this.state.password !== '' && this.state.username !== '') {
       axios.post('/signup', { username: this.state.username, password: this.state.password })
@@ -102,7 +157,7 @@ class App extends React.Component {
     else { alert('fill all the fields ') }
   }
 
-  
+  // handle the sign in click
   signInsubmit() {
     if (this.state.password !== '' && this.state.username !== '') {
       axios.post('/signin', { username: this.state.username, password: this.state.password })
@@ -125,52 +180,26 @@ class App extends React.Component {
       alert ('fill the fields')
     }
   }
+
   
-getData(){
-  axios.get("http://localhost:3000/api/videos")
-  .then((response)=>{ 
-    this.setState({   
-      trailers: response.data
-    })
-  })
-}
+  // add the video to the user's watch list
+  addToWatch(userId,newList){
 
+    const list= [...this.state.userLogged[0].toWatchList];
+    console.log('here',list)
 
-
-  handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
+    // list.push(newList) 
+    axios.put(`/user/${userId}`,{toWatchList:list.concat(newList)})
   }
-getPop(){
-  axios.get("/api/pop")
-  .then((response)=>{ 
-    this.setState({   
-      populars: response.data
-    })
-  })
-}
-componentDidMount(){
-  this.getData()
-  this.getPop()
-  this.getTrailer('616064950d5d1421601abdb9')
-}
 
-getOne(videoId){
-  axios.get(`http://localhost:3000/api/videos/${videoId}`)
-  .then((response)=>{ 
-    this.setState({
-      video: response.data
-    })
-  })
-}
 
-getTrailer(videoId){
-  axios.get(`http://localhost:3000/api/pop/${videoId}`)
-  .then((response)=>{  
-    this.setState({
-      trailer: response.data
-    })
-  })
-}
+
+
+ 
+
+
+
+
 
 // postComment(){
 //   axios.post("http://localhost:3000/api/videos",{comments:this.state.video.comments})
@@ -192,10 +221,12 @@ putComments(videoId,newComment){
   })
 }
 
-addToWatch(userId,newList){
-  
- axios.put(`/user/${userId}`,{toWatchList: this.state.userLogged[0].toWatchList.concat(newList)})
 
+
+changeView(option) {
+  this.setState({
+    view: option
+  });
 }
 
   renderView() {
