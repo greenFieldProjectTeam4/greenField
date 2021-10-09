@@ -104,6 +104,13 @@ h2 {
   color:rgb(238, 241, 226)
 }
 
+<<<<<<< HEAD
+=======
+.feed {
+  padding: 0px 10% 0px 10%;
+}
+
+>>>>>>> 551d3c9b4be29ab77240d2e44d3484c834466ab3
 body,
 html {
   margin: 0;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export default function Details(props) {
     // console.log(props.video.directors)
@@ -29,6 +29,6 @@ export default function Details(props) {
     </div>
         </div>
 
-    )
+  );
 }
 

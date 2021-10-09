@@ -11,8 +11,8 @@ return (
 )
 })}
   </div>
-)
+);
 
-export default TrailerRandom
+export default TrailerRandom;
 
 

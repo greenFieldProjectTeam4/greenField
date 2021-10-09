@@ -3,8 +3,8 @@ const db = require('./index.js');
 mongoose.Promise = global.Promise;
 
 const userSchema = new mongoose.Schema({
-  username: { type: String, required: true, unique: true,trim: true },
-  password: { type: String, required: true ,minlength:6},
+  username: { type: String, required: true, unique: true, trim: true },
+  password: { type: String, required: true, minlength: 6},
   toWatchList: [],
   history: { type: Object },
   coomments: { type: Object }
