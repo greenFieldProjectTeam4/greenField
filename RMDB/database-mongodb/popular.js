@@ -15,10 +15,10 @@ const popularSchema = new mongoose.Schema({
   stars: [],
   title: String,
   year: String,
-  youtube_trailer_key: String,
+  youtube_trailer_key: String
     
 
 });
 
-const Popular= mongoose.model('Popular', popularSchema);
+const Popular = mongoose.model('Popular', popularSchema);
 module.exports = Popular;

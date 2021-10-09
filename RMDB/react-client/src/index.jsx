@@ -5,6 +5,7 @@ import SignUp from './components/SignUp.jsx';
 import SignIn from './components/SignIn.jsx';
 import HomePage from './components/HomePage.jsx';
 import Details from './components/Details.jsx';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -13,35 +14,36 @@ class App extends React.Component {
       currentTrailer: null,
       user: false,
       data: [],
-      username:'',
-      password:'',
-      trailers:[],
-      populars:[],
-      video:{
+      username: '',
+      password: '',
+      trailers: [],
+      populars: [],
+      tvs: [],
+      video: {
         countries: null,
-        description: "",
-        directors: [""],
+        description: '',
+        directors: [''],
         genres: null,
-        imdb_rating: "",
+        imdb_rating: '',
         language: [],
-        release_date: "",
-        poster: "",
+        release_date: '',
+        poster: '',
         stars: [],
-        title: "",
-        year: "",
-        youtube_trailer_key: "",
-        comments: [""]
+        title: '',
+        year: '',
+        youtube_trailer_key: '',
+        comments: ['']
       },
-      comment:'',
-      trailer:{
+      comment: '',
+      trailer: {
         countries: null,
-        description: "",
-        directors:[""],
+        description: '',
+        directors: [''],
         genres: null,
-        imdb_rating: "",
+        imdb_rating: '',
         language: [],
-        release_date: "",
-        poster: "",
+        release_date: '',
+        poster: '',
         stars: [],
         title: "",
         year: "",
@@ -54,37 +56,86 @@ class App extends React.Component {
         username:''
       }]
     }
+    ;
 
     this.changeView = this.changeView.bind(this);
     this.handleChange = this.handleChange.bind(this);
-
+    this.getOneTv = this.getOneTv.bind(this);
     this.signUpsubmit = this.signUpsubmit.bind(this);
     this.signInsubmit = this.signInsubmit.bind(this);
-    this.getOne= this.getOne.bind(this)
-    this.getTrailer= this.getTrailer.bind(this)
-    this.getPop=this.getPop.bind(this)
+    this.getOne = this.getOne.bind(this);
+    this.getTrailer = this.getTrailer.bind(this);
+    this.getPop = this.getPop.bind(this);
+  
     // this.postComment= this.postComment.bind(this)
     this.putComments= this.putComments.bind(this);
-    this.addToWatch= this.addToWatch.bind(this)
+    this.addToWatch= this.addToWatch.bind(this);
+    this.getTv = this.getTv.bind(this);
+
   }
 
   //// from dhafer 
-  handleSearch(event) {
-    let datafiltred = this.state.data.filter((element) => {
-      return element.title === event || event.slice(0, 2);
-    });
-    this.setState({
-      view: event,
-      data: datafiltred
-    });
 
+  componentDidMount(){
+    this.getData()
+    this.getPop()
+    // console.log('hne',this.state.trailers[0])
+    // // this.getTrailer(this.state.trailers[0]._id)
+    // axios.get(`http://localhost:3000/api/video/${"Submission"}`)
+    // .then((response)=>{ 
+    //   this.setState({
+    //     trailer: response.data
+    //   })
+    // })
   }
 
-  changeView(option) {
-    this.setState({
-      view: option
-    });
+  getData(){
+    axios.get("http://localhost:3000/api/videos")
+    .then((response)=>{ 
+      this.setState({   
+        trailers: response.data
+      })
+    })
   }
+  
+  getPop(){
+    axios.get("/api/pop")
+    .then((response)=>{ 
+      this.setState({   
+        populars: response.data,
+        trailer: response.data[Math.floor(Math.random()*response.data.length)]
+      })
+    })
+  }
+
+// get on
+  getOne(videoId){
+    axios.get(`http://localhost:3000/api/videos/${videoId}`)
+    .then((response)=>{ 
+      this.setState({
+        video: response.data
+      })
+    })
+  }
+
+  // get one trailer to display in the trailer player 
+  getTrailer(videoId){
+    axios.get(`http://localhost:3000/api/pop/${videoId}`)
+    .then((response)=>{  
+      this.setState({
+        trailer: response.data
+      })
+    })
+  }
+
+
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
+
+ 
+  // handle the sign Up click
   signUpsubmit() {
     if (this.state.password !== '' && this.state.username !== '') {
       axios.post('/signup', { username: this.state.username, password: this.state.password })
@@ -93,16 +144,16 @@ class App extends React.Component {
             username: '',
             password: '',
             user: true,
-            view:'homepage'
+            view: 'homepage'
 
-          })
+          });
         })
         .catch(() => { alert('username already existed') })
     }
     else { alert('fill all the fields ') }
   }
 
-  
+  // handle the sign in click
   signInsubmit() {
     if (this.state.password !== '' && this.state.username !== '') {
       axios.post('/signin', { username: this.state.username, password: this.state.password })
@@ -125,118 +176,110 @@ class App extends React.Component {
       alert ('fill the fields')
     }
   }
+
   
-getData(){
-  axios.get("http://localhost:3000/api/videos")
-  .then((response)=>{ 
-    this.setState({   
-      trailers: response.data
-    })
-  })
-}
+  // add the video to the user's watch list
+  addToWatch(userId,newList){
 
+    const list= [...this.state.userLogged[0].toWatchList];
+    console.log('here',list)
 
-
-  handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
+    // list.push(newList) 
+    axios.put(`/user/${userId}`,{toWatchList:list.concat(newList)})
   }
-getPop(){
-  axios.get("/api/pop")
-  .then((response)=>{ 
-    this.setState({   
-      populars: response.data
-    })
-  })
-}
-componentDidMount(){
-  this.getData()
-  this.getPop()
-  this.getTrailer('61603b6b4680cc71d0300d64')
-}
 
-getOne(videoId){
-  axios.get(`http://localhost:3000/api/videos/${videoId}`)
-  .then((response)=>{ 
-    this.setState({
-      video: response.data
-    })
-  })
-}
 
-getTrailer(videoId){
-  axios.get(`http://localhost:3000/api/pop/${videoId}`)
-  .then((response)=>{  
-    this.setState({
-      trailer: response.data
-    })
-  })
-}
 
-// postComment(){
-//   axios.post("http://localhost:3000/api/videos",{comments:this.state.video.comments})
-//   .then((response)=>{
-//       console.log(response)
-//   })
-//   .then (()=>{
-//     alert("posted!")
-//   })
-//   .catch ((err)=>{
-//     console.log(err)
-//   })
-// }
 
-putComments(videoId,newComment){
-  axios.put(`http://localhost:3000/api/videos/${videoId}`,{comment:newComment})
-  .then((response)=>{
-    console.log(response)
-  })
+ 
+
+
+
+
+
+  getTrailer(videoId) {
+    axios.get(`http://localhost:3000/api/pop/${videoId}`)
+      .then((response)=>{  
+        this.setState({
+          trailer: response.data
+        });
+      });
+  }
+
+  // postComment(){
+  //   axios.post("http://localhost:3000/api/videos",{comments:this.state.video.comments})
+  //   .then((response)=>{
+  //       console.log(response)
+  //   })
+  //   .then (()=>{
+  //     alert("posted!")
+  //   })
+  //   .catch ((err)=>{
+  //     console.log(err)
+  //   })
+  // }
+
+  putComments(videoId, newComment) {
+    axios.put(`http://localhost:3000/api/videos/${videoId}`, {comment: newComment})
+      .then((response)=>{
+        console.log(response);
+      });
+  }
+
+
+getOneTv(tvId) {
+  axios.get(`http://localhost:3000/api/tv/${tvId}`)
+    .then((response)=>{ 
+      this.setState({
+        video: response.data
+      });
+      // console.log(this.state.video.directors)
+    });
 }
 
-addToWatch(userId,newList){
-  
- axios.put(`/user/${userId}`,{toWatchList: this.state.userLogged[0].toWatchList.concat(newList)})
-
+changeView(option) {
+  this.setState({
+    view: option
+  });
 }
 
   renderView() {
     const view = this.state.view;
     const user = this.state.user;
     if (view === 'signin') {
-      return <SignIn username={this.state.username} password={this.state.password} submit={this.signInsubmit} handleChange={this.handleChange} handleClick={() => this.changeView('login')} />
-    }
-    else if (view === 'signup') {
-      return <SignUp username={this.state.username} password={this.state.password} submit={this.signUpsubmit} handleChange={this.handleChange} />
-    }
-    else if(view==='homepage'){
-      return <HomePage  user={this.state.userLogged[0]} update={this.addToWatch}  trailers={this.state.trailers} trailer={this.state.trailer}
-      handleTrailerItems={this.handleTrailerItems} handleClick={() => this.changeView('fff')}
-      getOne={this.getOne} getPop={this.getPop}  getTrailer={this.getTrailer} populars={this.state.populars}/>
-    }
-   
-    else  {
-      return <Details video={this.state.video} handleChange={this.handleChange} putComments={this.putComments}  />
+      return <SignIn username={this.state.username} password={this.state.password} submit={this.signInsubmit} handleChange={this.handleChange} handleClick={() => this.changeView('login')} />;
+    } else if (view === 'signup') {
+      return <SignUp username={this.state.username} password={this.state.password} submit={this.signUpsubmit} handleChange={this.handleChange} />;
+    } else if (view === 'homepage') {
+      return <HomePage trailers={this.state.trailers} trailer={this.state.trailer}
+        handleTrailerItems={this.handleTrailerItems} handleClick={() => this.changeView('fff')}
+        getOne={this.getOne} getPop={this.getPop} getTrailer={this.getTrailer} populars={this.state.populars} 
+        getTv = {this.getTv} tvs={this.state.tvs} getOneTv = {this.getOneTv}/>;
+    } else {
+      return <Details video={this.state.video} handleChange={this.handleChange} putComments={this.putComments}/>;
     }
 
   }
   render() {
-    if (this.state.user === true){
+    console.log(this.state.data);
+    if (this.state.user === true) {
 
       return ( 
         <div>
-        <div className="nav">
+          <div className="nav">
 
-          <span className={this.state.view === 'homepage' ,'logo'}
+            <span className={this.state.view === 'homepage', 'logo'}
             
-          onClick={() => this.changeView('homepage')} >
+              onClick={() => this.changeView('homepage')} >
               ЯMDb
-          </span>
-
-          <span className={this.state.view === 'rmdb'
-            ? 'nav-selected'
-            : 'nav-unselected'}
+            </span>
+            
+            <span className={this.state.view === 'rmdb'
+              ? 'nav-selected'
+              : 'nav-unselected'}
             onClick={() => this.changeView('towatch')}>
             WatchList
-          </span>
+            </span>
 
           <span className="nav-unselected" onClick={() =>{this.setState({user:false}),this.changeView('homepage')} }>
             LogOut
@@ -244,12 +287,12 @@ addToWatch(userId,newList){
          
         </div>
 
-        <div className="main">
-          {this.renderView()}
+          <div className="main">
+            {this.renderView()}
+          </div>
         </div>
-      </div>
     
-      )
+      );
     }
 
 
@@ -257,14 +300,11 @@ addToWatch(userId,newList){
       <div>
         <div className="nav">
 
-          <span className={this.state.view === 'homepage' ,'logo'}
+          <span className={this.state.view === 'homepage', 'logo'}
             
-          onClick={() => this.changeView('homepage')} >
+            onClick={() => this.changeView('homepage')} >
               ЯMDb
           </span>
-
-        
-
           <span className="nav-unselected" onClick={() => this.changeView('signin')}>
             Sign In
           </span>
