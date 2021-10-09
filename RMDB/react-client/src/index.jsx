@@ -99,16 +99,17 @@ class App extends React.Component {
     axios.get('http://localhost:3000/api/videos')
       .then((response)=>{ 
         this.setState({   
-          trailers: response.data
+          trailers: response.data,
+          data: response.data
         });
       });
   }
   getTv() {
     axios.get('/api/tv')
       .then((response)=>{ 
-        console.log(response);
         this.setState({
-          tvs: response.data
+          tvs: response.data,
+          data: response.data
         });
       });
   }
@@ -143,7 +144,8 @@ class App extends React.Component {
     axios.get('/api/pop')
       .then((response)=>{ 
         this.setState({   
-          populars: response.data
+          populars: response.data,
+          data: response.data
         });
       });
   }
@@ -156,7 +158,8 @@ class App extends React.Component {
     axios.get(`http://localhost:3000/api/videos/${videoId}`)
       .then((response)=>{ 
         this.setState({
-          video: response.data
+          video: response.data,
+          data: response.data
         });
         // console.log(this.state.video.directors)
       });
@@ -218,6 +221,7 @@ class App extends React.Component {
 
   }
   render() {
+    console.log(this.state.data);
     if (this.state.user === true) {
 
       return ( 
