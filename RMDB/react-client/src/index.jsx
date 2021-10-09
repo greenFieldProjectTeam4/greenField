@@ -220,7 +220,6 @@ addToWatch(userId,newList){
   }
   render() {
     if (this.state.user === true){
-
       return ( 
         <div>
         <div className="nav">
@@ -244,15 +243,13 @@ addToWatch(userId,newList){
          
         </div>
 
-        <div className="main">
+        <div className="container">
           {this.renderView()}
         </div>
       </div>
     
       )
     }
-
-
     return (
       <div>
         <div className="nav">

@@ -2,7 +2,7 @@ import React from 'react';
 
 
 const TrailerRandom =({trailers,handleClick,getOne,update,user})=> (
-<div className="wrapper">
+<div className="wrapper container">
 
 {trailers.map((e,key)=>{
 return (

@@ -4,17 +4,18 @@ export default function Details(props) {
     // console.log(props.video.directors)
     return (
         <div>
-            <button id="watchDetails">+ WatchList</button> 
+            
             <div className="detailsRandom">  
                 <div><iframe className="details" src={`https://www.youtube.com/embed/${props.video.youtube_trailer_key}`} allowFullScreen></iframe>
+                
             </div>
         </div >   
         <div className="infos">
         <h4 className="title">Title: {props.video.title} </h4>
-        
         </div>
         <form>
-        <div className="description"> {props.video.description}</div><br/>
+        <button id="watchDetails">+ WatchList</button> 
+        <div className="description">Description: <br/> {props.video.description}</div><br/>
         <textarea className="create-body-textarea"  placeholder="Post Body" name="body" onChange={props.handleChange}></textarea>
         <button className="create-submit-button" type="submit" onClick={props.putComments}>Submit</button>
         </form>
