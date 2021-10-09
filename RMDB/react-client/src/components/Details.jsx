@@ -17,8 +17,9 @@ export default function Details(props) {
         <button id="watchDetails">+ WatchList</button> 
         <div className="description">Description: <br/> {props.video.description}</div><br/>
         <textarea className="create-body-textarea"  placeholder="Post Body" name="body" onChange={props.handleChange}></textarea>
-        <button className="create-submit-button" type="submit" onClick={props.putComments}>Submit</button>
+        <button className="create-submit-button" type="submit" >Submit</button>
         </form>
+
         <div className="reference">
     <img id="img"  src="https://cdn.iconscout.com/icon/free/png-256/facebook-logo-2019-1597680-1350125.png"/>
     <img id="img"  src="https://www.symbiotech.com/wp-content/uploads/2021/05/instagram.png"/>

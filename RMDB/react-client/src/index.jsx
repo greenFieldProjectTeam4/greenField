@@ -63,21 +63,12 @@ class App extends React.Component {
     this.getOne= this.getOne.bind(this)
     this.getTrailer= this.getTrailer.bind(this)
     this.getPop=this.getPop.bind(this)
-    // this.postComment= this.postComment.bind(this)
-    this.putComments= this.putComments.bind(this);
     this.addToWatch= this.addToWatch.bind(this)
   }
-
-  //// from dhafer 
-  handleSearch(event) {
-    let datafiltred = this.state.data.filter((element) => {
-      return element.title === event || event.slice(0, 2);
-    });
-    this.setState({
-      view: event,
-      data: datafiltred
-    });
-
+  componentDidMount(){
+    this.getData()
+    this.getPop()
+    this.getTrailer('616172d9d443694e8c559e83')
   }
 
   changeView(option) {
@@ -135,8 +126,6 @@ getData(){
   })
 }
 
-
-
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
@@ -147,11 +136,6 @@ getPop(){
       populars: response.data
     })
   })
-}
-componentDidMount(){
-  this.getData()
-  this.getPop()
-  this.getTrailer('616172d9d443694e8c559e83')
 }
 
 getOne(videoId){
@@ -172,25 +156,6 @@ getTrailer(videoId){
   })
 }
 
-// postComment(){
-//   axios.post("http://localhost:3000/api/videos",{comments:this.state.video.comments})
-//   .then((response)=>{
-//       console.log(response)
-//   })
-//   .then (()=>{
-//     alert("posted!")
-//   })
-//   .catch ((err)=>{
-//     console.log(err)
-//   })
-// }
-
-putComments(videoId,newComment){
-  axios.put(`http://localhost:3000/api/videos/${videoId}`,{comment:newComment})
-  .then((response)=>{
-    console.log(response)
-  })
-}
 
 addToWatch(userId,newList){
   
@@ -214,7 +179,7 @@ addToWatch(userId,newList){
     }
    
     else  {
-      return <Details video={this.state.video} handleChange={this.handleChange} putComments={this.putComments}  />
+      return <Details video={this.state.video} handleChange={this.handleChange}/>
     }
 
   }
