@@ -364,7 +364,7 @@ const random = [
       'Western',
       'Action'
     ],
-    'stars': [
+    stars: [
       'Charles Bronson',
       'Ursula Andress',
       'Toshirō Mifune',

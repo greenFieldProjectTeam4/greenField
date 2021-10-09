@@ -7,6 +7,7 @@ const videoSchema = new mongoose.Schema({
   description: String,
   directors: [String],
   genres: [String],
+  // eslint-disable-next-line camelcase
   imdb_rating: String,
   language: [],
   release_date: String,
