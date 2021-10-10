@@ -17,22 +17,22 @@ export default function SignIn(props) {
             </div>
             <div><button onClick={props.submit} class='ghost-round full-width'>Enter to your account</button></div>
        
+          </div>
+        </div>
+      </div>
+      <div className="reference">
+        <img id="img" src="https://cdn.iconscout.com/icon/free/png-256/facebook-logo-2019-1597680-1350125.png"/>
+        <img id="img" src="https://www.symbiotech.com/wp-content/uploads/2021/05/instagram.png"/>
+        <img id="img" src="http://pngimg.com/uploads/twitter/twitter_PNG23.png"/>
+        <img id="img" src="https://www.designbust.com/download/1005/png/transparent_background_youtube_logo_png256.png"/>
+      </div>
+      <div className="reference2">
+        <h4>Get the ЯMDb App ||  Help  ||   Site Index  ||   ЯMDbPro  ||   Box Office Mojo  ||   ЯMDb Developer</h4>
+        <h4>Press Room ||  Advertising  ||   Jobs  ||   Conditions of Use  ||  Privacy Policy  ||   Interest-Based Ads</h4>
+        <h5 id="amazon">© 1990-2021 by ЯMDb.com, Inc.</h5>
       </div>
     </div>
-  </div>
-  <div className="reference">
-    <img id="img"  src="https://cdn.iconscout.com/icon/free/png-256/facebook-logo-2019-1597680-1350125.png"/>
-    <img id="img"  src="https://www.symbiotech.com/wp-content/uploads/2021/05/instagram.png"/>
-    <img id="img"  src="http://pngimg.com/uploads/twitter/twitter_PNG23.png"/>
-    <img id="img"  src="https://www.designbust.com/download/1005/png/transparent_background_youtube_logo_png256.png"/>
-    </div>
-    <div className="reference2">
-    <h4>Get the ЯMDb App ||  Help  ||   Site Index  ||   ЯMDbPro  ||   Box Office Mojo  ||   ЯMDb Developer</h4>
-    <h4>Press Room ||  Advertising  ||   Jobs  ||   Conditions of Use  ||  Privacy Policy  ||   Interest-Based Ads</h4>
-    <h5 id="amazon">© 1990-2021 by ЯMDb.com, Inc.</h5>
-    </div>
-  </div>
-  )
+  );
 }
 
 
