@@ -121,7 +121,7 @@ app.get('/api/pop/:videoId', function(req, res) {
 });
 
 
-app.put('/user/:userId',(req,res)=>{console.log('here',req.body);
+app.put('/user/:userId',(req,res)=>{
  User.findOneAndUpdate({_id:req.params.userId},req.body)
  .then((result)=>{
     res.status(201).send(result)

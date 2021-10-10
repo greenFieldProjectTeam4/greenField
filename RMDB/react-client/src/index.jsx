@@ -182,7 +182,7 @@ class App extends React.Component {
 
     list.push(newList) 
     axios.put(`/user/${userId}`,{toWatchList:list})
-    
+
   }
 
     // get one trailer to display in the trailer player;
@@ -257,6 +257,7 @@ changeView(option) {
         getOne={this.getOne} getPop={this.getPop} getTrailer={this.getTrailer} populars={this.state.populars} 
         getTv = {this.getTv} tvs={this.state.tvs} getOneTv = {this.getOneTv}/>;
     }
+    
     else {
       return <Details video={this.state.video} handleChange={this.handleChange} putComments={this.putComments}/>;
     }
@@ -289,7 +290,7 @@ changeView(option) {
          
         </div>
 
-          <div className="main">
+          <div className="container">
             {this.renderView()}
           </div>
         </div>
@@ -307,7 +308,7 @@ changeView(option) {
             onClick={() => this.changeView('homepage')} >
               ЯMDb
           </span>
-          <span className="nav-unselected" onClick={() => this.changeView('signin')}>
+          <span className="nav-unselected" onClick={() =>{console.log('test'); this.changeView('signin')}}>
             Sign In
           </span>
           <span className="nav-unselected" onClick={() => this.changeView('signup')}>
@@ -315,7 +316,7 @@ changeView(option) {
           </span>
         </div>
 
-        <div className="main">
+        <div className="container">
           {this.renderView()}
         </div>
       </div>

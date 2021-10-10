@@ -1,5 +1,5 @@
-import React from 'react';
 
+import React from 'react';
 export default function Details(props) {
     // console.log(props.video.directors)
     return (
@@ -7,14 +7,15 @@ export default function Details(props) {
             <div className="detailsRandom">  
                 <div><iframe className="details" src={`https://www.youtube.com/embed/${props.video.youtube_trailer_key}`} allowFullScreen></iframe>
             </div>
-        </div >   
+        </div >  
         <div className="infos">
-        <div className="title">Title: {props.video.title}</div>
-        <button id="watchDetails">+ WatchList</button> 
+        <h4 className="title">Title: {props.video.title} </h4>
         </div>
         <form>
+        <button id="watchDetails">+ WatchList</button>
+        <div className="description">Description: <br/> {props.video.description}</div><br/>
         <textarea className="create-body-textarea"  placeholder="Post Body" name="body" onChange={props.handleChange}></textarea>
-        <button className="create-submit-button" type="submit" onClick={props.putComments}>Submit</button>
+        <button className="create-submit-button" type="submit" >Submit</button>
         </form>
         <div className="reference">
     <img id="img"  src="https://cdn.iconscout.com/icon/free/png-256/facebook-logo-2019-1597680-1350125.png"/>
@@ -28,7 +29,5 @@ export default function Details(props) {
     <h5 id="amazon">© 1990-2021 by ЯMDb.com, Inc.</h5>
     </div>
         </div>
-
   );
 }
-
