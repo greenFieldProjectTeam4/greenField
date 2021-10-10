@@ -2,9 +2,7 @@ import React from 'react';
 
 
 const TrailerTvShow = ({tvs, handleClick, getOneTv})=> (
-  
   <div className="wrapper">
-    {console.log(tvs)}
     {tvs.map((e, key)=>{
       return (
         <div key={key} className="item"> <img id="poster" onClick={()=>{ handleClick(); getOneTv(e._id); }} src={e.poster} />  
