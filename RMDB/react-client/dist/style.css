@@ -344,12 +344,11 @@ height: 250px;
 margin-right: 30px;
 color: white;
 }
-/* 
-#poster{
-  width: 150px;
-  height: 150px;
-} */
 
+.item2{
+  font-size: 22px;
+  color: white;
+}
 button {
   cursor: pointer;
   border: none;
@@ -362,6 +361,7 @@ button {
 #star{
   width: 20px;
   height: 20px;
+  color: white;
 }
 h4{
   color: #ffffff;
@@ -491,3 +491,7 @@ form{
   margin-left: 270px;
 }
 
+.titlewatch{
+  color: white;
+  font-size: 22px;
+}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export default function Details(props) {
     // console.log(props.video.directors)
@@ -17,7 +17,7 @@ export default function Details(props) {
         <button id="watchDetails">+ WatchList</button> 
         <div className="description">Description: <br/> {props.video.description}</div><br/>
         <textarea className="create-body-textarea"  placeholder="Post Body" name="body" onChange={props.handleChange}></textarea>
-        <button className="create-submit-button" type="submit" >Submit</button>
+        <button className="create-submit-button" type="submit" onClick={props.postComment}>Submit</button>
         </form>
 
         <div className="reference">
@@ -33,6 +33,6 @@ export default function Details(props) {
     </div>
         </div>
 
-    )
+  );
 }
 

@@ -1,423 +1,491 @@
 /* eslint-disable camelcase */
 const db = require('./index.js');
-const Video = require('./video.js');
+const Tv = require('./Tv.js');
 
 const worst = [
   {
-    title: 'Aladdin',
-    year: '2019',
-    release_date: '2023-07-14',
-    imdb_id: 'tt11779248',
-    imdb_rating: '0',
-    poster: 'https://m.media-amazon.com/images/M/MV5BY2Q2NDI1MjUtM2Q5ZS00MTFlLWJiYWEtNTZmNjQ3OGJkZDgxXkEyXkFqcGdeQXVyNTI4MjkwNjA@._V1_SX300.jpg',
-    vote_count: '0',
-    popularity: '3.429',
-    youtube_trailer_key: 'aKXex7b1Ew',
-    rated: 'PG-13',
-    genres: [ 
-      'Fantasy',
-      'Family',
-      'Adventure',
-      
-    ],
-    stars: [
-      'Dennis Quaid',
-      'Meagan Good',
-      'Michael Ealy'
-    ],
-    directors: [
-      'Guy Ritchie'
-    ],
-    countries: ['United States of America'
-    ],
-    language: [
-      'English',
-    ]
-  },
-  {
-    title: 'Bad Blood',
-    year: '2017',
-    release_date: '07 Dec 2018',
-    poster: 'https://m.media-amazon.com/images/M/MV5BMzRmNzZkMmMtMzU5YS00ZThhLWE2YzItZTNhNGMwMmI1MjQyXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg',
-    imdb_id: 'tt5795144',
-    imdb_rating: '6.8',
-    vote_count: '90',
-    popularity: '7.913',
-    youtube_trailer_key: '',
-    genres: [
-      'Drama',
-      'Crime'
-    ],
-    stars: [
-      'Jennifer Lawrence',
-      'Mike Gassaway'  
-    ],
-    directors: [
-      'Adam McKay'
-    ],
-    countries: [
-      'Germany',
-      'Italy',
-    ],
-    language: [
-      'English'
-    ]
-  },
-  {
-    title: 'The Intruder',
-    year: '2019',
-    release_date: '2019-05-03',
-    imdb_id: 'tt6722030',
-    imdb_rating: '6.2',
-    poster: 'https://m.media-amazon.com/images/M/MV5BNTczMzc4NDY0MF5BMl5BanBnXkFtZTgwMjI3Njg3NjM@._V1_SX300.jpg',
-    vote_count: '297',
-    popularity: '19.372',
-    youtube_trailer_key: 'aKXvex7b1Ew',
-    rated: 'PG-13',
-    genres: [ 
-      'Thriller',
-      'Drama',
-      'Horror',
-      'Mystery',
-    ],
-    stars: [
-      'Dennis Quaid',
-      'Meagan Good',
-      'Michael Ealy',
-      'Joseph Sikora',
-      'Alvina August',
-      'Lili Sepe',
-      'Kurt Evans',
-      'Debs Howard',
-      'Lee Shorten',
-      'Carolyn Anderson',
-      'Erica Cerra',
-      'Raylene Harewood',
-      'Caroline Muthoni Muita',
-      'Connor Mackay',
-      'John Torrance',
-      'Mary Elise Torrance',
-    ],
-    directors: [
-      'Deon Taylor'
-    ],
-    countries: ['United States of America'
-    ],
-    language: [
-      'English',
-      'en',
-    ]
-  },
-  {
-    title: 'A Quiet Life',
-    year: '2010',
-    release_date: '2010-11-05',
-    imdb_id: 'tt1521090',
-    imdb_rating: '6.5',
-    poster: 'https://upload.wikimedia.org/wikipedia/en/e/e2/A_Quiet_Life.jpg',
-    vote_count: '90',
-    popularity: '7.913',
-    youtube_trailer_key: '',
-    genres: [
-      'Drama',
-      'Crime'
-    ],
-    stars: [
-      'Toni Servillo',
-      'Marco D\'Amore',
-      'Francesco Di Leva',
-      'Juliane Köhler',
-      'Leonardo Sprengler',
-      'Alice Dwyer',
-      'Maurizio Donadoni',
-      'Micki Bertling',
-      'Ulrich Cyran',
-      'Nick Dong-Sik',
-      'Joachim Kretzer',
-      'Giovanni Ludeno',
-      'Edoardo Melone',
-      'Franco Melone',
-      'Daniel Roesner',
-      'Enzo Salomone',
-      'Lucia Schlör',
-      'Hildburg Schmidt',
-      'Andreas Wellano',
-      'Hans-Joachim Heist',
-      'Irmtraud Hetz',
-      'Peter Sablic',
-      'Yalcin Bögürkü',
-      'Tina Klein',
-      'Frank M. Ahearn',
-      'Eilean Roland',
-    ],
-    'directors': [
-      'Claudio Cupellini'
-    ],
-    'countries': [
-      'Germany',
-      'Italy',
-      'France',
-      'Italy, France, Germany'
-    ],
-    'language': [
-      'Deutsch',
-      'English',
-      'Italiano',
-      'Italian, German, Neapolitan, English'
-    ]
-  },
-  {
-    title: 'Jurassic World: Dominion',
-    year: '2022',
-    release_date: '2022-06-09',
-    imdb_id: 'tt8041270',
-    imdb_rating: '7.29167',
-    vote_count: '48',
-    poster: 'https://m.media-amazon.com/images/M/MV5BMDhkODhmZjEtMmE5My00MTE1LTllZGItMDkwOTZlMjY1ZWUyXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_SX300.jpg',
-    popularity: '32.399',
-    youtube_trailer_key: '',
-    rated: 'Action, Adventure, Sci-Fi ',
-    runtime: 90,
-    genres: [
-      'Adventure',
-      'Action',
-      'Sci-Fi',
-      'Thriller'
-    ],
-    stars: [
-      'Chris Pratt',
-      'Bryce Dallas Howard',
-      'Laura Dern',
-      'Jeff Goldblum',
-      'Mamoudou Athie',
-      'Scott Haze',
-      'Dichen Lachman',
-      'Sam Neill',
-      'Daniella Pineda',
-      'Campbell Scott'
-    ],
-    directors: [
-      'Colin Trevorrow'
-    ],
-    countries: [
-      'United States of America'
-    ],
-    'language': [
-      'English'
-    ]
-  },
-  {
-    title: 'The Three Wise Men',
+    title: 'Tarung Sarung',
     year: '2020',
-    release_date: '2020-11-27',
-    imdb_id: 'tt13319946',
-    imdb_rating: '7.5',
-    poster: 'https://m.media-amazon.com/images/M/MV5BYzk3NjZmZWMtN2YyYS00ZThhLTk4YjEtYmFkNDk3ZTA1NDA4XkEyXkFqcGdeQXVyODMyNDE3MTI@._V1_SX300.jpg',
-    vote_count: '2',
-    popularity: '2.168',
-    youtube_trailer_key: 'dyJJv-n4xoE',
+    release_date: '2020-12-31',
+    imdb_id: 'tt11749980',
+    imdb_rating: '7.3',
+    poster: 'https://m.media-amazon.com/images/M/MV5BZWM4ZmNhMjctNTA1Ni00MzVjLWJiOTQtYTUwNTY4ZGQwZmRlXkEyXkFqcGdeQXVyNzEzNjU1NDg@._V1_SX300.jpg',
+    vote_count: '5',
+    youtube_trailer_key: 'AgaXQPJCRjA',
     genres: [
-      'Family',
-      'History',
       'Action',
-      'Short',
+      'Drama',
+      'Adventure',
     ],
     stars: [
-      'Andy Griffith'
+      'Panji Zoni',
+      'Yayan Ruhian',
+      'Maizura',
+      'Cemal Faruk',
+      'Surya Saputra',
+      'Jarot SuperDJ',
+      'Doyok SuperDJ',
+      'Annette Edoarda',
+      'Imelda Therinne',
+      'Hajra Romessa'
     ],
     directors: [
-      'Yarrow Cheney',
-      'Carrie Cheney'
+      'Archie Hekagery'
     ],
     countries: [
-      'United States of America'
+      'Indonesia'
     ],
     language: [
-      'English',
-      'en'
+      'Bahasa indonesia'
     ]
   },
   {
-    title: 'The Bad Guys',
-    year: '2022',
-    release_date: '2022-04-08',
-    imdb_id: 'tt8115900',
-    imdb_rating: '0',
-    vote_count: '0',
-    poster: 'https://m.media-amazon.com/images/M/MV5BMTExNTEzMzM3OTNeQTJeQWpwZ15BbWU4MDY2OTI1OTYx._V1_SX300.jpg',
-    popularity: '4.193',
-    youtube_trailer_key: '',
-    rated: 'Animation, Action, Comedy ',
-    runtime: 90,
+    title: 'Harry and Walter Go to New York',
+    year: '1976',
+    release_date: '1976-06-17',
+    imdb_id: 'tt0074608',
+    imdb_rating: '6.4',
+    poster: 'https://m.media-amazon.com/images/M/MV5BYzVhMGJjNTUtYzg2Ny00OTU5LTgwYWQtZjlkNTcwMTJiZDJkL2ltYWdlXkEyXkFqcGdeQXVyMjI4MjA5MzA@._V1_SX300.jpg',
+    vote_count: '5',
+    youtube_trailer_key: '-ZDvhYsm2as',
     genres: [
-      'Animation',
-      'Action',
+      'Crime',
       'Comedy'
     ],
     stars: [
-      'Sam Rockwell',
-      'Craig Robinson',
-      'Awkwafina',
-      'Marc Maron'
+      'Elliott Gould',
+      'James Caan',
+      'Diane Keaton',
+      'Michael Caine',
+      'Charles Durning',
+      'Lesley Ann Warren',
+      'Val Avery',
+      'Jack Gilford',
+      'Dennis Dugan',
+      'Carol Kane'
     ],
     directors: [
-      'Pierre Pierfel',
-      'Roger Allers',
-      'Pierre Perifel',
-      '2 more credits'
+      'Mark Rydell'
     ],
     countries: [
       'United States of America'
-    ],
-    language: [
-      'English'
-    ]
-  }, 
-  {
-    title: 'People You May Know',
-    year: '2016',
-    release_date: '2016-07-07',
-    imdb_id: 'tt4696310',
-    imdb_rating: '5.7',
-    poster: 'https://m.media-amazon.com/images/M/MV5BMjZkZTU0ODktYjhjNi00YWNlLTljYjgtOTBjNzZjZGMxMDVlXkEyXkFqcGdeQXVyMjQ3NzUxOTM@._V1_SX300.jpg',
-    vote_count: '19',
-    popularity: '3.72',
-    youtube_trailer_key: 'wOVZb_jJ0_g',
-    genres: [
-      'Comedy',
-      'Drama',
-    ],
-    stars: [
-      'Sean Maher',
-      'Andrea Grano',
-      'Mark Cirillo',
-      'Lauren C. Mayhew',
-      'Nacho San José',
-      'Curt Hansen',
-      'Trey McCurley',
-      'Jimmy Shaw',
-      'Nelly Castillo',
-      'Deborah Domínguez',
-      'Tara Karsian',
-      'Frederick Keeve',
-      'David Krohnert',
-      'Connor Linnerooth',
-      'Louis Macarthur',
-      'Sergio Macian',
-      'Carmen Maura',
-      'Rafael I. Molina',
-      'Raymond Rivera III',
-      'Amor Sanchez',
-      'Karl Schott',
-      'Isabel Serrano',
-      'Nikos Siozos',
-      'David Vega',
-      'Cynthia Webster',
-      'Jessica B. Wellington',
-    ],
-    directors: [
-      'J.C. Falcón'
-    ],
-    countries: [
-      'USA, Spain'
-    ],
-    language: [
-      'English'
-    ]
-  },
-  {
-    title: 'Blood Moon River',
-    year: '2017',
-    release_date: '2017-04-22',
-    imdb_id: 'tt5925370',
-    imdb_rating: '2',
-    poster: 'https://m.media-amazon.com/images/M/MV5BMTc1NDg4YWMtZDdlMS00NTdlLTljZDQtNGRkZTIxZTZlNTI4XkEyXkFqcGdeQXVyMTU5MjIyMTI@._V1_SX300.jpg',
-    vote_count: '1',
-    youtube_trailer_key: 'St3J3GHEDNA',
-    genres: [
-      'Horror'
-    ],
-    stars: [
-      'Daniel Murphy',
-      'Tom Komisar',
-      'Jack Norman',
-      'R.J. Cecott',
-      'Rebekah Erb',
-      'Sydney Dean',
-      'Tony Walters',
-      'Cameron Scott',
-      'Lindsey McIntire',
-      'Edward Diersen',
-      'Stan Traylor',
-      'James Michael',
-      'Naphatia St Pierre',
-      'Sara Ingram',
-      'Eric Reaume',
-      'Cara McConnell',
-      'Linda Schrader',
-    ],
-    directors: [
-      'R.J. Cecott',
-      'Tom Komisar',
-      'Daniel Murphy',
-    ],
-    countries: [
-      'United States of America'
-    ],
-    language: [
-      'English',
-      'en'
-    ]
-  },{
-    title: 'Red Sun',
-    year: '1971',
-    release_date: '1971-09-15',
-    imdb_id: 'tt0067770',
-    imdb_rating: '6.8',
-    poster: 'https://m.media-amazon.com/images/M/MV5BNTMwNDgyNDItOTYzZi00MjhmLTgyYzItYjNiY2Y5NGY2YWY4XkEyXkFqcGdeQXVyMjQwMjk0NjI@._V1_SX300.jpg',
-    youtube_trailer_key: 'r1iC4ids4v8',
-    'genres': [
-      'Western',
-      'Action'
-    ],
-    'stars': [
-      'Charles Bronson',
-      'Ursula Andress',
-      'Toshirō Mifune',
-      'Alain Delon',
-      'Capucine',
-      'Barta Barri',
-      'Guido Lollobrigida',
-      'Anthony Dawson',
-      'Gianni Medici',
-      'Georges Lycan',
-      'Luc Merenda',
-      'Tetsu Nakamura'
-    ],
-    directors: [
-      'Terence Young',
-      'Joan Davis',
-      'Ricardo Huertas Frutos',
-      'Christian Raoux',
-      'Ricardo Huertas',
-    ],
-    countries: [
-      'France',
-      'Italy',
-      'Spain',
-      'France, Italy, Spain',
     ],
     language: [
       'Español',
-      'English',
-      '日本語',
-      'English, Spanish, Japanese',
+      'Deutsch',
+      'English'
     ]
   },
+  {
+    title: 'Harry and Walter Go to New York',
+    year: '1988',
+    release_date: '1988-12-23',
+    imdb_id: 'tt0143952',
+    imdb_rating: '3.8',
+    poster: 'https://m.media-amazon.com/images/M/MV5BNTliYThhZDEtNThkOS00NjZjLWE0ODktN2FiZmQ1YTg2NTkzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg',
+    vote_count: '5',
+    youtube_trailer_key: 'kk5WdVQj9Ro',
+    genres: [
+      'Drama',
+      'Horror',
+      'Thriller'
+    ],
+    stars: [
+      'Alex Kubik',
+      'Elizabeth Kent',
+      'Cameron Mitchell',
+      'Mark Witsken',
+      'Sullivan Hester',
+      'Michael Nash',
+      'Laura Kalison',
+      'Paul Dean',
+      'Jay Leggett',
+      'Randolph Powell'
+    ],
+    directors: [
+      'Leszek Burzynski'
+    ],
+    countries: [
+      'United States of America'
+    ],
+    language: [
+      'English'
+    ]
+  },
+  {
+    title: 'Shopping',
+    year: '1994',
+    release_date: '1994-12-06',
+    imdb_id: 'tt0111173',
+    imdb_rating: '5.8',
+    poster: 'https://m.media-amazon.com/images/M/MV5BNjVlN2MzYTYtNzEyMy00YTI0LWFiMGYtZmJmOTBhZDgzYTM5XkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg',
+    vote_count: '5',
+    youtube_trailer_key: 'cR1Zvw5MmLs',
+    genres: [
+      'Action',
+      'Adventure',
+      'Drama',
+      'Sci-Fi',
+      'Thriller',
+      'Crime'
+    ],
+    stars: [
+      'Sadie Frost',
+      'Jude Law',
+      'Sean Pertwee',
+      'Fraser James',
+      'Sean Bean',
+      'Marianne Faithfull',
+      'Jonathan Pryce',
+      'Ralph Ineson',
+      'Eamonn Walker',
+      'Lee Whitlock'
+    ],
+    directors: [
+      'Paul W. S. Anderson'
+    ],
+    countries: [
+      'United Kingdom',
+      'UK, Japan'
+    ],
+    language: [
+      'English'
+    ]
+  },
+  {
+    title: 'Robot & Frank',
+    year: '2012',
+    release_date: '2012-08-16',
+    imdb_id: 'tt1990314',
+    imdb_rating: '6.9',
+    poster: '"https://m.media-amazon.com/images/M/MV5BMTUzMTE0NTk4Ml5BMl5BanBnXkFtZTcwNjQ1OTMwOA@@._V1_SX300.jpg',
+    vote_count: '5',
+    youtube_trailer_key: 'a_gAJk_CfPI',
+    genres: [
+      'Action',
+      'Comedy',
+      'Drama',
+      'Sci-Fi',
+      'Sci-Fi',
+      'Crime'
+    ],
+    stars: [
+      'Frank Langella',
+      'Liv Tyler',
+      'James Marsden',
+      'Susan Sarandon',
+      'Peter Sarsgaard',
+      'Jeremy Strong',
+      'Jeremy Sisto',
+      'Bonnie Bentley',
+      'Dario Barosso',
+      'Rachael Ma'
+    ],
+    directors: [
+      'Jake Schreier'
+    ],
+    countries: [
+      'United States of America'
+    ],
+    language: [
+      'English'
+    ]
+  },
+  {
+    title: 'Koch Brothers Exposed',
+    year: '2012',
+    release_date: '2012-03-07',
+    imdb_id: 'tt2347411',
+    imdb_rating: '6.5',
+    poster: 'https://m.media-amazon.com/images/M/MV5BMTM3NDQ2MDQwMV5BMl5BanBnXkFtZTcwNjUxMDc3Nw@@._V1_SX300.jpg',
+    vote_count: '5',
+    youtube_trailer_key: 'zc_3wsLd01s',
+    genres: [
+      'Documentary'
+    ],
+    stars: [
+      'Bernie Sanders',
+      'Van Jones',
+      'Bill McKibben',
+      'Jim Hightower',
+      'Katrina vanden Heuvel',
+      'Charles G. Koch',
+      'David H. Koch',
+      'Fred C. Koch',
+      'Lawrence Lessig',
+    ],
+    directors: [
+      'Robert Greenwald'
+    ],
+    countries: [
+      'United States of America'],
+    title: 'L.A. Superheroes',
+    year: '2013',
+    release_date: '2013-11-08',
+    imdb_id: 'tt2515476',
+    imdb_rating: '7.5',
+    poster: 'https://m.media-amazon.com/images/M/MV5BMTM4MzYxNTUxMV5BMl5BanBnXkFtZTcwNzA3MDY0OQ@@._V1_SX300.jpg',
+    vote_count: '5',
+    youtube_trailer_key: 'U596XawbqX0',
+    genres: [
+      'Comedy',
+      'Drama'
+    ],
+    stars: [
+      'Yelena Popovic',
+      'Alexander Zisiades',
+      'Craig Archibald',
+      'Alejandra Bursik-Cervantes',
+      'Catherine Carlen',
+      'T.J. Castronovo',
+      'Tsulan Cooper'
+    ],
+    directors: [
+      'Yelena Popovic',
+      'Alexandros Potter'],
+    title: 'Boogie',
+    year: '2009',
+    release_date: '2009-10-22',
+    imdb_id: 'tt1235827',
+    imdb_rating: '6',
+    poster: 'https://m.media-amazon.com/images/M/MV5BMTkxNjkzMTA3NV5BMl5BanBnXkFtZTcwNjY0MjE3Mg@@._V1_SX300.jpg',
+    youtube_trailer_key: 'SIjExs4VhEc',
+    genres: [
+      'Action',
+      'Animation',
+      'Crime',
+      'Thriller'
+    ],
+    stars: [
+      'Pablo Echarri',
+      'Nancy Dupláa',
+      'Nicolás Frías',
+      'Marcelo Armand',
+      'Jesús Ochoa',
+      'Rufino Gallo',
+      'Diego Brizzi',
+      'Ricardo Alanis',
+      'Luciana Falcón',
+      'Karin Zavala'
+    ],
+    directors: [
+      'Gustavo Cova'
+    ],
+    countries: [
+      'Argentina',
+      'Mexico'
+    ],
+    language: [
+      'Español'
+    ]
+  },
+  {
+    title: 'Zátopek',
+    year: '2021',
+    release_date: '2021-08-26',
+    imdb_id: 'tt4806220',
+    imdb_rating: '7.5',
+    poster: 'https://m.media-amazon.com/images/M/MV5BMmY4NjM5ZDMtYjRkMi00ODBmLWE4NTQtYWEzZmZkZjQ3YzRlXkEyXkFqcGdeQXVyMDU3ODM5Mg@@._V1_SX300.jpg',
+    youtube_trailer_key: 'MAPW-j-c99c',
+    genres: [
+      'Drama'
+    ],
+    stars: [
+      'Václav Neužil',
+      'Martha Issová',
+      'James Frecheville',
+      'Robert Mikluš',
+      'Gabriel Andrews',
+      'Sinéad Phelps',
+      'Sean Brodeur',
+      'Anna Schmidtmajerová',
+      'Filipp Mogilnitskiy',
+      'Roy McCrerey'
+    ],
+    directors: [
+      'David Ondříček'
+    ],
+    countries: [
+      'Czech Republic',
+      'Slovakia'
+    ],
+    language: [
+      'English',
+      'Český'
+    ]
+  },
+  {
+    title: 'Nothing for Mahala',
+    year: '2013',
+    release_date: '2013-10-04',
+    imdb_id: 'tt3013148',
+    imdb_rating: '8',
+    poster: 'https://m.media-amazon.com/images/M/MV5BMTk4NDQ4MzM0Nl5BMl5BanBnXkFtZTcwNDY3MTM5OQ@@._V1_SX300.jpg',
+    youtube_trailer_key: 'MAPW-j-c99c',
+    genres: [
+      'Comedy'
+    ],
+    stars: [
+      'Marius Weyers',
+      'Thapelo Mokoena',
+      'Mmabatho Montsho',
+      'Jamie Bartlett',
+      'Shoki Mokgapa',
+      'Rapulana Seiphemo',
+      'Warren Masemola',
+      'Casper De Vries',
+      'Felicia Mahambehlala',
+      'Annabel Linder'
+    ],
+    directors: [
+      'Rolie Nikiwe'
+    ],
+    countries: [
+      'South Africa'
+    ],
+    language: [
+      'English',
+      'English, Afrikaans'
+    ]
+  },
+  {
+    title: 'Red Without Blue',
+    year: '2007',
+    release_date: '2007-01-19',
+    imdb_id: 'tt0923870',
+    imdb_rating: '6.5',
+    poster: 'https://m.media-amazon.com/images/M/MV5BMTk3MzMxNDM5MV5BMl5BanBnXkFtZTcwNDM4MjQ4Mw@@._V1_SX300.jpg',
+    youtube_trailer_key: 'egVybLHDHwI',
+    genres: [
+      'Documentary'
+    ],
+    stars: [
+      'Clair Farley',
+      'Jennie Farley',
+      'Mark Oliver Farley',
+      'Scott Farley',
+      'David L. Suarez',
+      'Jennifer Jordan'
+    ],
+    directors: [
+      'Brooke Sebold',
+      'Benita Sills',
+      'Todd Sills',
+      '1 more credit',
+      'Brooke Sebold, Benita Sills, Todd Sills'
+    ],
+    countries: [
+      'United States of America',
+    ],
+    language: [
+      'English'
+    ]
+  },
+  {
+    title: 'Uninhabited',
+    year: '2010',
+    release_date: '2010-05-14',
+    imdb_id: 'tt1459013',
+    imdb_rating: '4.4',
+    poster: 'https://m.media-amazon.com/images/M/MV5BMjE2NjIyNTgxNF5BMl5BanBnXkFtZTcwODE4Njc3Mw@@._V1_SX300.jpg',
+    vote_count: '5',
+    youtube_trailer_key: 'gdmg5nm2iCM',
+    genres: [
+      'Thriller',
+      'Horror'
+    ],
+    stars: [
+      'Geraldine Hakewill',
+      'Bob Baines',
+      'Tasia Zalar',
+      'Henry James',
+      'Billy Milionis',
+      'Terry Siourounis'
+    ],
+    directors: [
+      'Bill Bennett'
+    ],
+    countries: [
+      'Australia'
+    ],
+    language: [
+      'English',
+      'Deutsch'
+    ]
+  },
+  {
+    title: 'Alpha Dog',
+    year: '2006',
+    release_date: '2006-01-27',
+    imdb_id: 'tt0426883',
+    imdb_rating: '6.7',
+    poster: 'https://m.media-amazon.com/images/M/MV5BMjExODMyNzQzMl5BMl5BanBnXkFtZTYwNzMwNTg3._V1_SX300.jpg',
+    vote_count: '5',
+    youtube_trailer_key: 'SPbwocBe_tQ',
+    genres: [
+      'Crime',
+      'Drama',
+      'History',
+      'Thriller',
+      'Action'
+    ],
+    stars: [
+      'Emile Hirsch',
+      'Bruce Willis',
+      'Amanda Seyfried',
+      'Justin Timberlake',
+      'Shawn Hatosy',
+      'Ben Foster',
+      'Harry Dean Stanton',
+      'Matthew Barry',
+      'Fernando Vargas',
+      'Vincent Kartheiser'
+    ],
+    directors: [
+      'Nick Cassavetes',
+      'Jeanne Byrd'
+    ],
+    countries: [
+      'United States of America',
+      'Germany'
+    ],
+    language: [
+      'English',
+      'Český',
+      'Español'
+    ]
+  },
+  {
+    title: 'My Friend, Tucker',
+    year: '2019',
+    release_date: '2019-03-03',
+    imdb_id: 'tt7972040',
+    imdb_rating: '8.2',
+    poster: 'https://m.media-amazon.com/images/M/MV5BMDc2NzQ2NmUtMDI2NC00MzNjLWI3OGItODM1MGQwM2QxZGZkXkEyXkFqcGdeQXVyNTExNjA1MzE@._V1_SX300.jpg',
+    vote_count: '5',
+    youtube_trailer_key: 'uApF4dWsUn0',
+    genres: [
+      'Comedy',
+      'Drama'
+    ],
+    stars: [
+      'Avery Anthony',
+      'Mitchell Edwards'
+    ],
+    directors: [
+      'Clarence Williams IV'
+    ],
+    countries: [
+      'United States of America'
+    ],
+    language: [
+      'English'
+    ]
+  }
 ];
 
 const insertWorst = function() {
-  Video.create(worst)
+  Tv.create(worst)
     .then(() => {
       console.log('Database seeded successfully');
     })
