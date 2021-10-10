@@ -6,8 +6,11 @@ import TrailerTvShow from './TrailerTvShow.jsx';
 
 export default function HomePage(props) {
   // console.log("home"+props.trailer)
+  // window.location.reload(true);
   return (
-    <div >
+    
+    <div >    
+
       <div>
         <div> <TrailerPlayer trailer={props.trailer}/> </div>
         <div> <TrailerList populars={props.populars} getTrailer={props.getTrailer}  
