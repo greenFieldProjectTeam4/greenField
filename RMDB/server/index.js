@@ -24,15 +24,17 @@ app.get('/api/videos', function(req, res) {
       res.status(403).send('failed');
     });
 });
-// app.post('/api/videos', function(req, res) {
-//   Video.create(req.body)
-//   .then((result)=>{
-//     res.status(201).send(result)
-//   })
-//   .catch(()=>{
-//     res.status(403).send("failed")
-//   })
-// });
+
+app.post('/api/videos', function(req, res) {
+  Video.create(req.body)
+  .then((result)=>{
+    res.status(201).send(result)
+  })
+  .catch(()=>{
+    res.status(403).send("failed")
+  })
+});
+
 app.put('/api/videos/:videoId', function(req, res) {
   Video.findByIdAndUpdate({_id: req.params.videoId}, req.body)
     .then((result)=>{
@@ -119,7 +121,7 @@ app.get('/api/pop/:videoId', function(req, res) {
 });
 
 
-app.put('/user/:userId',(req,res)=>{console.log('here',req.body);
+app.put('/user/:userId',(req,res)=>{
  User.findOneAndUpdate({_id:req.params.userId},req.body)
  .then((result)=>{
     res.status(201).send(result)
@@ -167,4 +169,6 @@ app.get('/api/tv/:tvId', function(req, res) {
       res.status(403).send('failed');
     });
 });
+
+
 app.listen(PORT, () => { console.log('yemshy 3al 3000') });

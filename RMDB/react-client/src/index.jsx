@@ -112,7 +112,6 @@ class App extends React.Component {
     })
   }
 
-// get on
   getOne(videoId){
     axios.get(`http://localhost:3000/api/videos/${videoId}`)
     .then((response)=>{ 
@@ -122,7 +121,7 @@ class App extends React.Component {
     })
   }
 
-  // get one trailer to display in the trailer player 
+ 
 
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -144,6 +143,7 @@ class App extends React.Component {
     }
     else { alert('fill all the fields ') }
   }
+
 
   // handle the sign in click
   signInsubmit() {
@@ -177,10 +177,12 @@ class App extends React.Component {
     const list= [...this.state.userLogged[0].toWatchList];
     console.log('here',list)
 
-    // list.push(newList) 
-    axios.put(`/user/${userId}`,{toWatchList:list.concat(newList)})
+    list.push(newList) 
+    axios.put(`/user/${userId}`,{toWatchList:list})
+
   }
 
+    // get one trailer to display in the trailer player;
   getTrailer(videoId) {
     axios.get(`http://localhost:3000/api/pop/${videoId}`)
       .then((response)=>{  
@@ -241,6 +243,8 @@ getOneTv(tvId) {
     });
 }
 
+
+
 changeView(option) {
   this.setState({
     view: option
@@ -249,7 +253,6 @@ changeView(option) {
 
   renderView() {
     const view = this.state.view;
-    const user = this.state.user;
     if (view === 'signin') {
       return <SignIn username={this.state.username} password={this.state.password} submit={this.signInsubmit} handleChange={this.handleChange} handleClick={() => this.changeView('login')} />;
     } else if (view === 'signup') {
@@ -310,7 +313,7 @@ changeView(option) {
             onClick={() => this.changeView('homepage')} >
               ЯMDb
           </span>
-          <span className="nav-unselected" onClick={() => this.changeView('signin')}>
+          <span className="nav-unselected" onClick={() =>{console.log('test'); this.changeView('signin')}}>
             Sign In
           </span>
           <span className="nav-unselected" onClick={() => this.changeView('signup')}>

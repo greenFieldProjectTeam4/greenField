@@ -19,7 +19,7 @@ export default function HomePage(props) {
         /> 
       </div>
       <div> 
-        <TrailerTvShow tvs={props.tvs} update={props.update} handleClick={props.handleClick} getOneTv={props.getOneTv}
+        <TrailerTvShow tvs={props.tvs} user={props.user} update={props.update} handleClick={props.handleClick} getOneTv={props.getOneTv}
         /> 
       </div>
       <div className="reference">
