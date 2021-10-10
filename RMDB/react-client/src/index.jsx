@@ -5,6 +5,7 @@ import SignUp from './components/SignUp.jsx';
 import SignIn from './components/SignIn.jsx';
 import HomePage from './components/HomePage.jsx';
 import Details from './components/Details.jsx';
+import WatchList from './components/WatchList.jsx';
 import MovieSearch from './components/MovieSearch.jsx';
 
 class App extends React.Component {
@@ -35,7 +36,6 @@ class App extends React.Component {
         youtube_trailer_key: '',
         comments: ['']
       },
-      comment: '',
       trailer: {
         countries: null,
         description: '',
@@ -77,8 +77,6 @@ class App extends React.Component {
   }
 
   //// from dhafer 
-
-
 
   componentDidMount() {
     this.getData()
@@ -146,8 +144,6 @@ class App extends React.Component {
             password: '',
             user: true,
             view: 'homepage'
-
-
           });
         })
         .catch(() => { alert('username already existed'); });
@@ -278,12 +274,13 @@ class App extends React.Component {
     } else if (view === 'homepage') {
       return <HomePage delete={this.deleteVidFromWatchList} user={this.state.userLogged[0]} update={this.addToWatch} trailers={this.state.trailers} trailer={this.state.trailer}
         handleTrailerItems={this.handleTrailerItems} handleClick={() => this.changeView('fff')}
-        getOne={this.getOne} getPop={this.getPop} getTrailer={this.getTrailer} populars={this.state.populars}
-        getTv={this.getTv} tvs={this.state.tvs} getOneTv={this.getOneTv} />;
+        getOne={this.getOne} getPop={this.getPop} getTrailer={this.getTrailer} populars={this.state.populars} 
+        getTv = {this.getTv} tvs={this.state.tvs} getOneTv = {this.getOneTv}/>;
+    } else if (view === 'towatch'){
+      return <WatchList user={this.state.userLogged[0].toWatchList}/>
     }
-
     else {
-      return <Details video={this.state.video} handleChange={this.handleChange} putComments={this.putComments} />;
+      return <Details video={this.state.video} handleChange={this.handleChange} postComment={this.postComment}/>;
     }
 
   }
@@ -307,11 +304,11 @@ class App extends React.Component {
               WatchList
             </span>
 
-            <span className="nav-unselected" onClick={() => { this.setState({ user: false }), this.changeView('homepage') }}>
-              LogOut
-            </span>
-
-          </div>
+          <span className="nav-unselected" onClick={() =>{this.setState({user:false}),this.changeView('homepage')} }>
+            Sign Out
+          </span>
+         
+        </div>
 
           <div className="container">
             {this.renderView()}

@@ -4,19 +4,27 @@ export default function Details(props) {
     // console.log(props.video.directors)
     return (
         <div>
+            
             <div className="detailsRandom">  
                 <div><iframe className="details" src={`https://www.youtube.com/embed/${props.video.youtube_trailer_key}`} allowFullScreen></iframe>
+                
             </div>
         </div >  
         <div className="infos">
         <h4 className="title">Title: {props.video.title} </h4>
         </div>
         <form>
-        <button id="watchDetails">+ WatchList</button>
+        <button id="watchDetails">+ WatchList</button> 
         <div className="description">Description: <br/> {props.video.description}</div><br/>
-        <textarea className="create-body-textarea"  placeholder="Post Body" name="body" onChange={props.handleChange}></textarea>
-        <button className="create-submit-button" type="submit" >Submit</button>
+        <textarea className="create-body-textarea"  placeholder="Post Comment" name="comments" onChange={props.handleChange}></textarea>
+        <button className="create-submit-button" type="submit" onClick={props.postComment}>Submit</button>
         </form>
+        <div class="create-preview">
+            <h2>COMMENTS</h2>
+            <div className="post"> 
+                <p>{props.video.comments}</p>
+            </div>
+        </div>
         <div className="reference">
     <img id="img"  src="https://cdn.iconscout.com/icon/free/png-256/facebook-logo-2019-1597680-1350125.png"/>
     <img id="img"  src="https://www.symbiotech.com/wp-content/uploads/2021/05/instagram.png"/>
