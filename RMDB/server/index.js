@@ -36,6 +36,7 @@ app.post('/api/videos', function(req, res) {
 });
 
 app.put('/api/videos/:videoId', function(req, res) {
+  console.log(req.params,req.body)
   Video.findByIdAndUpdate({_id: req.params.videoId}, req.body)
     .then((result)=>{
       res.status(201).send(result);
