@@ -6,10 +6,17 @@
   "scripts": {
     "start": "nodemon server/index.js",
     "dev:react": "webpack -d --watch",
+<<<<<<< HEAD
     "random": "node database-mongodb/seedRandom.js",
     "popular": "node database-mongodb/seedPopular.js",
     "user": "node database-mongodb/User.js",
     "tv": "node database-mongodb/SeedTV.js"
+=======
+    "db:setup": "node database-mongodb/seedRandom.js",
+    "db:set": "node database-mongodb/seedPopular.js",
+    "user": "node database-mongodb/User.js",
+    "db:settv": "node database-mongodb/seedTV.js"
+>>>>>>> d5a1b724c948cdc3d0ab82d425e14b2d8085835f
   },
   "author": "Hack Reactor Curriculum Team <curriculum.team@hackreactor.com>",
   "license": "ISC",

@@ -5,6 +5,7 @@ import SignUp from './components/SignUp.jsx';
 import SignIn from './components/SignIn.jsx';
 import HomePage from './components/HomePage.jsx';
 import Details from './components/Details.jsx';
+import MovieSearch from './components/MovieSearch.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -45,9 +46,9 @@ class App extends React.Component {
         release_date: '',
         poster: '',
         stars: [],
-        title: "",
-        year: "",
-        youtube_trailer_key: "",
+        title: '',
+        year: '',
+        youtube_trailer_key: '',
       },
       userLogged: [{
         _id: '',
@@ -72,6 +73,7 @@ class App extends React.Component {
     this.addToWatch = this.addToWatch.bind(this);
     this.getTv = this.getTv.bind(this);
     this.deleteVidFromWatchList=this.deleteVidFromWatchList.bind(this);
+    this.handleMovieSearch = this.handleMovieSearch.bind(this);
   }
 
   //// from dhafer 
@@ -126,8 +128,14 @@ class App extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-
-
+  handleMovieSearch(e) {
+    const mov = e.target.value;
+    $.get('http://www.omdbapi.com/?apikey=c9dddb65&t=' + mov, function(data) {
+      this.setState({
+        data: data
+      });
+    });
+  } 
   // handle the sign Up click
   signUpsubmit() {
     if (this.state.password !== '' && this.state.username !== '') {
@@ -142,9 +150,8 @@ class App extends React.Component {
 
           });
         })
-        .catch(() => { alert('username already existed') })
-    }
-    else { alert('fill all the fields ') }
+        .catch(() => { alert('username already existed'); });
+    } else { alert('fill all the fields '); }
   }
 
 
@@ -288,9 +295,7 @@ class App extends React.Component {
       return (
         <div>
           <div className="nav">
-
             <span className={this.state.view === 'homepage', 'logo'}
-
               onClick={() => this.changeView('homepage')} >
               ЯMDb
             </span>
@@ -315,8 +320,6 @@ class App extends React.Component {
 
       );
     }
-
-
     return (
       <div>
         <div className="nav">
