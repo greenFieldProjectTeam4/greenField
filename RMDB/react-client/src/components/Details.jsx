@@ -20,7 +20,15 @@ export default function Details(props) {
         <div className="create-comment">
             <h2>COMMENTS</h2>
             <div className="post"> 
-                <p>{props.item.video.comments}</p>
+            <ul>
+                {props.item.video.comments.map((e,key)=>{
+                    return(
+                    <li key={key}>{e}</li>
+                    )
+                })}
+                
+            </ul>
+                
             </div>
         </div>
         <div className="reference">
