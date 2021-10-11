@@ -34,8 +34,9 @@ class App extends React.Component {
         title: '',
         year: '',
         youtube_trailer_key: '',
-        comments: ['']
+        comments: []
       },
+      comment:"",
       trailer: {
         countries: null,
         description: '',
@@ -56,8 +57,7 @@ class App extends React.Component {
         toWatchList: [],
         username: ''
       }]
-    }
-      ;
+    };
 
     this.changeView = this.changeView.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -68,15 +68,12 @@ class App extends React.Component {
     this.getTrailer = this.getTrailer.bind(this);
     this.getPop = this.getPop.bind(this);
 
-    // this.postComment= this.postComment.bind(this)
     this.putComments = this.putComments.bind(this);
     this.addToWatch = this.addToWatch.bind(this);
     this.getTv = this.getTv.bind(this);
     this.deleteVidFromWatchList=this.deleteVidFromWatchList.bind(this);
     this.handleMovieSearch = this.handleMovieSearch.bind(this);
   }
-
-  //// from dhafer 
 
   componentDidMount() {
     this.getData()
@@ -86,7 +83,7 @@ class App extends React.Component {
   getTv() {
     axios.get('/api/tv')
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         this.setState({
           tvs: response.data
         });
@@ -120,10 +117,9 @@ class App extends React.Component {
       })
   }
 
-
-
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
+    console.log(this.state.comment)
   }
 
   handleMovieSearch(e) {
@@ -149,7 +145,6 @@ class App extends React.Component {
         .catch(() => { alert('username already existed'); });
     } else { alert('fill all the fields '); }
   }
-
 
   // handle the sign in click
   signInsubmit() {
@@ -177,16 +172,13 @@ class App extends React.Component {
     }
   }
 
-
   // add the video to the user's watch list
   addToWatch(userId, newList) {
-
     const list = [...this.state.userLogged[0].toWatchList];
     console.log('here', list)
 
     list.push(newList)
     axios.put(`/user/${userId}`, { toWatchList: list })
-
   }
 
   // get one trailer to display in the trailer player;
@@ -199,7 +191,6 @@ class App extends React.Component {
       });
   }
 
-
   getOneTv(tvId) {
     axios.get(`http://localhost:3000/api/tv/${tvId}`)
       .then((response) => {
@@ -210,26 +201,18 @@ class App extends React.Component {
       });
   }
 
-
-
-  // postComment(){
-  //   axios.post("http://localhost:3000/api/videos",{comments:this.state.video.comments})
-  //   .then((response)=>{
-  //       console.log(response)
-  //   })
-  //   .then (()=>{
-  //     alert("posted!")
-  //   })
-  //   .catch ((err)=>{
-  //     console.log(err)
-  //   })
-  // }
-
-  putComments(videoId, newComment) {
-    axios.put(`http://localhost:3000/api/videos/${videoId}`, { comment: newComment })
-      .then((response) => {
-        console.log(response);
-      });
+  putComments(videoId) {
+    const newComments= [...this.state.video.comments]
+    newComments.push(this.state.comment)
+    axios.put(`http://localhost:3000/api/videos/${videoId}`, { comments: newComments })
+      .then(() => {
+        this.setState({
+          comments: newComments
+        })
+      })
+      .catch(()=>{
+        console.log("not posted")
+      })
   }
 
   deleteVidFromWatchList(userId, videoId) {
@@ -245,8 +228,6 @@ class App extends React.Component {
     axios.put(`http://localhost:3000/delete/${userId}`, { watchList: list })
 
   }
-
-
 
   getOneTv(tvId) {
     axios.get(`http://localhost:3000/api/tv/${tvId}`)
@@ -264,7 +245,6 @@ class App extends React.Component {
     });
   }
 
-
   renderView() {
     const view = this.state.view;
     if (view === 'signin') {
@@ -280,13 +260,11 @@ class App extends React.Component {
       return <WatchList user={this.state.userLogged[0].toWatchList}/>
     }
     else {
-      return <Details video={this.state.video} handleChange={this.handleChange} postComment={this.postComment}/>;
+      return <Details video={this.state.video} handleChange={this.handleChange} putComments={this.putComments} item={this.state}/>;
     }
-
   }
 
   render() {
-
     if (this.state.user === true) {
 
       return (

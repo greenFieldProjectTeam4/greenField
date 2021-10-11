@@ -1,10 +1,8 @@
-
 import React from 'react';
 export default function Details(props) {
-    // console.log(props.video.directors)
+    // console.log(props.video.comments)
     return (
-        <div>
-            
+        <div>       
             <div className="detailsRandom">  
                 <div><iframe className="details" src={`https://www.youtube.com/embed/${props.video.youtube_trailer_key}`} allowFullScreen></iframe>
                 
@@ -16,13 +14,21 @@ export default function Details(props) {
         <form>
         <button id="watchDetails">+ WatchList</button> 
         <div className="description">Description: <br/> {props.video.description}</div><br/>
-        <textarea className="create-body-textarea"  placeholder="Post Comment" name="comments" onChange={props.handleChange}></textarea>
-        <button className="create-submit-button" type="submit" onClick={props.postComment}>Submit</button>
+        <textarea className="create-body-textarea"  placeholder="Post Comments" name="comment" onChange={props.handleChange}></textarea>
+        <button className="create-submit-button" type="submit" onClick={()=>props.putComments(props.video._id)}>Submit</button>
         </form>
-        <div class="create-preview">
+        <div className="create-comment">
             <h2>COMMENTS</h2>
             <div className="post"> 
-                <p>{props.video.comments}</p>
+            <ul>
+                {props.item.video.comments.map((e,key)=>{
+                    return(
+                    <li key={key}>{e}</li>
+                    )
+                })}
+                
+            </ul>
+                
             </div>
         </div>
         <div className="reference">

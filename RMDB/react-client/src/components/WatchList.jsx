@@ -1,5 +1,5 @@
 import React from 'react';
-
+// class and manipulate state
 export default function WatchList(props) {
   console.log(props.user)
   return (
